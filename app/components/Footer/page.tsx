@@ -13,7 +13,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center">
                 <div className="w-4 h-4 bg-black rounded-sm"></div>
               </div>
-              <span className="text-2xl font-bold">Bayt</span>
+              <span className="text-2xl font-bold">Driflo</span>
             </div>
             <p className="text-gray-400 text-lg mb-6 max-w-md">
               The premier choice in real estate services. Managing, leasing, and

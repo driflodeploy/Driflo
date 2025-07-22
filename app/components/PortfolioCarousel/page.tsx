@@ -17,104 +17,110 @@ import Link from "next/link";
 const portfolioItems = [
   {
     id: 1,
-    slug: "luxury-downtown-apartments",
-    title: "Luxury Downtown Apartments",
-    location: "Manhattan, NY",
-    type: "Residential Complex",
-    image: "/placeholder.svg?height=400&width=600&text=Luxury+Apartments",
+    slug: "luxury-ecommerce-platform",
+    title: "Luxury Fashion E-commerce Platform",
+    location: "New York, NY",
+    type: "Headless Shopify Store",
+    image:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop&crop=center",
     stats: {
-      revenue: "+45%",
-      occupancy: "98%",
-      units: "120",
+      revenue: "+150%",
+      performance: "98%",
+      conversion: "4.2%",
     },
     description:
-      "Complete renovation and management of a 120-unit luxury apartment complex in downtown Manhattan.",
-    tags: ["Luxury", "Residential", "Urban"],
-    rating: 4.8,
+      "Headless Shopify store for luxury fashion brand with custom React frontend, resulting in superior performance and user experience.",
+    tags: ["Headless Shopify", "React", "E-commerce"],
+    rating: 4.9,
   },
   {
     id: 2,
-    slug: "commercial-office-plaza",
-    title: "Commercial Office Plaza",
-    location: "Austin, TX",
-    type: "Commercial Property",
-    image: "/placeholder.svg?height=400&width=600&text=Office+Plaza",
+    slug: "fintech-web-application",
+    title: "FinTech Dashboard Application",
+    location: "San Francisco, CA",
+    type: "Custom Web App",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center",
     stats: {
-      revenue: "+32%",
-      occupancy: "95%",
-      units: "50",
+      users: "50K+",
+      uptime: "99.9%",
+      speed: "1.2s",
     },
     description:
-      "Strategic repositioning of a commercial office plaza resulting in increased tenant satisfaction and revenue.",
-    tags: ["Commercial", "Office", "Strategic"],
-    rating: 4.6,
+      "Custom web application for financial data visualization with real-time analytics and secure user authentication.",
+    tags: ["FinTech", "Dashboard", "Real-time"],
+    rating: 4.8,
   },
   {
     id: 3,
-    slug: "student-housing-complex",
-    title: "Student Housing Complex",
+    slug: "healthcare-mobile-app",
+    title: "Healthcare Management App",
     location: "Boston, MA",
-    type: "Student Housing",
-    image: "/placeholder.svg?height=400&width=600&text=Student+Housing",
+    type: "Mobile Application",
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop&crop=center",
     stats: {
-      revenue: "+28%",
-      occupancy: "100%",
-      units: "200",
+      downloads: "100K+",
+      rating: "4.8/5",
+      retention: "85%",
     },
     description:
-      "Modern student housing facility with state-of-the-art amenities and technology integration.",
-    tags: ["Student", "Modern", "Technology"],
+      "React Native mobile application for healthcare management with patient portal and appointment scheduling.",
+    tags: ["Healthcare", "React Native", "Mobile"],
     rating: 4.9,
   },
   {
     id: 4,
-    slug: "mixed-use-development",
-    title: "Mixed-Use Development",
-    location: "Seattle, WA",
-    type: "Mixed-Use",
-    image: "/placeholder.svg?height=400&width=600&text=Mixed+Use",
+    slug: "food-delivery-platform",
+    title: "Multi-Vendor Food Delivery Platform",
+    location: "Austin, TX",
+    type: "Full-Stack Platform",
+    image:
+      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=600&h=400&fit=crop&crop=center",
     stats: {
-      revenue: "+52%",
-      occupancy: "92%",
-      units: "85",
+      vendors: "500+",
+      orders: "10K/day",
+      coverage: "3 cities",
     },
     description:
-      "Innovative mixed-use development combining retail, office, and residential spaces.",
-    tags: ["Mixed-Use", "Innovation", "Multi-Purpose"],
+      "Complete food delivery ecosystem with vendor management, real-time tracking, and payment integration.",
+    tags: ["Food Delivery", "Multi-Vendor", "Real-time"],
     rating: 4.7,
   },
   {
     id: 5,
-    slug: "suburban-family-homes",
-    title: "Suburban Family Homes",
-    location: "Phoenix, AZ",
-    type: "Single Family",
-    image: "/placeholder.svg?height=400&width=600&text=Family+Homes",
+    slug: "beauty-brand-shopify",
+    title: "Beauty Brand Shopify Store",
+    location: "Los Angeles, CA",
+    type: "Shopify Plus Store",
+    image:
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop&crop=center",
     stats: {
-      revenue: "+38%",
-      occupancy: "96%",
-      units: "75",
+      revenue: "+200%",
+      conversion: "5.1%",
+      products: "500+",
     },
     description:
-      "Portfolio of single-family homes optimized for modern families with smart home technology.",
-    tags: ["Family", "Suburban", "Smart Home"],
-    rating: 4.5,
+      "Custom Shopify Plus store for beauty brand with advanced product configurator and subscription features.",
+    tags: ["Shopify Plus", "Beauty", "Subscriptions"],
+    rating: 4.8,
   },
   {
     id: 6,
-    slug: "waterfront-condominiums",
-    title: "Waterfront Condominiums",
-    location: "Miami, FL",
-    type: "Luxury Condos",
-    image: "/placeholder.svg?height=400&width=600&text=Waterfront+Condos",
+    slug: "saas-analytics-dashboard",
+    title: "SaaS Analytics Dashboard",
+    location: "Seattle, WA",
+    type: "SaaS Platform",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center",
     stats: {
-      revenue: "+65%",
-      occupancy: "94%",
-      units: "40",
+      clients: "1000+",
+      data_points: "1M+",
+      accuracy: "99.5%",
     },
     description:
-      "Premium waterfront condominiums with panoramic ocean views and luxury amenities.",
-    tags: ["Luxury", "Waterfront", "Premium"],
+      "Enterprise-grade SaaS analytics platform with machine learning insights and customizable reporting.",
+    tags: ["SaaS", "Analytics", "Machine Learning"],
     rating: 4.9,
   },
 ];
@@ -379,9 +385,7 @@ export default function PortfolioCarousel() {
                           <Users className="w-5 h-5 text-blue-600" />
                         </div>
                       </div>
-                      <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-blue-600">
-                        {item.stats.occupancy}
-                      </div>
+
                       <div className="text-xs text-gray-500 font-medium">
                         Occupancy
                       </div>
@@ -392,9 +396,7 @@ export default function PortfolioCarousel() {
                           <DollarSign className="w-5 h-5 text-purple-600" />
                         </div>
                       </div>
-                      <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-purple-600">
-                        {item.stats.units}
-                      </div>
+
                       <div className="text-xs text-gray-500 font-medium">
                         Units
                       </div>

@@ -12,8 +12,8 @@ export default function WhyChooseUsSection() {
     >
       <div className="absolute inset-0">
         <Image
-          src="/placeholder.svg?height=800&width=1400"
-          alt="Modern loft interior"
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&h=800&fit=crop&crop=center"
+          alt="Modern development office with team collaboration"
           fill
           className="object-cover"
         />
@@ -32,7 +32,8 @@ export default function WhyChooseUsSection() {
             </Badge>
 
             <h2 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight">
-              Discover why we're your top choice for real estate services.
+              Discover why we're your top choice for custom development
+              solutions.
             </h2>
 
             <div className="flex items-center space-x-3">
@@ -41,24 +42,20 @@ export default function WhyChooseUsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="bg-purple-400 hover:bg-purple-500 text-white rounded-full px-8 py-3 font-medium">
+                <Button className="bg-purple-400 hover:bg-purple-500 text-white rounded-full px-8 py-6 font-medium">
                   Book a Call
                 </Button>
               </Link>
-              <Button
-                size="icon"
-                className="bg-purple-400 hover:bg-purple-500 text-white rounded-full w-12 h-12"
-              >
-                <ArrowRight className="w-5 h-5" />
-              </Button>
             </div>
           </div>
 
           {/* Floating Badges */}
           <div className="relative lg:block hidden">
-            {/* Top Experience */}
-            <div className="absolute top-0 left-0 bg-white rounded-full px-6 py-3 flex items-center space-x-3 shadow-lg">
-              <span className="font-semibold text-black">Top Experience</span>
+            {/* Expert Development */}
+            <div className="absolute top-20 left-0 bg-white rounded-full px-6 py-3 flex items-center space-x-3 shadow-lg">
+              <span className="font-semibold text-black">
+                Expert Development
+              </span>
               <ArrowRight className="w-4 h-4 text-gray-600" />
             </div>
 
@@ -68,18 +65,18 @@ export default function WhyChooseUsSection() {
               <ArrowRight className="w-4 h-4 text-gray-600" />
             </div>
 
-            {/* Advanced Technology */}
+            {/* Cutting-Edge Tech Stack */}
             <div className="absolute bottom-32 right-0 bg-white rounded-full px-6 py-3 flex items-center space-x-3 shadow-lg">
               <span className="font-semibold text-black">
-                Advanced Technology
+                Cutting-Edge Tech Stack
               </span>
               <ArrowRight className="w-4 h-4 text-gray-600" />
             </div>
 
-            {/* Transparent Reporting */}
-            <div className="absolute bottom-0 right-12 bg-white rounded-full px-6 py-3 flex items-center space-x-3 shadow-lg">
+            {/* Agile Development */}
+            <div className="absolute bottom-10 right-80 bg-white rounded-full px-6 py-3 flex items-center space-x-3 shadow-lg">
               <span className="font-semibold text-black">
-                Transparent Reporting
+                Agile Development
               </span>
               <ArrowRight className="w-4 h-4 text-gray-600" />
             </div>

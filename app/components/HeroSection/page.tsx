@@ -125,8 +125,8 @@ export default function HeroSection() {
             <ImageCard
               width="w-80"
               height="h-48"
-              imageSrc="/placeholder.svg?height=192&width=320"
-              alt="Mountain cabin"
+              imageSrc="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=320&h=192&fit=crop&crop=center"
+              alt="Digital agency workspace with analytics dashboard"
               className="z-20 transform -translate-y-8"
             >
               <SpeechBubble text="Launch your headless Shopify store with lightning speed" />
@@ -136,8 +136,8 @@ export default function HeroSection() {
             <ImageCard
               width="w-[500px]"
               height="h-[450px]"
-              imageSrc="/placeholder.svg?height=450&width=500"
-              alt="Snowy mountain cabin"
+              imageSrc="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=450&fit=crop&crop=center"
+              alt="Development team working on digital solutions"
               className="bg-gray-900 z-10 transform translate-y-4 -ml-20"
               bgOverlay="bg-black/30"
             >
@@ -162,8 +162,8 @@ export default function HeroSection() {
         <ImageCard
           width="w-80"
           height="h-48"
-          imageSrc="/placeholder.svg?height=192&width=320"
-          alt="Mountain cabin"
+          imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=320&h=192&fit=crop&crop=center"
+          alt="Modern office workspace with development team"
           className="z-20 transform absolute left-1/2 bottom-0 -translate-x-36 -translate-y-8"
         >
           <SpeechBubble text="Custom development solutions tailored to your business needs" />

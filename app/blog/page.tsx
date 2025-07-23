@@ -81,7 +81,7 @@ export default function BlogPage() {
                     size="sm"
                     className="text-purple-400 hover:text-purple-500 p-0"
                   >
-                    More detail <ArrowRight className="w-4 h-4 ml-1" />
+                    Read more <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </div>
               </div>

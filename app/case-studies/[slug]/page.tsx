@@ -529,7 +529,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="max-w-7xl mx-auto">
           {/* Back Navigation */}
           <Link
-            href="/"
+            href="/work"
             className="inline-flex items-center text-slate-600 hover:text-purple-600 mb-8 group transition-all duration-300"
           >
             <div className="bg-white/80 backdrop-blur-sm rounded-full p-3 mr-3 border border-slate-200/50 shadow-lg group-hover:shadow-xl group-hover:border-purple-200 transition-all duration-300">

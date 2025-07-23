@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "../components/Navbar/page";
 
 // Extended case studies data
 const caseStudies = [
@@ -211,6 +212,7 @@ export default function CaseStudiesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+      <Navbar />
       {/* Premium Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-200/20 to-blue-200/20 rounded-full blur-3xl"></div>
@@ -219,7 +221,7 @@ export default function CaseStudiesPage() {
       </div>
 
       <main
-        className={`w-full px-4 lg:px-6 py-16 pt-24 relative transition-opacity duration-1000 ${
+        className={`w-full px-4 lg:px-6 py-16 pt-32 relative transition-opacity duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -549,46 +551,6 @@ export default function CaseStudiesPage() {
                 ))}
               </div>
             )}
-          </div>
-
-          {/* Bottom CTA Section */}
-          <div className="mt-20">
-            <Card className="bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 rounded-3xl p-16 text-white relative overflow-hidden border-0 shadow-2xl">
-              {/* Background Elements */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-20 translate-x-20 blur-xl"></div>
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full translate-y-16 -translate-x-16 blur-xl"></div>
-
-              <div className="text-center relative">
-                <div className="bg-white/20 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-8">
-                  <Target className="w-10 h-10 text-white" />
-                </div>
-
-                <h3 className="text-4xl font-black mb-6">
-                  Ready to Become Our Next
-                  <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                    Success Story?
-                  </span>
-                </h3>
-
-                <p className="text-purple-100 mb-10 text-xl max-w-2xl mx-auto leading-relaxed">
-                  Let's discuss your project and explore how we can deliver
-                  exceptional results for your business.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <Button className="bg-white text-purple-700 hover:bg-gray-50 rounded-full px-10 py-6 text-lg font-black shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    Start Your Project
-                    <ArrowRight className="w-5 h-5 ml-3" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="border-2 border-white/30 text-white hover:bg-white/10 rounded-full px-10 py-6 text-lg font-black backdrop-blur-sm"
-                  >
-                    Schedule Consultation
-                  </Button>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
       </main>

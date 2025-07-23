@@ -18,7 +18,7 @@ const navItems: NavItem[] = [
 
   {
     name: "Services",
-    href: "#services",
+    href: "/#services",
   },
   {
     name: "Work",

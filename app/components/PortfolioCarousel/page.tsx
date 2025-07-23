@@ -10,6 +10,7 @@ import {
   DollarSign,
   MapPin,
   Star,
+  Clock10,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +20,7 @@ const portfolioItems = [
     id: 1,
     slug: "sustainable-fashion-hydrogen",
     title: "Sustainable Fashion Hydrogen Storefront",
-    location: "Portland, OR",
+    time: "4 months",
     type: "Shopify Hydrogen",
     image:
       "https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=400&fit=crop&crop=center",
@@ -37,12 +38,12 @@ const portfolioItems = [
     id: 2,
     slug: "tech-accessories-headless",
     title: "Tech Accessories Headless Store",
-    location: "San Jose, CA",
+    time: "4 months",
     type: "Headless Shopify + Next.js",
     image:
       "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=600&h=400&fit=crop&crop=center",
     stats: {
-      pageSpeed: "2.1s → 0.8s",
+      pageSpeed: "0.8s",
       mobile_score: "95/100",
       seo_boost: "+75%",
     },
@@ -55,7 +56,7 @@ const portfolioItems = [
     id: 3,
     slug: "artisan-jewelry-hydrogen",
     title: "Artisan Jewelry Hydrogen Experience",
-    location: "Brooklyn, NY",
+    time: "4 months",
     type: "Shopify Hydrogen",
     image:
       "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop&crop=center",
@@ -73,7 +74,7 @@ const portfolioItems = [
     id: 4,
     slug: "fitness-supplement-pwa",
     title: "Fitness Supplement PWA Store",
-    location: "Miami, FL",
+    time: "4 months",
     type: "Shopify PWA",
     image:
       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
@@ -91,7 +92,7 @@ const portfolioItems = [
     id: 5,
     slug: "home-decor-hydrogen-plus",
     title: "Luxury Home Decor Hydrogen Store",
-    location: "Nashville, TN",
+    time: "4 months",
     type: "Shopify Plus + Hydrogen",
     image:
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop&crop=center",
@@ -109,7 +110,7 @@ const portfolioItems = [
     id: 6,
     slug: "outdoor-gear-headless",
     title: "Outdoor Gear Headless Commerce",
-    location: "Denver, CO",
+    time: "4 months",
     type: "Headless Shopify + Remix",
     image:
       "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop&crop=center",
@@ -127,7 +128,7 @@ const portfolioItems = [
     id: 7,
     slug: "beauty-subscription-hydrogen",
     title: "Beauty Subscription Hydrogen App",
-    location: "Chicago, IL",
+    time: "4 months",
     type: "Shopify Hydrogen + Subscriptions",
     image:
       "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=400&fit=crop&crop=center",
@@ -145,7 +146,7 @@ const portfolioItems = [
     id: 8,
     slug: "sneaker-marketplace-headless",
     title: "Sneaker Marketplace Headless Platform",
-    location: "Atlanta, GA",
+    time: "4 months",
     type: "Shopify Multi-Store + GraphQL",
     image:
       "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&h=400&fit=crop&crop=center",
@@ -234,12 +235,17 @@ export default function PortfolioCarousel() {
 
   const getTypeColor = (type: string) => {
     const colors = {
-      "Residential Complex": "bg-gradient-to-r from-blue-500 to-blue-600",
-      "Commercial Property": "bg-gradient-to-r from-green-500 to-green-600",
-      "Student Housing": "bg-gradient-to-r from-purple-500 to-purple-600",
-      "Mixed-Use": "bg-gradient-to-r from-orange-500 to-orange-600",
-      "Single Family": "bg-gradient-to-r from-teal-500 to-teal-600",
-      "Luxury Condos": "bg-gradient-to-r from-pink-500 to-pink-600",
+      "Shopify Hydrogen": "bg-gradient-to-r from-green-500 to-emerald-600",
+      "Headless Shopify + Next.js":
+        "bg-gradient-to-r from-blue-500 to-cyan-600",
+      "Shopify PWA": "bg-gradient-to-r from-purple-500 to-violet-600",
+      "Shopify Plus + Hydrogen":
+        "bg-gradient-to-r from-orange-500 to-amber-600",
+      "Headless Shopify + Remix": "bg-gradient-to-r from-teal-500 to-cyan-600",
+      "Shopify Hydrogen + Subscriptions":
+        "bg-gradient-to-r from-pink-500 to-rose-600",
+      "Shopify Multi-Store + GraphQL":
+        "bg-gradient-to-r from-indigo-500 to-purple-600",
     };
     return (
       colors[type as keyof typeof colors] ||
@@ -384,23 +390,21 @@ export default function PortfolioCarousel() {
                 </div>
 
                 <CardContent className="p-6 space-y-4">
-                  {/* Title and Location */}
+                  {/* Title and Client */}
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 transition-colors hover:text-purple-600">
                       {item.title}
                     </h3>
                     <div className="flex items-center text-gray-600 mb-3">
-                      <MapPin className="w-4 h-4 mr-1 text-purple-500" />
-                      <span className="text-sm font-medium">
-                        {item.location}
-                      </span>
+                      <Clock10 className="w-4 h-4 mr-1 text-purple-500" />
+                      <span className="text-sm font-medium">{item.time}</span>
                     </div>
                     <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Flowing Stats Grid */}
+                  {/* Stats Grid */}
                   <div className="grid grid-cols-3 gap-4 py-4 border-t border-gray-100">
                     <div className="text-center group">
                       <div className="flex items-center justify-center mb-2">
@@ -409,10 +413,10 @@ export default function PortfolioCarousel() {
                         </div>
                       </div>
                       <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-green-600">
-                        {item.stats.revenue}
+                        {Object.values(item.stats)[0]}
                       </div>
                       <div className="text-xs text-gray-500 font-medium">
-                        Revenue
+                        Growth
                       </div>
                     </div>
                     <div className="text-center group">
@@ -421,9 +425,11 @@ export default function PortfolioCarousel() {
                           <Users className="w-5 h-5 text-blue-600" />
                         </div>
                       </div>
-
+                      <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-blue-600">
+                        {Object.values(item.stats)[1]}
+                      </div>
                       <div className="text-xs text-gray-500 font-medium">
-                        Occupancy
+                        Performance
                       </div>
                     </div>
                     <div className="text-center group">
@@ -432,9 +438,11 @@ export default function PortfolioCarousel() {
                           <DollarSign className="w-5 h-5 text-purple-600" />
                         </div>
                       </div>
-
+                      <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-purple-600">
+                        {Object.values(item.stats)[2]}
+                      </div>
                       <div className="text-xs text-gray-500 font-medium">
-                        Units
+                        Conversion
                       </div>
                     </div>
                   </div>

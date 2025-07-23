@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { useState, useEffect, use } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
   ArrowLeft,
@@ -16,517 +16,998 @@ import {
   Target,
   CheckCircle,
   BarChart3,
-} from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
+  Clock,
+  Code,
+  Zap,
+  Star,
+  Award,
+  Sparkles,
+  Globe,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-// Mock case study data
-const caseStudies = {
-  "luxury-downtown-apartments": {
+// Your existing case studies data
+const caseStudies = [
+  {
     id: 1,
-    title: "Luxury Downtown Apartments",
-    location: "Manhattan, NY",
-    type: "Residential Complex",
-    image: "/placeholder.svg?height=600&width=1200&text=Luxury+Apartments",
-    stats: {
-      revenue: "+45%",
-      occupancy: "98%",
-      units: "120",
-      duration: "18 months",
-      investment: "$2.5M",
-    },
-    description: "Complete renovation and management of a 120-unit luxury apartment complex in downtown Manhattan.",
-    tags: ["Luxury", "Residential", "Urban"],
+    slug: "sustainable-fashion-hydrogen",
+    title: "Sustainable Fashion Hydrogen Storefront",
+    client: "EcoThreads",
+    industry: "Sustainable Fashion",
+    location: "Portland, OR",
+    duration: "4 months",
+    team: "4 developers",
+    image:
+      "https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=500&fit=crop&crop=center",
     challenge:
-      "The property was experiencing declining occupancy rates (65%) and outdated amenities that couldn't compete with newer developments in the area. Tenant turnover was high, and rental income was 30% below market rate.",
+      "EcoThreads needed a high-performance e-commerce platform that could handle their growing customer base while maintaining their brand values of sustainability and transparency. Their existing WordPress site was slow, had poor mobile experience, and couldn't support their complex product storytelling needs.",
     solution:
-      "We implemented a comprehensive renovation strategy focusing on modern amenities, smart home technology, and premium finishes. Our team also redesigned the marketing approach and implemented dynamic pricing strategies.",
-    results: [
-      "Increased occupancy from 65% to 98%",
-      "Boosted rental income by 45%",
-      "Reduced tenant turnover by 60%",
-      "Achieved 4.8/5 tenant satisfaction rating",
-      "Increased property value by $8.2M",
+      "We built a custom Shopify Hydrogen storefront with React components optimized for performance and sustainability storytelling. The solution included carbon footprint tracking for each product, detailed supply chain transparency, and a custom size guide with sustainability impact calculations.",
+    technologies: [
+      "Shopify Hydrogen",
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shopify Admin API",
+      "Carbon Tracking API",
     ],
-    timeline: [
-      {
-        phase: "Assessment & Planning",
-        duration: "2 months",
-        description: "Comprehensive property analysis and renovation planning",
-      },
-      {
-        phase: "Renovation Phase 1",
-        duration: "6 months",
-        description: "Common areas, lobby, and building systems upgrade",
-      },
-      {
-        phase: "Renovation Phase 2",
-        duration: "8 months",
-        description: "Unit-by-unit renovation and smart home installation",
-      },
-      {
-        phase: "Marketing & Leasing",
-        duration: "2 months",
-        description: "New marketing strategy and tenant acquisition",
-      },
+    results: {
+      revenue: "+180% increase in online revenue",
+      performance: "100/100 Lighthouse performance score",
+      conversion: "6.8% conversion rate (up from 2.1%)",
+      pageSpeed: "Page load time reduced from 4.2s to 1.1s",
+      mobileTraffic: "+220% increase in mobile conversions",
+      carbonReduction: "15% reduction in returns due to better sizing",
+    },
+    testimonial: {
+      quote:
+        "The new Hydrogen storefront not only increased our sales but perfectly represents our sustainability mission. The performance improvements have been incredible.",
+      author: "Sarah Mitchell",
+      position: "Founder & CEO, EcoThreads",
+    },
+    keyFeatures: [
+      "Carbon footprint calculator for each product",
+      "Interactive supply chain map",
+      "Sustainable packaging options",
+      "Size recommendation engine",
+      "Progressive Web App capabilities",
+      "Advanced product filtering by sustainability metrics",
     ],
-    images: [
-      "/placeholder.svg?height=400&width=600&text=Before+Renovation",
-      "/placeholder.svg?height=400&width=600&text=After+Renovation",
-      "/placeholder.svg?height=400&width=600&text=Amenities",
-      "/placeholder.svg?height=400&width=600&text=Interior+Design",
-    ],
+    metrics: {
+      beforeAfter: {
+        pageSpeed: { before: "4.2s", after: "1.1s" },
+        conversionRate: { before: "2.1%", after: "6.8%" },
+        mobileScore: { before: "65/100", after: "98/100" },
+        bounceRate: { before: "68%", after: "31%" },
+      },
+    },
   },
-  "commercial-office-plaza": {
+  {
     id: 2,
-    title: "Commercial Office Plaza",
-    location: "Austin, TX",
-    type: "Commercial Property",
-    image: "/placeholder.svg?height=600&width=1200&text=Office+Plaza",
-    stats: {
-      revenue: "+32%",
-      occupancy: "95%",
-      units: "50",
-      duration: "12 months",
-      investment: "$1.8M",
-    },
-    description:
-      "Strategic repositioning of a commercial office plaza resulting in increased tenant satisfaction and revenue.",
-    tags: ["Commercial", "Office", "Strategic"],
+    slug: "tech-accessories-headless",
+    title: "Tech Accessories Headless Store",
+    client: "TechFlow",
+    industry: "Consumer Electronics",
+    location: "San Jose, CA",
+    duration: "6 months",
+    team: "5 developers",
+    image:
+      "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=800&h=500&fit=crop&crop=center",
     challenge:
-      "The office plaza was struggling with high vacancy rates (45%) due to outdated facilities and lack of modern amenities that today's businesses require. The property was losing tenants to newer developments.",
+      "TechFlow's legacy Magento store was struggling with poor performance, especially on mobile devices. They needed advanced product visualization features and better SEO to compete with larger electronics retailers. The complex product catalog with thousands of SKUs required sophisticated filtering and search capabilities.",
     solution:
-      "We focused on modernizing the workspace with flexible office solutions, upgraded technology infrastructure, and created collaborative spaces. We also improved the building's energy efficiency and added wellness amenities.",
-    results: [
-      "Increased occupancy from 45% to 95%",
-      "Improved rental rates by 32%",
-      "Reduced operating costs by 25%",
-      "Achieved LEED Gold certification",
-      "100% tenant retention rate",
+      "We implemented a headless architecture using Shopify as the backend with a custom Next.js frontend. The solution featured AR try-on capabilities for phone cases and earbuds, advanced product comparison tools, and intelligent search with AI-powered recommendations.",
+    technologies: [
+      "Shopify Storefront API",
+      "Next.js 14",
+      "React Query",
+      "Framer Motion",
+      "WebAR",
+      "Algolia Search",
+      "Stripe",
     ],
-    timeline: [
-      {
-        phase: "Market Analysis",
-        duration: "1 month",
-        description: "Comprehensive market research and tenant needs assessment",
-      },
-      {
-        phase: "Infrastructure Upgrade",
-        duration: "4 months",
-        description: "Technology, HVAC, and building systems modernization",
-      },
-      {
-        phase: "Space Redesign",
-        duration: "5 months",
-        description: "Flexible workspace creation and amenity installation",
-      },
-      { phase: "Tenant Acquisition", duration: "2 months", description: "Marketing and leasing of renovated spaces" },
+    results: {
+      pageSpeed: "Page speed improved from 2.1s to 0.8s",
+      mobileScore: "95/100 mobile Lighthouse score",
+      seoBoost: "+75% increase in organic traffic",
+      arEngagement: "AR features used by 45% of visitors",
+      conversionLift: "+85% increase in mobile conversions",
+      searchAccuracy: "92% search result accuracy",
+    },
+    testimonial: {
+      quote:
+        "The AR try-on feature has been a game-changer. Customers can see how our products look before buying, which has significantly reduced returns.",
+      author: "Marcus Chen",
+      position: "Head of E-commerce, TechFlow",
+    },
+    keyFeatures: [
+      "WebAR product visualization",
+      "Advanced product comparison matrix",
+      "AI-powered search and recommendations",
+      "Real-time inventory across 3 warehouses",
+      "One-click product compatibility checker",
+      "Dynamic pricing based on bulk orders",
     ],
-    images: [
-      "/placeholder.svg?height=400&width=600&text=Office+Lobby",
-      "/placeholder.svg?height=400&width=600&text=Modern+Workspace",
-      "/placeholder.svg?height=400&width=600&text=Conference+Rooms",
-      "/placeholder.svg?height=400&width=600&text=Wellness+Area",
-    ],
+    metrics: {
+      beforeAfter: {
+        pageSpeed: { before: "2.1s", after: "0.8s" },
+        mobileScore: { before: "72/100", after: "95/100" },
+        organicTraffic: { before: "15K/month", after: "26K/month" },
+        returnRate: { before: "12%", after: "7%" },
+      },
+    },
   },
-  "student-housing-complex": {
+  {
     id: 3,
-    title: "Student Housing Complex",
-    location: "Boston, MA",
-    type: "Student Housing",
-    image: "/placeholder.svg?height=600&width=1200&text=Student+Housing",
-    stats: {
-      revenue: "+28%",
-      occupancy: "100%",
-      units: "200",
-      duration: "15 months",
-      investment: "$3.2M",
-    },
-    description: "Modern student housing facility with state-of-the-art amenities and technology integration.",
-    tags: ["Student", "Modern", "Technology"],
+    slug: "artisan-jewelry-hydrogen",
+    title: "Artisan Jewelry Hydrogen Experience",
+    client: "Luna Crafts",
+    industry: "Luxury Jewelry",
+    location: "Brooklyn, NY",
+    duration: "5 months",
+    team: "6 developers",
+    image:
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=500&fit=crop&crop=center",
     challenge:
-      "The existing student housing was outdated with poor internet connectivity, limited study spaces, and amenities that didn't meet modern student expectations. Occupancy was at 70% with frequent complaints.",
+      "Luna Crafts creates handmade jewelry with unique stories behind each piece. Their Squarespace site couldn't showcase the intricate details and craftsmanship stories effectively. They needed a platform that could handle custom orders, size variations, and tell the artisan's story compellingly.",
     solution:
-      "We transformed the property into a modern student-focused community with high-speed internet, collaborative study spaces, fitness facilities, and social areas. We also implemented a comprehensive resident engagement program.",
-    results: [
-      "Achieved 100% occupancy rate",
-      "Increased rental income by 28%",
-      "Improved student satisfaction to 4.9/5",
-      "Reduced maintenance costs by 20%",
-      "Won 'Best Student Housing' award",
+      "We developed an immersive Shopify Hydrogen experience with 360° product photography, interactive storytelling components, and a custom jewelry configurator. The platform includes artisan profiles, making-of videos, and a virtual try-on feature using the device camera.",
+    technologies: [
+      "Shopify Hydrogen",
+      "Three.js",
+      "WebGL",
+      "React Spring",
+      "Shopify Functions",
+      "Cloudinary",
+      "Stripe Connect",
     ],
-    timeline: [
-      {
-        phase: "Student Needs Research",
-        duration: "2 months",
-        description: "Surveys and focus groups with target demographic",
-      },
-      {
-        phase: "Technology Infrastructure",
-        duration: "3 months",
-        description: "High-speed internet and smart building systems",
-      },
-      {
-        phase: "Amenity Development",
-        duration: "8 months",
-        description: "Study spaces, fitness center, and social areas",
-      },
-      { phase: "Community Programs", duration: "2 months", description: "Resident engagement and support services" },
+    results: {
+      engagement: "+120% increase in time on site",
+      bounceRate: "45% reduction in bounce rate",
+      cartValue: "+$85 average order value increase",
+      customOrders: "30% of sales now custom orders",
+      socialShares: "+200% increase in social media shares",
+      artisanBookings: "150+ artisan consultation bookings/month",
+    },
+    testimonial: {
+      quote:
+        "The platform beautifully showcases our artisans' work and stories. Customers now understand the value and craftsmanship behind each piece.",
+      author: "Isabella Rodriguez",
+      position: "Creative Director, Luna Crafts",
+    },
+    keyFeatures: [
+      "360° jewelry photography viewer",
+      "Virtual try-on using device camera",
+      "Custom jewelry configurator",
+      "Artisan story integration",
+      "Time-lapse making videos",
+      "Personalized engraving preview",
     ],
-    images: [
-      "/placeholder.svg?height=400&width=600&text=Study+Lounge",
-      "/placeholder.svg?height=400&width=600&text=Modern+Dorms",
-      "/placeholder.svg?height=400&width=600&text=Fitness+Center",
-      "/placeholder.svg?height=400&width=600&text=Social+Spaces",
-    ],
+    metrics: {
+      beforeAfter: {
+        timeOnSite: { before: "2m 15s", after: "4m 42s" },
+        bounceRate: { before: "72%", after: "39%" },
+        avgOrderValue: { before: "$145", after: "$230" },
+        customOrderRate: { before: "8%", after: "30%" },
+      },
+    },
   },
-}
+  {
+    id: 4,
+    slug: "fitness-supplement-pwa",
+    title: "Fitness Supplement PWA Store",
+    client: "PowerFuel Nutrition",
+    industry: "Health & Fitness",
+    location: "Miami, FL",
+    duration: "7 months",
+    team: "4 developers",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "PowerFuel's customers are primarily mobile users who shop on-the-go between workouts. Their existing site had poor mobile performance and no offline capabilities. They needed personalized nutrition recommendations and the ability to handle orders even with poor connectivity at gyms.",
+    solution:
+      "We built a Progressive Web App on Shopify with extensive offline capabilities, push notifications for reorder reminders, and AI-powered nutrition recommendations based on user fitness goals and dietary restrictions.",
+    technologies: [
+      "Shopify PWA",
+      "Service Workers",
+      "IndexedDB",
+      "Push API",
+      "TensorFlow.js",
+      "Shopify GraphQL",
+      "Workbox",
+    ],
+    results: {
+      mobileSales: "+250% increase in mobile sales",
+      appInstalls: "25,000+ PWA installations",
+      offlineOrders: "15% of orders completed offline",
+      pushEngagement: "68% push notification click rate",
+      reorderRate: "+180% increase in repeat purchases",
+      loadTime: "90% faster on slow 3G connections",
+    },
+    testimonial: {
+      quote:
+        "The PWA works perfectly even in areas with poor signal. Our customers love the personalized recommendations and offline ordering capability.",
+      author: "Jake Thompson",
+      position: "VP of Digital, PowerFuel Nutrition",
+    },
+    keyFeatures: [
+      "Offline product browsing and ordering",
+      "Push notifications for reorder reminders",
+      "AI-powered nutrition recommendations",
+      "Workout integration with fitness apps",
+      "Supplement stack builder",
+      "Progress tracking dashboard",
+    ],
+    metrics: {
+      beforeAfter: {
+        mobileConversion: { before: "1.8%", after: "4.5%" },
+        loadTime3G: { before: "8.2s", after: "2.1s" },
+        reorderRate: { before: "25%", after: "70%" },
+        appEngagement: { before: "N/A", after: "4.2 sessions/week" },
+      },
+    },
+  },
+  {
+    id: 5,
+    slug: "home-decor-hydrogen-plus",
+    title: "Luxury Home Decor Hydrogen Store",
+    client: "Artisan Home",
+    industry: "Luxury Home Furnishing",
+    location: "Nashville, TN",
+    duration: "8 months",
+    team: "7 developers",
+    image:
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "Artisan Home serves both B2C customers and interior designers with different pricing, catalogs, and ordering workflows. Their WooCommerce site couldn't handle the complex B2B requirements, bulk ordering, or automated design consultant workflows they needed for scalability.",
+    solution:
+      "We implemented Shopify Plus with a custom Hydrogen frontend, featuring separate B2B and B2C experiences, automated workflows for design consultations, 3D room visualization, and integration with major design software used by interior designers.",
+    technologies: [
+      "Shopify Plus",
+      "Shopify Hydrogen",
+      "Shopify Flow",
+      "Three.js",
+      "AutoCAD API",
+      "Sketch API",
+      "LaunchDarkly",
+    ],
+    results: {
+      revenue: "+300% total revenue increase",
+      b2bOrders: "40% of revenue from B2B channel",
+      automation: "85% of workflows automated",
+      designerSignups: "500+ interior designers onboarded",
+      bulkOrders: "+150% increase in large orders",
+      consultationBookings: "200% increase in design consultations",
+    },
+    testimonial: {
+      quote:
+        "The B2B portal has transformed our business. Interior designers can now place orders efficiently, and our automated workflows have saved us countless hours.",
+      author: "Victoria Sterling",
+      position: "COO, Artisan Home",
+    },
+    keyFeatures: [
+      "Separate B2B and B2C storefronts",
+      "3D room visualization tool",
+      "Automated design consultation booking",
+      "Integration with design software",
+      "Bulk ordering with tiered pricing",
+      "Real-time inventory across showrooms",
+    ],
+    metrics: {
+      beforeAfter: {
+        totalRevenue: { before: "$2.1M", after: "$8.4M" },
+        b2bRevenue: { before: "$0", after: "$3.36M" },
+        orderProcessing: { before: "45 min", after: "8 min" },
+        designerRetention: { before: "N/A", after: "78%" },
+      },
+    },
+  },
+  {
+    id: 6,
+    slug: "outdoor-gear-headless",
+    title: "Outdoor Gear Headless Commerce",
+    client: "Mountain Peak Co.",
+    industry: "Outdoor Recreation",
+    location: "Denver, CO",
+    duration: "9 months",
+    team: "8 developers",
+    image:
+      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "Mountain Peak Co. operates retail stores, online shop, Amazon marketplace, and seasonal pop-ups. Their disconnected systems led to inventory issues, pricing inconsistencies, and poor customer experience across channels. They needed unified commerce with real-time synchronization.",
+    solution:
+      "We built a headless commerce platform using Shopify with Remix frontend, integrating POS systems, marketplace APIs, inventory management, and creating a unified customer profile across all touchpoints.",
+    technologies: [
+      "Shopify Plus",
+      "Remix",
+      "Shopify POS",
+      "Amazon SP-API",
+      "GraphQL Federation",
+      "Redis",
+      "Webhook.site",
+    ],
+    results: {
+      performance: "98/100 average Lighthouse score",
+      inventorySync: "Real-time sync across 12 locations",
+      integrations: "12+ system integrations completed",
+      unifiedCustomers: "95% customer profile unification",
+      channelGrowth: "+120% omnichannel revenue",
+      inventoryAccuracy: "99.2% inventory accuracy",
+    },
+    testimonial: {
+      quote:
+        "Finally, we have one source of truth for inventory and customer data. The unified experience has significantly improved our operations and customer satisfaction.",
+      author: "David Park",
+      position: "CTO, Mountain Peak Co.",
+    },
+    keyFeatures: [
+      "Real-time inventory across all channels",
+      "Unified customer profiles",
+      "Cross-channel order management",
+      "Marketplace listing automation",
+      "POS integration for retail stores",
+      "Advanced analytics dashboard",
+    ],
+    metrics: {
+      beforeAfter: {
+        inventoryAccuracy: { before: "87%", after: "99.2%" },
+        orderFulfillment: { before: "48 hours", after: "12 hours" },
+        channelRevenue: { before: "$5.2M", after: "$11.4M" },
+        customerSatisfaction: { before: "3.2/5", after: "4.7/5" },
+      },
+    },
+  },
+  {
+    id: 7,
+    slug: "beauty-subscription-hydrogen",
+    title: "Beauty Subscription Hydrogen App",
+    client: "GlowBox Beauty",
+    industry: "Beauty & Cosmetics",
+    location: "Chicago, IL",
+    duration: "6 months",
+    team: "5 developers",
+    image:
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "GlowBox needed a subscription platform that could handle complex personalization, flexible billing cycles, and inventory prediction for their beauty box service. Their existing platform couldn't handle the AI recommendations or flexible subscription management customers demanded.",
+    solution:
+      "We developed a Shopify Hydrogen application with AI-powered product recommendations, flexible subscription management, virtual try-on features, and predictive inventory management to optimize box contents and reduce waste.",
+    technologies: [
+      "Shopify Hydrogen",
+      "Shopify Subscriptions",
+      "TensorFlow.js",
+      "OpenCV.js",
+      "Recharge API",
+      "Klaviyo",
+      "BigQuery",
+    ],
+    results: {
+      subscribers: "50,000+ active subscribers",
+      retention: "78% 12-month retention rate",
+      customization: "99% personalization accuracy",
+      churnReduction: "65% reduction in subscription churn",
+      inventoryOptimization: "30% reduction in overstock",
+      customerSatisfaction: "4.8/5 average box rating",
+    },
+    testimonial: {
+      quote:
+        "The AI recommendations are incredibly accurate. Customers are amazed by how well each box matches their preferences and skin type.",
+      author: "Emma Chen",
+      position: "Founder, GlowBox Beauty",
+    },
+    keyFeatures: [
+      "AI-powered beauty recommendations",
+      "Virtual makeup try-on",
+      "Flexible subscription management",
+      "Skin analysis using device camera",
+      "Predictive inventory optimization",
+      "Community rating and reviews",
+    ],
+    metrics: {
+      beforeAfter: {
+        subscriptionRetention: { before: "45%", after: "78%" },
+        recommendationAccuracy: { before: "72%", after: "99%" },
+        inventoryWaste: { before: "25%", after: "8%" },
+        customerLTV: { before: "$185", after: "$420" },
+      },
+    },
+  },
+  {
+    id: 8,
+    slug: "sneaker-marketplace-headless",
+    title: "Sneaker Marketplace Headless Platform",
+    client: "SoleConnect",
+    industry: "Footwear & Fashion",
+    location: "Atlanta, GA",
+    duration: "10 months",
+    team: "9 developers",
+    image:
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "SoleConnect needed a trusted marketplace for rare sneakers with authentication services, real-time bidding, and protection against counterfeits. The platform required complex vendor management, escrow services, and integration with authentication partners.",
+    solution:
+      "We built a multi-vendor marketplace using headless Shopify architecture with custom GraphQL APIs, blockchain-based authentication certificates, real-time bidding system, and integration with professional sneaker authentication services.",
+    technologies: [
+      "Shopify Plus",
+      "GraphQL",
+      "Socket.io",
+      "Blockchain",
+      "Computer Vision API",
+      "Stripe Connect",
+      "AWS Lambda",
+    ],
+    results: {
+      vendors: "200+ verified sellers",
+      transactions: "5,000+ daily transactions",
+      authentication: "99.8% authentication accuracy",
+      fraud: "95% reduction in fraudulent listings",
+      marketGrowth: "+400% marketplace volume",
+      userTrust: "4.9/5 trust rating",
+    },
+    testimonial: {
+      quote:
+        "The authentication system gives buyers complete confidence. We've become the go-to platform for serious sneaker collectors and sellers.",
+      author: "Anthony Williams",
+      position: "CEO, SoleConnect",
+    },
+    keyFeatures: [
+      "AI-powered sneaker authentication",
+      "Real-time bidding system",
+      "Blockchain certificates of authenticity",
+      "Vendor reputation system",
+      "Escrow payment protection",
+      "Market price tracking and alerts",
+    ],
+    metrics: {
+      beforeAfter: {
+        monthlyVolume: { before: "$500K", after: "$2.5M" },
+        authenticationAccuracy: { before: "92%", after: "99.8%" },
+        disputeRate: { before: "15%", after: "2%" },
+        sellerRetention: { before: "60%", after: "88%" },
+      },
+    },
+  },
+];
 
 interface CaseStudyPageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{
+    slug: string;
+  }>;
 }
 
 export default function CaseStudyPage({ params }: CaseStudyPageProps) {
-  const [showNavbar, setShowNavbar] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Unwrap the params Promise
+  const resolvedParams = use(params);
 
   useEffect(() => {
+    setIsLoaded(true);
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
+      const currentScrollY = window.scrollY;
 
       if (currentScrollY < lastScrollY || currentScrollY < 10) {
-        setShowNavbar(true)
+        setShowNavbar(true);
       } else {
-        setShowNavbar(false)
+        setShowNavbar(false);
       }
 
-      setLastScrollY(currentScrollY)
-    }
+      setLastScrollY(currentScrollY);
+    };
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
-  const caseStudy = caseStudies[params.slug as keyof typeof caseStudies]
+  // Find case study by slug
+  const caseStudy = caseStudies.find((cs) => cs.slug === resolvedParams.slug);
 
   if (!caseStudy) {
-    notFound()
+    notFound();
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Sticky Header */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full px-4 lg:px-6 h-16 flex items-center justify-between border-b border-gray-100 bg-white/95 backdrop-blur-sm transition-transform duration-300 ${
-          showNavbar ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        <Link href="/" className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-black rounded-sm flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded-sm"></div>
-          </div>
-          <span className="text-xl font-bold text-black">Bayt</span>
-        </Link>
-
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/#home" className="text-gray-700 hover:text-black font-medium">
-            Home
-          </Link>
-          <Link href="/#services" className="text-gray-700 hover:text-black font-medium">
-            Services
-          </Link>
-          <Link href="/#why-us" className="text-gray-700 hover:text-black font-medium">
-            Why Us
-          </Link>
-          <Link href="/blog" className="text-gray-700 hover:text-black font-medium">
-            Blog
-          </Link>
-        </nav>
-
-        <div className="flex items-center space-x-3">
-          <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-purple-400 hover:bg-purple-500 text-white rounded-full px-6 py-2 font-medium">
-              Book a Call
-            </Button>
-          </Link>
-          <Button size="icon" className="bg-purple-400 hover:bg-purple-500 text-white rounded-full w-10 h-10">
-            <ArrowRight className="w-4 h-4" />
-          </Button>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+      {/* Premium Background Elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-blue-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-br from-indigo-200/30 to-purple-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-0 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-cyan-200/20 rounded-full blur-3xl"></div>
+      </div>
 
       {/* Case Study Content */}
-      <main className="w-full px-4 lg:px-6 py-16 pt-24">
-        <div className="max-w-6xl mx-auto">
+      <main
+        className={`w-full px-4 lg:px-6 py-16 pt-24 relative transition-opacity duration-1000 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
           {/* Back Navigation */}
-          <Link href="/#portfolio" className="inline-flex items-center text-purple-400 hover:text-purple-500 mb-8">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Portfolio
+          <Link
+            href="/"
+            className="inline-flex items-center text-slate-600 hover:text-purple-600 mb-8 group transition-all duration-300"
+          >
+            <div className="bg-white/80 backdrop-blur-sm rounded-full p-3 mr-3 border border-slate-200/50 shadow-lg group-hover:shadow-xl group-hover:border-purple-200 transition-all duration-300">
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+            </div>
+            <span className="font-semibold">Back to Portfolio</span>
           </Link>
 
-          {/* Header */}
-          <div className="mb-12">
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <Badge className="bg-purple-400 text-white rounded-full px-4 py-2">{caseStudy.type}</Badge>
-              {caseStudy.tags.map((tag, index) => (
-                <Badge key={index} variant="outline" className="rounded-full border-gray-300 text-gray-600">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-
-            <h1 className="text-4xl lg:text-5xl font-bold text-black mb-4">{caseStudy.title}</h1>
-
-            <div className="flex items-center space-x-6 text-gray-600 mb-6">
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-5 h-5" />
-                <span>{caseStudy.location}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Calendar className="w-5 h-5" />
-                <span>{caseStudy.stats.duration}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Building className="w-5 h-5" />
-                <span>{caseStudy.stats.units} Units</span>
+          {/* Premium Header */}
+          <div className="mb-16 relative">
+            {/* Floating Award Badge */}
+            <div className="absolute -top-4 -right-4 lg:right-0">
+              <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full p-4 shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500">
+                <Award className="w-8 h-8 text-white" />
               </div>
             </div>
 
-            <p className="text-xl text-gray-700 leading-relaxed">{caseStudy.description}</p>
+            <div className="flex flex-wrap items-center gap-4 mb-8">
+              <Badge className="bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 text-white rounded-full px-8 py-3 text-sm font-bold shadow-2xl border border-purple-400/20 backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 mr-2" />
+                {caseStudy.industry}
+              </Badge>
+              <Badge className="bg-white/90 backdrop-blur-sm border-2 border-purple-200 text-purple-700 rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300">
+                <Globe className="w-4 h-4 mr-2" />
+                E-commerce
+              </Badge>
+              <Badge className="bg-white/90 backdrop-blur-sm border-2 border-blue-200 text-blue-700 rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300">
+                <Code className="w-4 h-4 mr-2" />
+                Shopify Platform
+              </Badge>
+            </div>
+
+            <h1 className="text-5xl lg:text-7xl font-black bg-gradient-to-r from-slate-900 via-purple-900 to-indigo-900 bg-clip-text text-transparent mb-8 leading-tight">
+              {caseStudy.title}
+            </h1>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl p-3">
+                    <Building className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-slate-500 font-semibold">
+                      Client
+                    </div>
+                    <div className="text-xl font-bold text-slate-800">
+                      {caseStudy.client}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl p-3">
+                    <Calendar className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-slate-500 font-semibold">
+                      Duration
+                    </div>
+                    <div className="text-xl font-bold text-slate-800">
+                      {caseStudy.duration}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl p-3">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-slate-500 font-semibold">
+                      Team Size
+                    </div>
+                    <div className="text-xl font-bold text-slate-800">
+                      {caseStudy.team}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-slate-50 via-white to-purple-50 rounded-3xl p-8 border-2 border-purple-200/50 shadow-2xl backdrop-blur-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/30 to-blue-200/30 rounded-full blur-2xl"></div>
+              <div className="relative">
+                <div className="flex items-start space-x-4 mb-4">
+                  <div className="bg-gradient-to-r from-red-500 to-pink-500 rounded-xl p-3">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-800">
+                    The Challenge
+                  </h3>
+                </div>
+                <p className="text-xl text-slate-700 leading-relaxed pl-16">
+                  {caseStudy.challenge}
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative h-64 lg:h-96 rounded-3xl overflow-hidden mb-12">
-            <Image src={caseStudy.image || "/placeholder.svg"} alt={caseStudy.title} fill className="object-cover" />
+          {/* Premium Hero Image */}
+          <div className="relative mb-20">
+            <div className="relative h-96 lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 backdrop-blur-sm">
+              <Image
+                src={caseStudy.image || "/placeholder.svg"}
+                alt={caseStudy.title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+              {/* Floating Stats */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                  {Object.entries(caseStudy.results)
+                    .slice(0, 4)
+                    .map(([key, value], index) => (
+                      <div
+                        key={index}
+                        className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 text-center shadow-xl"
+                      >
+                        <div className="text-2xl font-bold text-slate-800 mb-1">
+                          {value.split(" ")[0]}
+                        </div>
+                        <div className="text-xs text-slate-600 font-semibold">
+                          {key.charAt(0).toUpperCase() + key.slice(1)}
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Key Stats */}
-          <div className="grid md:grid-cols-5 gap-6 mb-16">
-            <Card className="bg-gray-50 rounded-3xl p-6 text-center border-0">
-              <TrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-black mb-1">{caseStudy.stats.revenue}</div>
-              <div className="text-sm text-gray-600">Revenue Increase</div>
+          {/* Premium Key Highlights */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            <Card className="bg-gradient-to-br from-emerald-400 via-emerald-500 to-teal-600 rounded-3xl p-8 text-center border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+              <div className="relative">
+                <div className="bg-white/20 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <TrendingUp className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-4xl font-black text-white mb-3">
+                  {Object.values(caseStudy.results)[0]}
+                </div>
+                <div className="text-emerald-100 font-bold text-sm">
+                  Primary Achievement
+                </div>
+              </div>
             </Card>
-            <Card className="bg-gray-50 rounded-3xl p-6 text-center border-0">
-              <Users className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-black mb-1">{caseStudy.stats.occupancy}</div>
-              <div className="text-sm text-gray-600">Occupancy Rate</div>
+
+            <Card className="bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 rounded-3xl p-8 text-center border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+              <div className="relative">
+                <div className="bg-white/20 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Zap className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-4xl font-black text-white mb-3">
+                  {Object.values(caseStudy.results)[1]}
+                </div>
+                <div className="text-blue-100 font-bold text-sm">
+                  Performance Boost
+                </div>
+              </div>
             </Card>
-            <Card className="bg-gray-50 rounded-3xl p-6 text-center border-0">
-              <Building className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-black mb-1">{caseStudy.stats.units}</div>
-              <div className="text-sm text-gray-600">Total Units</div>
+
+            <Card className="bg-gradient-to-br from-purple-400 via-purple-500 to-pink-600 rounded-3xl p-8 text-center border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+              <div className="relative">
+                <div className="bg-white/20 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-4xl font-black text-white mb-3">
+                  {Object.values(caseStudy.results)[2]}
+                </div>
+                <div className="text-purple-100 font-bold text-sm">
+                  User Experience
+                </div>
+              </div>
             </Card>
-            <Card className="bg-gray-50 rounded-3xl p-6 text-center border-0">
-              <Calendar className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-black mb-1">{caseStudy.stats.duration}</div>
-              <div className="text-sm text-gray-600">Project Duration</div>
-            </Card>
-            <Card className="bg-gray-50 rounded-3xl p-6 text-center border-0">
-              <DollarSign className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-black mb-1">{caseStudy.stats.investment}</div>
-              <div className="text-sm text-gray-600">Investment</div>
+
+            <Card className="bg-gradient-to-br from-orange-400 via-orange-500 to-red-600 rounded-3xl p-8 text-center border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+              <div className="relative">
+                <div className="bg-white/20 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <BarChart3 className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-4xl font-black text-white mb-3">
+                  {caseStudy.technologies.length}+
+                </div>
+                <div className="text-orange-100 font-bold text-sm">
+                  Technologies Used
+                </div>
+              </div>
             </Card>
           </div>
 
           {/* Challenge, Solution, Results */}
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            <Card className="bg-red-50 rounded-3xl p-8 border-0">
-              <div className="flex items-center mb-4">
-                <Target className="w-6 h-6 text-red-500 mr-3" />
-                <h3 className="text-xl font-bold text-black">Challenge</h3>
+          <div className="grid lg:grid-cols-3 gap-8 mb-20">
+            <Card className="bg-gradient-to-br from-white via-red-50 to-pink-50 rounded-3xl p-10 border-2 border-red-200/50 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-red-200/30 to-pink-200/30 rounded-full blur-xl"></div>
+              <div className="relative">
+                <div className="flex items-center mb-8">
+                  <div className="bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl p-4 mr-4 shadow-lg">
+                    <Target className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-black text-slate-800">
+                    Challenge
+                  </h3>
+                </div>
+                <p className="text-slate-700 leading-relaxed text-lg">
+                  {caseStudy.challenge}
+                </p>
               </div>
-              <p className="text-gray-700 leading-relaxed">{caseStudy.challenge}</p>
             </Card>
 
-            <Card className="bg-blue-50 rounded-3xl p-8 border-0">
-              <div className="flex items-center mb-4">
-                <BarChart3 className="w-6 h-6 text-blue-500 mr-3" />
-                <h3 className="text-xl font-bold text-black">Solution</h3>
+            <Card className="bg-gradient-to-br from-white via-blue-50 to-cyan-50 rounded-3xl p-10 border-2 border-blue-200/50 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-200/30 to-cyan-200/30 rounded-full blur-xl"></div>
+              <div className="relative">
+                <div className="flex items-center mb-8">
+                  <div className="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-4 mr-4 shadow-lg">
+                    <BarChart3 className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-black text-slate-800">
+                    Solution
+                  </h3>
+                </div>
+                <p className="text-slate-700 leading-relaxed text-lg">
+                  {caseStudy.solution}
+                </p>
               </div>
-              <p className="text-gray-700 leading-relaxed">{caseStudy.solution}</p>
             </Card>
 
-            <Card className="bg-green-50 rounded-3xl p-8 border-0">
-              <div className="flex items-center mb-4">
-                <CheckCircle className="w-6 h-6 text-green-500 mr-3" />
-                <h3 className="text-xl font-bold text-black">Results</h3>
+            <Card className="bg-gradient-to-br from-white via-green-50 to-emerald-50 rounded-3xl p-10 border-2 border-green-200/50 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-200/30 to-emerald-200/30 rounded-full blur-xl"></div>
+              <div className="relative">
+                <div className="flex items-center mb-8">
+                  <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-4 mr-4 shadow-lg">
+                    <CheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-black text-slate-800">
+                    Key Features
+                  </h3>
+                </div>
+                <ul className="space-y-4">
+                  {caseStudy.keyFeatures.slice(0, 4).map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <div className="bg-gradient-to-r from-green-400 to-emerald-500 rounded-full p-1 mr-4 mt-1 shadow-lg">
+                        <CheckCircle className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="text-slate-700 leading-relaxed font-medium">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-2">
-                {caseStudy.results.map((result, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">{result}</span>
-                  </li>
-                ))}
-              </ul>
             </Card>
           </div>
 
-          {/* Timeline */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-black mb-8 text-center">Project Timeline</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {caseStudy.timeline.map((phase, index) => (
-                <Card key={index} className="bg-white rounded-3xl p-6 border border-gray-200 relative">
-                  <div className="absolute -top-3 left-6 bg-purple-400 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
-                    {index + 1}
-                  </div>
-                  <div className="pt-4">
-                    <h4 className="font-bold text-black mb-2">{phase.phase}</h4>
-                    <div className="text-purple-400 font-semibold text-sm mb-3">{phase.duration}</div>
-                    <p className="text-gray-600 text-sm">{phase.description}</p>
-                  </div>
-                </Card>
-              ))}
+          {/* Premium Technologies Section */}
+          <div className="mb-20">
+            <div className="text-center mb-16">
+              <h3 className="text-5xl font-black bg-gradient-to-r from-slate-800 via-purple-800 to-indigo-800 bg-clip-text text-transparent mb-6">
+                Technologies Used
+              </h3>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                Cutting-edge tools and frameworks that power exceptional results
+              </p>
             </div>
-          </div>
-
-          {/* Image Gallery */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-black mb-8 text-center">Project Gallery</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {caseStudy.images.map((image, index) => (
-                <div key={index} className="relative h-64 rounded-3xl overflow-hidden">
-                  <Image
-                    src={image || "/placeholder.svg"}
-                    alt={`${caseStudy.title} - Image ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {caseStudy.technologies.map((tech, index) => (
+                <div
+                  key={index}
+                  className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center border-2 border-slate-200/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative">
+                    <div className="bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-500 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                      <Code className="w-8 h-8 text-white" />
+                    </div>
+                    <span className="text-lg font-bold text-slate-700 group-hover:text-purple-700 transition-colors duration-300">
+                      {tech}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* CTA Section */}
-          <Card className="bg-purple-400 text-white rounded-3xl p-12 text-center">
-            <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Property?</h3>
-            <p className="text-xl mb-8 opacity-90">
-              Let's discuss how we can achieve similar results for your real estate portfolio.
-            </p>
-            <div className="flex items-center justify-center space-x-4">
-              <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-white text-purple-400 hover:bg-gray-100 rounded-full px-8 py-3 font-medium text-lg">
-                  Book a Call
-                </Button>
-              </Link>
-              <Button size="icon" className="bg-white/20 hover:bg-white/30 text-white rounded-full w-12 h-12">
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+          {/* Premium Before/After Metrics */}
+          <div className="mb-20">
+            <div className="text-center mb-16">
+              <h3 className="text-5xl font-black bg-gradient-to-r from-slate-800 via-purple-800 to-indigo-800 bg-clip-text text-transparent mb-6">
+                Performance Improvements
+              </h3>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                Measurable results that speak for themselves
+              </p>
             </div>
-          </Card>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {Object.entries(caseStudy.metrics.beforeAfter).map(
+                ([metric, values], index) => (
+                  <Card
+                    key={index}
+                    className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 border-2 border-slate-200/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 relative overflow-hidden"
+                  >
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-indigo-200/30 to-purple-200/30 rounded-full blur-xl"></div>
+                    <div className="relative">
+                      <div className="text-center mb-8">
+                        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                          <BarChart3 className="w-10 h-10 text-white" />
+                        </div>
+                        <h4 className="font-black text-slate-800 text-xl capitalize">
+                          {metric.replace(/([A-Z])/g, " $1").trim()}
+                        </h4>
+                      </div>
+
+                      <div className="space-y-6">
+                        <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl p-6 border-2 border-red-200/50 shadow-lg">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm font-bold text-red-600">
+                              Before:
+                            </span>
+                            <span className="font-black text-red-700 text-xl">
+                              {values.before}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-green-200/50 shadow-lg">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm font-bold text-green-600">
+                              After:
+                            </span>
+                            <span className="font-black text-green-700 text-xl">
+                              {values.after}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Premium Testimonial */}
+          <div className="mb-20">
+            <Card className="bg-gradient-to-br from-white via-purple-50/50 to-indigo-50/50 rounded-3xl p-16 border-2 border-purple-200/50 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-200/30 to-blue-200/30 rounded-full opacity-50 -translate-y-20 translate-x-20"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full opacity-50 translate-y-16 -translate-x-16"></div>
+
+              <div className="text-center relative">
+                {/* 5-Star Rating */}
+                <div className="flex justify-center mb-8">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-8 h-8 text-amber-400 fill-current mx-1"
+                    />
+                  ))}
+                </div>
+
+                <div className="text-8xl text-purple-400/50 mb-8 font-serif leading-none">
+                  "
+                </div>
+                <blockquote className="text-3xl text-slate-700 mb-10 italic leading-relaxed max-w-5xl mx-auto font-light">
+                  {caseStudy.testimonial.quote}
+                </blockquote>
+
+                <div className="flex items-center justify-center space-x-6">
+                  <div className="relative">
+                    <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center shadow-xl">
+                      <Users className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full p-2 shadow-lg">
+                      <Star className="w-4 h-4 text-white fill-current" />
+                    </div>
+                  </div>
+                  <div className="text-left">
+                    <div className="text-2xl font-black text-slate-800 mb-1">
+                      {caseStudy.testimonial.author}
+                    </div>
+                    <div className="text-purple-600 font-bold text-lg">
+                      {caseStudy.testimonial.position}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {/* Premium Call to Action */}
+          <div className="text-center relative">
+            <Card className="bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 rounded-3xl p-16 text-white relative overflow-hidden border-0 shadow-2xl">
+              {/* Premium Background Elements */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -translate-y-24 translate-x-24 blur-xl"></div>
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/10 rounded-full translate-y-20 -translate-x-20 blur-xl"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
+
+              <div className="relative">
+                {/* Premium Icon */}
+                <div className="bg-white/20 backdrop-blur-sm rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-8 shadow-xl">
+                  <Sparkles className="w-12 h-12 text-white" />
+                </div>
+
+                <h3 className="text-5xl font-black mb-8 leading-tight">
+                  Ready to Transform Your
+                  <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                    E-commerce Platform?
+                  </span>
+                </h3>
+
+                <p className="text-purple-100 mb-12 text-2xl max-w-3xl mx-auto leading-relaxed font-light">
+                  Let's discuss how we can help you achieve similar results for
+                  your business.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                  <Button className="bg-white text-purple-700 hover:bg-gray-50 rounded-full px-12 py-6 text-xl font-black shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 group border-2 border-white/20">
+                    Start Your Project
+                    <ArrowRight className="w-6 h-6 ml-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    className="border-2 border-white/30 text-white hover:bg-white/10 rounded-full px-12 py-6 text-xl font-black backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  >
+                    View More Cases
+                  </Button>
+                </div>
+
+                {/* Trust Indicators */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-8 border-t border-white/20">
+                  <div className="text-center">
+                    <div className="text-3xl font-black text-white mb-2">
+                      50+
+                    </div>
+                    <div className="text-purple-200 text-sm font-semibold">
+                      Projects Completed
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-black text-white mb-2">
+                      100%
+                    </div>
+                    <div className="text-purple-200 text-sm font-semibold">
+                      Client Satisfaction
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-black text-white mb-2">
+                      24/7
+                    </div>
+                    <div className="text-purple-200 text-sm font-semibold">
+                      Support Available
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-black text-white mb-2">
+                      5★
+                    </div>
+                    <div className="text-purple-200 text-sm font-semibold">
+                      Average Rating
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="w-full px-4 lg:px-6 py-16 bg-black text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            {/* Logo and Description */}
-            <div className="md:col-span-2">
-              <Link href="/" className="flex items-center space-x-2 mb-6">
-                <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center">
-                  <div className="w-4 h-4 bg-black rounded-sm"></div>
-                </div>
-                <span className="text-2xl font-bold">Bayt</span>
-              </Link>
-              <p className="text-gray-400 text-lg mb-6 max-w-md">
-                The premier choice in real estate services. Managing, leasing, and selling properties with comprehensive
-                solutions.
-              </p>
-              <div className="flex items-center space-x-3">
-                <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-purple-400 hover:bg-purple-500 text-white rounded-full px-6 py-2">
-                    Book a Call
-                  </Button>
-                </Link>
-                <Button size="icon" className="bg-purple-400 hover:bg-purple-500 text-white rounded-full w-10 h-10">
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Services */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Services</h3>
-              <ul className="space-y-3 text-gray-400">
-                <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
-                    Property Listings
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
-                    Financial Reporting
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
-                    Service Requests
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
-                    Tenant Management
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Company</h3>
-              <ul className="space-y-3 text-gray-400">
-                <li>
-                  <Link href="/#home" className="hover:text-white transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#why-us" className="hover:text-white transition-colors">
-                    Why Choose Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="hover:text-white transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Footer */}
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Bayt. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Cookie Policy
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
-  )
+  );
 }

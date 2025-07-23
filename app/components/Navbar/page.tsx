@@ -15,20 +15,21 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+
   {
     name: "Services",
     href: "#services",
   },
   {
     name: "Work",
-    href: "/case-studies",
+    href: "/work",
   },
+  { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
 
-const FloatingNavbar: React.FC = () => {
+const Navbar: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -216,4 +217,4 @@ const FloatingNavbar: React.FC = () => {
   );
 };
 
-export default FloatingNavbar;
+export default Navbar;

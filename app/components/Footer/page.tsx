@@ -174,11 +174,7 @@ export default function Footer() {
 
   const socialLinks = [
     { href: "https://github.com/youragency", icon: Github, label: "GitHub" },
-    {
-      href: "https://linkedin.com/company/youragency",
-      icon: Linkedin,
-      label: "LinkedIn",
-    },
+
     { href: "https://twitter.com/youragency", icon: Twitter, label: "Twitter" },
     { href: "mailto:hello@youragency.com", icon: Mail, label: "Email" },
   ];
@@ -199,9 +195,6 @@ export default function Footer() {
           {/* Logo and Description */}
           <div className="flex-1 lg:max-w-md">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
-                <div className="w-4 h-4 bg-white rounded-sm transform rotate-12" />
-              </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Driflo
               </span>

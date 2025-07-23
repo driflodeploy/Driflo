@@ -1,8 +1,8 @@
-import { Calendar } from "lucide-react"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import Link from "next/link"
+import { Calendar } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import Link from "next/link";
 
 const blogPosts = [
   {
@@ -10,7 +10,8 @@ const blogPosts = [
     slug: "future-of-real-estate-management-technology",
     title: "The Future of Real Estate Management Technology",
     date: "2024-01-15",
-    content: "Explore the transformative trends shaping the real estate industry.",
+    content:
+      "Explore the transformative trends shaping the real estate industry.",
     imageUrl:
       "https://images.unsplash.com/photo-1606222477440-554c29019c91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
@@ -19,7 +20,8 @@ const blogPosts = [
     slug: "essential-tips-first-time-property-investors",
     title: "10 Essential Tips for First-Time Property Investors",
     date: "2024-02-20",
-    content: "A guide for beginners looking to make smart investment decisions.",
+    content:
+      "A guide for beginners looking to make smart investment decisions.",
     imageUrl:
       "https://images.unsplash.com/photo-1568605114967-8e653ba434d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
@@ -37,7 +39,8 @@ const blogPosts = [
     slug: "navigating-real-estate-market-trends",
     title: "Navigating Real Estate Market Trends: A Comprehensive Guide",
     date: "2024-04-05",
-    content: "Stay ahead of the curve with insights into current market dynamics.",
+    content:
+      "Stay ahead of the curve with insights into current market dynamics.",
     imageUrl:
       "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
@@ -50,7 +53,7 @@ const blogPosts = [
     imageUrl:
       "https://images.unsplash.com/photo-1505843516504-6609c27585c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
-]
+];
 
 export default function BlogPage() {
   return (
@@ -73,8 +76,12 @@ export default function BlogPage() {
                     <Calendar className="w-4 h-4" />
                     <span>{post.date}</span>
                   </div>
-                  <Button variant="ghost" size="sm" className="text-purple-400 hover:text-purple-500 p-0">
-                    Read More <ArrowRight className="w-4 h-4 ml-1" />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-purple-400 hover:text-purple-500 p-0"
+                  >
+                    More detail <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </div>
               </div>
@@ -83,5 +90,5 @@ export default function BlogPage() {
         ))}
       </div>
     </div>
-  )
+  );
 }

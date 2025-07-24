@@ -45,7 +45,7 @@ export default function ServicesSection() {
                     <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
                       Headless Storefronts
                     </h3>
-                    ``
+
                     <p className="text-gray-600 leading-relaxed text-base lg:text-lg">
                       Lightning-fast e-commerce experiences with modern headless
                       architecture and seamless integrations.

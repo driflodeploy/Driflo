@@ -207,7 +207,7 @@ export default function Footer() {
         <div className="border-t border-gray-800/50 pt-4 sm:pt-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
             <p className="text-gray-400 text-xs text-center sm:text-left order-2 sm:order-1">
-              © {new Date().getFullYear()} DevCraft Agency. All rights reserved.
+              © {new Date().getFullYear()} Driflo. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center sm:justify-end gap-3 sm:gap-4 text-xs order-1 sm:order-2">
               <Link

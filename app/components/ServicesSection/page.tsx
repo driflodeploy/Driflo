@@ -34,6 +34,9 @@ export default function ServicesSection() {
                   <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
                     <Code className="w-8 h-8 text-white" />
                   </div>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <ArrowRight className="w-6 h-6 text-gray-400" />
+                  </div>
                 </div>
 
                 {/* Content */}
@@ -80,6 +83,9 @@ export default function ServicesSection() {
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
                     <Globe className="w-8 h-8 text-white" />
                   </div>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <ArrowRight className="w-6 h-6 text-gray-400" />
+                  </div>
                 </div>
 
                 {/* Content */}
@@ -125,6 +131,9 @@ export default function ServicesSection() {
                 <div className="flex items-start justify-between mb-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
                     <Smartphone className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <ArrowRight className="w-6 h-6 text-gray-400" />
                   </div>
                 </div>
 

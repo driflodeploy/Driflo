@@ -27,15 +27,8 @@ export default function ContactPage() {
             Let's discuss your project or book a free consultation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Button className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-lg">
+            <Button className="bg-white text-black hover:bg-black hover:text-white hover:scale-105 transition-all duration-300 px-8 py-3 text-lg">
               Book Free Consultation
-            </Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg bg-transparent"
-              asChild
-            >
-              <Link href="/pricing">View Pricing</Link>
             </Button>
           </div>
         </div>
@@ -51,35 +44,19 @@ export default function ContactPage() {
                 Start Your Project
               </h2>
               <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="firstName"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      First Name
-                    </label>
-                    <Input
-                      id="firstName"
-                      type="text"
-                      placeholder="Your first name"
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="lastName"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Last Name
-                    </label>
-                    <Input
-                      id="lastName"
-                      type="text"
-                      placeholder="Your last name"
-                      className="w-full"
-                    />
-                  </div>
+                <div>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Name
+                  </label>
+                  <Input
+                    id="firstName"
+                    type="text"
+                    placeholder="Your first name"
+                    className="w-full"
+                  />
                 </div>
                 <div>
                   <label
@@ -109,24 +86,7 @@ export default function ContactPage() {
                     className="w-full"
                   />
                 </div>
-                <div>
-                  <label
-                    htmlFor="projectType"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Project Type
-                  </label>
-                  <select
-                    id="projectType"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                  >
-                    <option>Headless E-commerce</option>
-                    <option>Custom Web Application</option>
-                    <option>API Integration</option>
-                    <option>Performance Optimization</option>
-                    <option>Other</option>
-                  </select>
-                </div>
+
                 <div>
                   <label
                     htmlFor="message"
@@ -141,8 +101,8 @@ export default function ContactPage() {
                     className="w-full"
                   />
                 </div>
-                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-lg w-full md:w-auto">
-                  Send Project Brief
+                <Button className="bg-black text-white hover:bg-gray-200 hover:text-black transition-all duration-300 px-8 py-3 text-lg w-full md:w-auto">
+                  Let's Connect
                 </Button>
               </form>
             </div>
@@ -199,70 +159,6 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-
-              <div className="mt-12 relative h-[300px] rounded-2xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2426&q=80"
-                  alt="Driftlo development workspace"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="mx-6 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-light text-black mb-6">Our Process</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              From initial consultation to project delivery, here's how we work
-              together
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                1
-              </div>
-              <h3 className="text-xl font-medium text-black mb-3">Discovery</h3>
-              <p className="text-gray-600">
-                We understand your business goals and technical requirements
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                2
-              </div>
-              <h3 className="text-xl font-medium text-black mb-3">Planning</h3>
-              <p className="text-gray-600">
-                We create a detailed project roadmap and technical architecture
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                3
-              </div>
-              <h3 className="text-xl font-medium text-black mb-3">
-                Development
-              </h3>
-              <p className="text-gray-600">
-                We build your solution using best practices and modern
-                technologies
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                4
-              </div>
-              <h3 className="text-xl font-medium text-black mb-3">Launch</h3>
-              <p className="text-gray-600">
-                We deploy your project and provide ongoing support
-              </p>
             </div>
           </div>
         </div>

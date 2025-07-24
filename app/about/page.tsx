@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Footer from "../components/Footer/page";
+import {
+  CardNewsletter,
+  MinimalNewsletter,
+} from "../components/Newsletter/page";
+import ProcessSection from "../components/ProcessSection/page";
 
 export default function AboutPage() {
   const teamMembers = [
@@ -34,7 +39,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-12">
           <h1 className="text-6xl font-light text-white mb-6 tracking-wide">
-            About Driftlo
+            About Driflo
           </h1>
           <p className="text-white/90 text-xl max-w-3xl leading-relaxed">
             We're a team of passionate developers specializing in headless
@@ -65,13 +70,13 @@ export default function AboutPage() {
                 className="bg-black text-white hover:bg-gray-800 px-8 py-3"
                 asChild
               >
-                <Link href="/case-studies">View Our Work</Link>
+                <Link href="/work">View Our Work</Link>
               </Button>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80"
-                alt="Driftlo development process"
+                alt="Driflo development process"
                 fill
                 className="object-cover"
               />
@@ -207,8 +212,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <section className="mx-6 mb-16">
+      <ProcessSection />
+      <section className="mx-6 my-16">
         <div className="max-w-7xl mx-auto bg-black text-white rounded-2xl p-12 text-center">
           <h2 className="text-4xl font-light mb-6">Ready to Work Together?</h2>
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
@@ -218,13 +223,6 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-lg">
               Book Free Consultation
-            </Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg bg-transparent"
-              asChild
-            >
-              <Link href="/pricing">View Pricing</Link>
             </Button>
           </div>
         </div>

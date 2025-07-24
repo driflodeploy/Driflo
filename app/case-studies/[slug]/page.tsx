@@ -27,6 +27,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Footer from "@/app/components/Footer/page";
 
 // Your existing case studies data
 const caseStudies = [
@@ -84,7 +85,391 @@ const caseStudies = [
       },
     },
   },
-  // ... (rest of your case studies data remains the same)
+  {
+    id: 2,
+    slug: "tech-accessories-headless",
+    title: "Tech Accessories Headless Store",
+    client: "TechFlow",
+    industry: "Consumer Electronics",
+    location: "San Jose, CA",
+    duration: "6 months",
+    team: "5 developers",
+    image:
+      "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "TechFlow's legacy Magento store was struggling with poor performance, especially on mobile devices. They needed advanced product visualization features and better SEO to compete with larger electronics retailers. The complex product catalog with thousands of SKUs required sophisticated filtering and search capabilities.",
+    solution:
+      "We implemented a headless architecture using Shopify as the backend with a custom Next.js frontend. The solution featured AR try-on capabilities for phone cases and earbuds, advanced product comparison tools, and intelligent search with AI-powered recommendations.",
+    technologies: [
+      "Shopify Storefront API",
+      "Next.js 14",
+      "React Query",
+      "Framer Motion",
+      "WebAR",
+      "Algolia Search",
+      "Stripe",
+    ],
+    results: {
+      pageSpeed: "Page speed improved from 2.1s to 0.8s",
+      mobileScore: "95/100 mobile Lighthouse score",
+      seoBoost: "+75% increase in organic traffic",
+      arEngagement: "AR features used by 45% of visitors",
+      conversionLift: "+85% increase in mobile conversions",
+      searchAccuracy: "92% search result accuracy",
+    },
+    testimonial: {
+      quote:
+        "The AR try-on feature has been a game-changer. Customers can see how our products look before buying, which has significantly reduced returns.",
+      author: "Marcus Chen",
+      position: "Head of E-commerce, TechFlow",
+    },
+    keyFeatures: [
+      "WebAR product visualization",
+      "Advanced product comparison matrix",
+      "AI-powered search and recommendations",
+      "Real-time inventory across 3 warehouses",
+      "One-click product compatibility checker",
+      "Dynamic pricing based on bulk orders",
+    ],
+    metrics: {
+      beforeAfter: {
+        pageSpeed: { before: "2.1s", after: "0.8s" },
+        mobileScore: { before: "72/100", after: "95/100" },
+        organicTraffic: { before: "15K/month", after: "26K/month" },
+        returnRate: { before: "12%", after: "7%" },
+      },
+    },
+  },
+  {
+    id: 3,
+    slug: "artisan-jewelry-hydrogen",
+    title: "Artisan Jewelry Hydrogen Experience",
+    client: "Luna Crafts",
+    industry: "Luxury Jewelry",
+    location: "Brooklyn, NY",
+    duration: "5 months",
+    team: "6 developers",
+    image:
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "Luna Crafts creates handmade jewelry with unique stories behind each piece. Their Squarespace site couldn't showcase the intricate details and craftsmanship stories effectively. They needed a platform that could handle custom orders, size variations, and tell the artisan's story compellingly.",
+    solution:
+      "We developed an immersive Shopify Hydrogen experience with 360° product photography, interactive storytelling components, and a custom jewelry configurator. The platform includes artisan profiles, making-of videos, and a virtual try-on feature using the device camera.",
+    technologies: [
+      "Shopify Hydrogen",
+      "Three.js",
+      "WebGL",
+      "React Spring",
+      "Shopify Functions",
+      "Cloudinary",
+      "Stripe Connect",
+    ],
+    results: {
+      engagement: "+120% increase in time on site",
+      bounceRate: "45% reduction in bounce rate",
+      cartValue: "+$85 average order value increase",
+      customOrders: "30% of sales now custom orders",
+      socialShares: "+200% increase in social media shares",
+      artisanBookings: "150+ artisan consultation bookings/month",
+    },
+    testimonial: {
+      quote:
+        "The platform beautifully showcases our artisans' work and stories. Customers now understand the value and craftsmanship behind each piece.",
+      author: "Isabella Rodriguez",
+      position: "Creative Director, Luna Crafts",
+    },
+    keyFeatures: [
+      "360° jewelry photography viewer",
+      "Virtual try-on using device camera",
+      "Custom jewelry configurator",
+      "Artisan story integration",
+      "Time-lapse making videos",
+      "Personalized engraving preview",
+    ],
+    metrics: {
+      beforeAfter: {
+        timeOnSite: { before: "2m 15s", after: "4m 42s" },
+        bounceRate: { before: "72%", after: "39%" },
+        avgOrderValue: { before: "$145", after: "$230" },
+        customOrderRate: { before: "8%", after: "30%" },
+      },
+    },
+  },
+  {
+    id: 4,
+    slug: "fitness-supplement-pwa",
+    title: "Fitness Supplement PWA Store",
+    client: "PowerFuel Nutrition",
+    industry: "Health & Fitness",
+    location: "Miami, FL",
+    duration: "7 months",
+    team: "4 developers",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "PowerFuel's customers are primarily mobile users who shop on-the-go between workouts. Their existing site had poor mobile performance and no offline capabilities. They needed personalized nutrition recommendations and the ability to handle orders even with poor connectivity at gyms.",
+    solution:
+      "We built a Progressive Web App on Shopify with extensive offline capabilities, push notifications for reorder reminders, and AI-powered nutrition recommendations based on user fitness goals and dietary restrictions.",
+    technologies: [
+      "Shopify PWA",
+      "Service Workers",
+      "IndexedDB",
+      "Push API",
+      "TensorFlow.js",
+      "Shopify GraphQL",
+      "Workbox",
+    ],
+    results: {
+      mobileSales: "+250% increase in mobile sales",
+      appInstalls: "25,000+ PWA installations",
+      offlineOrders: "15% of orders completed offline",
+      pushEngagement: "68% push notification click rate",
+      reorderRate: "+180% increase in repeat purchases",
+      loadTime: "90% faster on slow 3G connections",
+    },
+    testimonial: {
+      quote:
+        "The PWA works perfectly even in areas with poor signal. Our customers love the personalized recommendations and offline ordering capability.",
+      author: "Jake Thompson",
+      position: "VP of Digital, PowerFuel Nutrition",
+    },
+    keyFeatures: [
+      "Offline product browsing and ordering",
+      "Push notifications for reorder reminders",
+      "AI-powered nutrition recommendations",
+      "Workout integration with fitness apps",
+      "Supplement stack builder",
+      "Progress tracking dashboard",
+    ],
+    metrics: {
+      beforeAfter: {
+        mobileConversion: { before: "1.8%", after: "4.5%" },
+        loadTime3G: { before: "8.2s", after: "2.1s" },
+        reorderRate: { before: "25%", after: "70%" },
+        appEngagement: { before: "N/A", after: "4.2 sessions/week" },
+      },
+    },
+  },
+  {
+    id: 5,
+    slug: "home-decor-hydrogen-plus",
+    title: "Luxury Home Decor Hydrogen Store",
+    client: "Artisan Home",
+    industry: "Luxury Home Furnishing",
+    location: "Nashville, TN",
+    duration: "8 months",
+    team: "7 developers",
+    image:
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "Artisan Home serves both B2C customers and interior designers with different pricing, catalogs, and ordering workflows. Their WooCommerce site couldn't handle the complex B2B requirements, bulk ordering, or automated design consultant workflows they needed for scalability.",
+    solution:
+      "We implemented Shopify Plus with a custom Hydrogen frontend, featuring separate B2B and B2C experiences, automated workflows for design consultations, 3D room visualization, and integration with major design software used by interior designers.",
+    technologies: [
+      "Shopify Plus",
+      "Shopify Hydrogen",
+      "Shopify Flow",
+      "Three.js",
+      "AutoCAD API",
+      "Sketch API",
+      "LaunchDarkly",
+    ],
+    results: {
+      revenue: "+300% total revenue increase",
+      b2bOrders: "40% of revenue from B2B channel",
+      automation: "85% of workflows automated",
+      designerSignups: "500+ interior designers onboarded",
+      bulkOrders: "+150% increase in large orders",
+      consultationBookings: "200% increase in design consultations",
+    },
+    testimonial: {
+      quote:
+        "The B2B portal has transformed our business. Interior designers can now place orders efficiently, and our automated workflows have saved us countless hours.",
+      author: "Victoria Sterling",
+      position: "COO, Artisan Home",
+    },
+    keyFeatures: [
+      "Separate B2B and B2C storefronts",
+      "3D room visualization tool",
+      "Automated design consultation booking",
+      "Integration with design software",
+      "Bulk ordering with tiered pricing",
+      "Real-time inventory across showrooms",
+    ],
+    metrics: {
+      beforeAfter: {
+        totalRevenue: { before: "$2.1M", after: "$8.4M" },
+        b2bRevenue: { before: "$0", after: "$3.36M" },
+        orderProcessing: { before: "45 min", after: "8 min" },
+        designerRetention: { before: "N/A", after: "78%" },
+      },
+    },
+  },
+  {
+    id: 6,
+    slug: "outdoor-gear-headless",
+    title: "Outdoor Gear Headless Commerce",
+    client: "Mountain Peak Co.",
+    industry: "Outdoor Recreation",
+    location: "Denver, CO",
+    duration: "9 months",
+    team: "8 developers",
+    image:
+      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "Mountain Peak Co. operates retail stores, online shop, Amazon marketplace, and seasonal pop-ups. Their disconnected systems led to inventory issues, pricing inconsistencies, and poor customer experience across channels. They needed unified commerce with real-time synchronization.",
+    solution:
+      "We built a headless commerce platform using Shopify with Remix frontend, integrating POS systems, marketplace APIs, inventory management, and creating a unified customer profile across all touchpoints.",
+    technologies: [
+      "Shopify Plus",
+      "Remix",
+      "Shopify POS",
+      "Amazon SP-API",
+      "GraphQL Federation",
+      "Redis",
+      "Webhook.site",
+    ],
+    results: {
+      performance: "98/100 average Lighthouse score",
+      inventorySync: "Real-time sync across 12 locations",
+      integrations: "12+ system integrations completed",
+      unifiedCustomers: "95% customer profile unification",
+      channelGrowth: "+120% omnichannel revenue",
+      inventoryAccuracy: "99.2% inventory accuracy",
+    },
+    testimonial: {
+      quote:
+        "Finally, we have one source of truth for inventory and customer data. The unified experience has significantly improved our operations and customer satisfaction.",
+      author: "David Park",
+      position: "CTO, Mountain Peak Co.",
+    },
+    keyFeatures: [
+      "Real-time inventory across all channels",
+      "Unified customer profiles",
+      "Cross-channel order management",
+      "Marketplace listing automation",
+      "POS integration for retail stores",
+      "Advanced analytics dashboard",
+    ],
+    metrics: {
+      beforeAfter: {
+        inventoryAccuracy: { before: "87%", after: "99.2%" },
+        orderFulfillment: { before: "48 hours", after: "12 hours" },
+        channelRevenue: { before: "$5.2M", after: "$11.4M" },
+        customerSatisfaction: { before: "3.2/5", after: "4.7/5" },
+      },
+    },
+  },
+  {
+    id: 7,
+    slug: "beauty-subscription-hydrogen",
+    title: "Beauty Subscription Hydrogen App",
+    client: "GlowBox Beauty",
+    industry: "Beauty & Cosmetics",
+    location: "Chicago, IL",
+    duration: "6 months",
+    team: "5 developers",
+    image:
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "GlowBox needed a subscription platform that could handle complex personalization, flexible billing cycles, and inventory prediction for their beauty box service. Their existing platform couldn't handle the AI recommendations or flexible subscription management customers demanded.",
+    solution:
+      "We developed a Shopify Hydrogen application with AI-powered product recommendations, flexible subscription management, virtual try-on features, and predictive inventory management to optimize box contents and reduce waste.",
+    technologies: [
+      "Shopify Hydrogen",
+      "Shopify Subscriptions",
+      "TensorFlow.js",
+      "OpenCV.js",
+      "Recharge API",
+      "Klaviyo",
+      "BigQuery",
+    ],
+    results: {
+      subscribers: "50,000+ active subscribers",
+      retention: "78% 12-month retention rate",
+      customization: "99% personalization accuracy",
+      churnReduction: "65% reduction in subscription churn",
+      inventoryOptimization: "30% reduction in overstock",
+      customerSatisfaction: "4.8/5 average box rating",
+    },
+    testimonial: {
+      quote:
+        "The AI recommendations are incredibly accurate. Customers are amazed by how well each box matches their preferences and skin type.",
+      author: "Emma Chen",
+      position: "Founder, GlowBox Beauty",
+    },
+    keyFeatures: [
+      "AI-powered beauty recommendations",
+      "Virtual makeup try-on",
+      "Flexible subscription management",
+      "Skin analysis using device camera",
+      "Predictive inventory optimization",
+      "Community rating and reviews",
+    ],
+    metrics: {
+      beforeAfter: {
+        subscriptionRetention: { before: "45%", after: "78%" },
+        recommendationAccuracy: { before: "72%", after: "99%" },
+        inventoryWaste: { before: "25%", after: "8%" },
+        customerLTV: { before: "$185", after: "$420" },
+      },
+    },
+  },
+  {
+    id: 8,
+    slug: "sneaker-marketplace-headless",
+    title: "Sneaker Marketplace Headless Platform",
+    client: "SoleConnect",
+    industry: "Footwear & Fashion",
+    location: "Atlanta, GA",
+    duration: "10 months",
+    team: "9 developers",
+    image:
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=500&fit=crop&crop=center",
+    challenge:
+      "SoleConnect needed a trusted marketplace for rare sneakers with authentication services, real-time bidding, and protection against counterfeits. The platform required complex vendor management, escrow services, and integration with authentication partners.",
+    solution:
+      "We built a multi-vendor marketplace using headless Shopify architecture with custom GraphQL APIs, blockchain-based authentication certificates, real-time bidding system, and integration with professional sneaker authentication services.",
+    technologies: [
+      "Shopify Plus",
+      "GraphQL",
+      "Socket.io",
+      "Blockchain",
+      "Computer Vision API",
+      "Stripe Connect",
+      "AWS Lambda",
+    ],
+    results: {
+      vendors: "200+ verified sellers",
+      transactions: "5,000+ daily transactions",
+      authentication: "99.8% authentication accuracy",
+      fraud: "95% reduction in fraudulent listings",
+      marketGrowth: "+400% marketplace volume",
+      userTrust: "4.9/5 trust rating",
+    },
+    testimonial: {
+      quote:
+        "The authentication system gives buyers complete confidence. We've become the go-to platform for serious sneaker collectors and sellers.",
+      author: "Anthony Williams",
+      position: "CEO, SoleConnect",
+    },
+    keyFeatures: [
+      "AI-powered sneaker authentication",
+      "Real-time bidding system",
+      "Blockchain certificates of authenticity",
+      "Vendor reputation system",
+      "Escrow payment protection",
+      "Market price tracking and alerts",
+    ],
+    metrics: {
+      beforeAfter: {
+        monthlyVolume: { before: "$500K", after: "$2.5M" },
+        authenticationAccuracy: { before: "92%", after: "99.8%" },
+        disputeRate: { before: "15%", after: "2%" },
+        sellerRetention: { before: "60%", after: "88%" },
+      },
+    },
+  },
 ];
 
 interface CaseStudyPageProps {
@@ -522,6 +907,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

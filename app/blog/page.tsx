@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
+import Footer from "../components/Footer/page";
 
 const blogPosts = [
   {
@@ -57,38 +58,41 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-3xl font-bold mb-6">Our Blog</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogPosts.map((post) => (
-          <Link href={`/blog/${post.slug}`} key={post.id}>
-            <Card className="bg-white rounded-3xl border-0 shadow-sm overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-              <img
-                src={post.imageUrl || "/placeholder.svg"}
-                alt={post.title}
-                className="w-full h-48 object-cover rounded-t-3xl"
-              />
-              <div className="p-4">
-                <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-                <p className="text-gray-600 text-sm mb-4">{post.content}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-1 text-sm text-gray-500">
-                    <Calendar className="w-4 h-4" />
-                    <span>{post.date}</span>
+    <>
+      <div className="container mx-auto py-10">
+        <h1 className="text-3xl font-bold mb-6">Our Blog</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {blogPosts.map((post) => (
+            <Link href={`/blog/${post.slug}`} key={post.id}>
+              <Card className="bg-white rounded-3xl border-0 shadow-sm overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+                <img
+                  src={post.imageUrl || "/placeholder.svg"}
+                  alt={post.title}
+                  className="w-full h-48 object-cover rounded-t-3xl"
+                />
+                <div className="p-4">
+                  <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
+                  <p className="text-gray-600 text-sm mb-4">{post.content}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-1 text-sm text-gray-500">
+                      <Calendar className="w-4 h-4" />
+                      <span>{post.date}</span>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-purple-400 hover:text-purple-500 p-0"
+                    >
+                      Read more <ArrowRight className="w-4 h-4 ml-1" />
+                    </Button>
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-purple-400 hover:text-purple-500 p-0"
-                  >
-                    Read more <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
                 </div>
-              </div>
-            </Card>
-          </Link>
-        ))}
+              </Card>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }

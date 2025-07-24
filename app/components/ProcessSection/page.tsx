@@ -128,6 +128,7 @@ export default function ProcessSection() {
 
   return (
     <section
+      id="process"
       ref={containerRef}
       className="relative bg-gradient-to-b from-slate-50 to-white"
       style={{ height: "300vh" }}

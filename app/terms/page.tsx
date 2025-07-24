@@ -9,6 +9,7 @@ import {
   Gavel,
   Building,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function TermsAndConditions() {
   const handleBackToHome = () => {
@@ -21,13 +22,13 @@ export default function TermsAndConditions() {
       <div className="max-w-4xl mt-10 mx-auto">
         {/* Header with Back Button */}
         <div className="mb-8">
-          <button
-            onClick={handleBackToHome}
+          <Link
             className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200 mb-6 group"
+            href={"/"}
           >
             <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
             Back to Home
-          </button>
+          </Link>
 
           <div className="flex items-center mb-4">
             <FileCheck className="w-8 h-8 text-purple-600 mr-3" />

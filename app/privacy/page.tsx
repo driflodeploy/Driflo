@@ -1,25 +1,21 @@
 "use client";
 import React from "react";
 import { ArrowLeft, Shield, Eye, Lock, FileText } from "lucide-react";
+import Link from "next/link";
 
 export default function PrivacyPolicy() {
-  const handleBackToHome = () => {
-    // In a real app, this would use router navigation
-    console.log("Navigate back to home");
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mt-10 mx-auto">
         {/* Header with Back Button */}
         <div className="mb-8">
-          <button
-            onClick={handleBackToHome}
+          <Link
             className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200 mb-6 group"
+            href={"/"}
           >
             <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
             Back to Home
-          </button>
+          </Link>
 
           <div className="flex items-center mb-4">
             <Shield className="w-8 h-8 text-purple-600 mr-3" />

@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
     name: "Work",
     href: "/work",
   },
-  { name: "About Us", href: "/about" },
+  { name: "About", href: "/about" },
   { name: "Blogs", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];

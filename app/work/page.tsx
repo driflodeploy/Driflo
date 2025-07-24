@@ -305,9 +305,9 @@ export default function WorkPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-gradient-to-r from-slate-100 to-slate-200 rounded-full px-6 py-3 mb-6 border border-slate-300/50">
+            <div className="inline-flex items-center bg-purple-50 px-6 py-3 rounded-full border border-purple-100 mb-8">
               <Award className="w-5 h-5 text-slate-700 mr-2" />
-              <span className="text-slate-800 font-semibold">
+              <span className="text-sm font-semibold text-gray-700">
                 Our Success Stories
               </span>
             </div>

@@ -20,7 +20,7 @@ const SocialIcon = memo(
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800/80 hover:bg-purple-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group backdrop-blur-sm active:scale-95"
+        className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800/80 hover:bg-brand-blue rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group backdrop-blur-sm active:scale-95"
         aria-label={label}
       >
         <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-white transition-colors duration-300" />
@@ -40,7 +40,7 @@ const FooterSection = memo(
             <Link
               key={index}
               href={link.href}
-              className="text-gray-400 hover:text-purple-400 text-sm transition-colors duration-300 text-center py-1"
+              className="text-gray-400 hover:text-brand-lightBlue text-sm transition-colors duration-300 text-center py-1"
             >
               {link.label}
             </Link>
@@ -53,7 +53,7 @@ const FooterSection = memo(
             <Link
               key={index}
               href={link.href}
-              className="text-gray-400 hover:text-purple-400 text-sm transition-colors duration-300 whitespace-nowrap"
+              className="text-gray-400 hover:text-brand-lightBlue text-sm transition-colors duration-300 whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -74,7 +74,7 @@ const CallToActionButton = memo(() => {
     <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
       <Button
         onClick={handleClick}
-        className="group relative bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-600 hover:from-purple-700 hover:via-purple-600 hover:to-indigo-700 text-white rounded-full px-4 py-2 sm:px-6 sm:py-2.5 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden active:scale-95"
+        className="group relative  bg-brand-blue hover:bg-brand-blueHover text-white rounded-full px-4 py-2 sm:px-6 sm:py-2.5 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden active:scale-95"
       >
         <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
         <span className="relative flex items-center space-x-1.5 sm:space-x-2">
@@ -113,8 +113,8 @@ export default function Footer() {
   return (
     <footer className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
       {/* Background decoration - Responsive sizing */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 to-indigo-900/10" />
-      <div className="absolute top-0 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-purple-600/5 rounded-full blur-2xl sm:blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 to-indigo-900/10" />
+      <div className="absolute top-0 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-indigo-600/5 rounded-full blur-2xl sm:blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-indigo-600/5 rounded-full blur-2xl sm:blur-3xl" />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -212,13 +212,13 @@ export default function Footer() {
             <div className="flex flex-wrap justify-center sm:justify-end gap-3 sm:gap-4 text-xs order-1 sm:order-2">
               <Link
                 href="/privacy"
-                className="text-gray-400 hover:text-purple-400 transition-colors duration-300 whitespace-nowrap"
+                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 whitespace-nowrap"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-gray-400 hover:text-purple-400 transition-colors duration-300 whitespace-nowrap"
+                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 whitespace-nowrap"
               >
                 Terms of Service
               </Link>

@@ -35,7 +35,7 @@ const processSteps = [
       "We develop a comprehensive strategy and project roadmap including architecture planning and technology selection.",
     duration: "1-2 weeks",
     deliverables: ["Project Roadmap", "Technical Architecture", "Wireframes"],
-    color: "from-purple-500 to-pink-600",
+    color: "from-indigo-500 to-pink-600",
   },
   {
     id: 3,
@@ -137,7 +137,7 @@ export default function ProcessSection() {
         <div className="h-full flex flex-col">
           {/* Header - Fixed height */}
           <div className="flex-shrink-0 text-center pt-8 pb-4">
-            <div className="inline-flex items-center bg-gradient-to-r from-purple-50 to-blue-50 px-6 py-3 rounded-full border border-purple-100 mb-4">
+            <div className="inline-flex items-center bg-gradient-to-r from-blue-50 to-blue-50 px-6 py-3 rounded-full border border-blue-100 mb-4">
               <span className="text-sm font-semibold text-gray-700">
                 Our Process
               </span>
@@ -154,7 +154,7 @@ export default function ProcessSection() {
           <div className="flex-shrink-0 mx-auto max-w-6xl px-8 mb-4">
             <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 rounded-full transition-all duration-300"
+                className="h-full bg-gradient-to-r from-blue-500 via-indigo-800 to-emerald-500 rounded-full transition-all duration-300"
                 style={{ width: `${scrollProgress * 100}%` }}
               ></div>
             </div>
@@ -170,7 +170,7 @@ export default function ProcessSection() {
             <div className="horizontal-container overflow-x-hidden h-full">
               <div
                 className="flex space-x-8 h-full items-center"
-                style={{ width: `${processSteps.length * 100}px` }}
+                style={{ width: `${processSteps.length * 50}px` }}
               >
                 {processSteps.map((step, index) => {
                   const Icon = step.icon;
@@ -216,10 +216,6 @@ export default function ProcessSection() {
                               </Badge>
                             </div>
                           </div>
-
-                          {index < processSteps.length - 1 && (
-                            <ArrowRight className="w-4 h-4 text-gray-400" />
-                          )}
                         </div>
 
                         {/* Content */}

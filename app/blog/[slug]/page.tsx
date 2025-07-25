@@ -1,12 +1,19 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, ArrowLeft, Calendar, User, Clock, Share2 } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowRight,
+  ArrowLeft,
+  Calendar,
+  User,
+  Clock,
+  Share2,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 // Mock blog data - in a real app, this would come from a CMS or database
 const blogPosts = {
@@ -143,39 +150,39 @@ const blogPosts = {
     category: "Management",
     image: "/placeholder.svg?height=400&width=800&text=Rental+Income",
   },
-}
+};
 
 interface BlogPostPageProps {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const [showNavbar, setShowNavbar] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
+      const currentScrollY = window.scrollY;
 
       if (currentScrollY < lastScrollY || currentScrollY < 10) {
-        setShowNavbar(true)
+        setShowNavbar(true);
       } else {
-        setShowNavbar(false)
+        setShowNavbar(false);
       }
 
-      setLastScrollY(currentScrollY)
-    }
+      setLastScrollY(currentScrollY);
+    };
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+  const post = blogPosts[params.slug as keyof typeof blogPosts];
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -194,27 +201,46 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </Link>
 
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/#home" className="text-gray-700 hover:text-black font-medium">
+          <Link
+            href="/#home"
+            className="text-gray-700 hover:text-black font-medium"
+          >
             Home
           </Link>
-          <Link href="/#services" className="text-gray-700 hover:text-black font-medium">
+          <Link
+            href="/#services"
+            className="text-gray-700 hover:text-black font-medium"
+          >
             Services
           </Link>
-          <Link href="/#why-us" className="text-gray-700 hover:text-black font-medium">
+          <Link
+            href="/#why-us"
+            className="text-gray-700 hover:text-black font-medium"
+          >
             Why Us
           </Link>
-          <Link href="/blog" className="text-gray-700 hover:text-black font-medium">
+          <Link
+            href="/blog"
+            className="text-gray-700 hover:text-black font-medium"
+          >
             Blog
           </Link>
         </nav>
 
         <div className="flex items-center space-x-3">
-          <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-purple-400 hover:bg-purple-500 text-white rounded-full px-6 py-2 font-medium">
+          <Link
+            href="https://calendly.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-brand-blue hover:bg-brand-blueHover text-white rounded-full px-6 py-2 font-medium">
               Book a Call
             </Button>
           </Link>
-          <Button size="icon" className="bg-purple-400 hover:bg-purple-500 text-white rounded-full w-10 h-10">
+          <Button
+            size="icon"
+            className="bg-brand-blue hover:bg-brand-blueHover text-white rounded-full w-10 h-10"
+          >
             <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
@@ -224,15 +250,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="w-full px-4 lg:px-6 py-16 pt-24">
         <div className="max-w-4xl mx-auto">
           {/* Back to Blog */}
-          <Link href="/blog" className="inline-flex items-center text-purple-400 hover:text-purple-500 mb-8">
+          <Link
+            href="/blog"
+            className="inline-flex items-center text-brand-blue hover:text-brand-blueHover mb-8"
+          >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
           </Link>
 
           {/* Article Header */}
           <header className="mb-8">
-            <Badge className="bg-purple-400 text-white rounded-full px-4 py-2 mb-4">{post.category}</Badge>
-            <h1 className="text-4xl lg:text-5xl font-bold text-black mb-6 leading-tight">{post.title}</h1>
+            <Badge className="bg-brand-blue text-white rounded-full px-4 py-2 mb-4">
+              {post.category}
+            </Badge>
+            <h1 className="text-4xl lg:text-5xl font-bold text-black mb-6 leading-tight">
+              {post.title}
+            </h1>
             <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
               <div className="flex items-center space-x-6 text-gray-600">
                 <div className="flex items-center space-x-2">
@@ -248,7 +281,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   <span>{post.readTime}</span>
                 </div>
               </div>
-              <Button variant="outline" size="sm" className="rounded-full bg-transparent">
+              <Button
+                variant="outline"
+                size="sm"
+                className="rounded-full bg-transparent"
+              >
                 <Share2 className="w-4 h-4 mr-2" />
                 Share
               </Button>
@@ -257,28 +294,43 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Featured Image */}
           <div className="relative h-64 lg:h-96 rounded-3xl overflow-hidden mb-8">
-            <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+            <Image
+              src={post.image || "/placeholder.svg"}
+              alt={post.title}
+              fill
+              className="object-cover"
+            />
           </div>
 
           {/* Article Content */}
           <div
-            className="prose prose-lg max-w-none prose-headings:text-black prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-purple-400 prose-a:no-underline hover:prose-a:text-purple-500 prose-ul:text-gray-700 prose-li:text-gray-700"
+            className="prose prose-lg max-w-none prose-headings:text-black prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-brand-blue prose-a:no-underline hover:prose-a:text-brand-blue prose-ul:text-gray-700 prose-li:text-gray-700"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
           {/* CTA Section */}
           <div className="mt-16 p-8 bg-gray-50 rounded-3xl text-center">
-            <h3 className="text-2xl font-bold text-black mb-4">Ready to Transform Your Property Management?</h3>
+            <h3 className="text-2xl font-bold text-black mb-4">
+              Ready to Transform Your Property Management?
+            </h3>
             <p className="text-gray-600 mb-6">
-              Schedule a call with our experts to see how Bayt can help you implement these strategies.
+              Schedule a call with our experts to see how Bayt can help you
+              implement these strategies.
             </p>
             <div className="flex items-center justify-center space-x-3">
-              <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-purple-400 hover:bg-purple-500 text-white rounded-full px-8 py-3 font-medium">
+              <Link
+                href="https://calendly.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-brand-blue hover:bg-brand-blueHover text-white rounded-full px-8 py-3 font-medium">
                   Book a Call
                 </Button>
               </Link>
-              <Button size="icon" className="bg-purple-400 hover:bg-purple-500 text-white rounded-full w-12 h-12">
+              <Button
+                size="icon"
+                className="bg-brand-blue hover:bg-brand-blueHover text-white rounded-full w-12 h-12"
+              >
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </div>
@@ -299,16 +351,23 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 <span className="text-2xl font-bold">Bayt</span>
               </Link>
               <p className="text-gray-400 text-lg mb-6 max-w-md">
-                The premier choice in real estate services. Managing, leasing, and selling properties with comprehensive
-                solutions.
+                The premier choice in real estate services. Managing, leasing,
+                and selling properties with comprehensive solutions.
               </p>
               <div className="flex items-center space-x-3">
-                <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-purple-400 hover:bg-purple-500 text-white rounded-full px-6 py-2">
+                <Link
+                  href="https://calendly.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="bg-brand-blue hover:bg-brand-blueHover text-white rounded-full px-6 py-2">
                     Book a Call
                   </Button>
                 </Link>
-                <Button size="icon" className="bg-purple-400 hover:bg-purple-500 text-white rounded-full w-10 h-10">
+                <Button
+                  size="icon"
+                  className="bg-brand-blue text-white rounded-full w-10 h-10"
+                >
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
@@ -319,22 +378,34 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <h3 className="text-lg font-semibold mb-4">Services</h3>
               <ul className="space-y-3 text-gray-400">
                 <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
+                  <Link
+                    href="/#services"
+                    className="hover:text-white transition-colors"
+                  >
                     Property Listings
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
+                  <Link
+                    href="/#services"
+                    className="hover:text-white transition-colors"
+                  >
                     Financial Reporting
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
+                  <Link
+                    href="/#services"
+                    className="hover:text-white transition-colors"
+                  >
                     Service Requests
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#services" className="hover:text-white transition-colors">
+                  <Link
+                    href="/#services"
+                    className="hover:text-white transition-colors"
+                  >
                     Tenant Management
                   </Link>
                 </li>
@@ -346,17 +417,26 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <ul className="space-y-3 text-gray-400">
                 <li>
-                  <Link href="/#home" className="hover:text-white transition-colors">
+                  <Link
+                    href="/#home"
+                    className="hover:text-white transition-colors"
+                  >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#why-us" className="hover:text-white transition-colors">
+                  <Link
+                    href="/#why-us"
+                    className="hover:text-white transition-colors"
+                  >
                     Why Choose Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="hover:text-white transition-colors">
+                  <Link
+                    href="/blog"
+                    className="hover:text-white transition-colors"
+                  >
                     Blog
                   </Link>
                 </li>
@@ -376,15 +456,26 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Bottom Footer */}
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Bayt. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} Bayt. All rights reserved.
+            </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
                 Terms of Service
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
                 Cookie Policy
               </Link>
             </div>
@@ -392,5 +483,5 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </footer>
     </div>
-  )
+  );
 }

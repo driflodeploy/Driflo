@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
                   >
                     <span className="relative">
                       {item.name}
-                      <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></div>
+                      <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full"></div>
                     </span>
                     {item.dropdown && (
                       <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
@@ -125,11 +125,10 @@ const Navbar: React.FC = () => {
 
             {/* CTA Button */}
             <div className="hidden w-32 lg:block">
-              <Link
-                href="/contact"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                Let's Talk
+              <Link href="/contact">
+                <button className="bg-brand-blue  text-white px-6 py-2 rounded-full hover:bg-brand-blueHover  transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  Lets's Talk
+                </button>
               </Link>
             </div>
 
@@ -203,7 +202,7 @@ const Navbar: React.FC = () => {
               <div className="pt-4 border-t border-white/10">
                 <Link
                   href="/contact"
-                  className="block w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center px-6 py-3 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="block w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
                   onClick={toggleMenu}
                 >
                   Let's Talk

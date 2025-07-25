@@ -31,7 +31,7 @@ export default function TermsAndConditions() {
           </Link>
 
           <div className="flex items-center mb-4">
-            <FileCheck className="w-8 h-8 text-purple-600 mr-3" />
+            <FileCheck className="w-8 h-8 text-brand-blue mr-3" />
             <h1 className="text-3xl font-bold text-gray-900">
               Terms and Conditions
             </h1>
@@ -45,7 +45,7 @@ export default function TermsAndConditions() {
           {/* Introduction */}
           <section>
             <div className="flex items-center mb-4">
-              <Scale className="w-5 h-5 text-purple-600 mr-2" />
+              <Scale className="w-5 h-5 text-brand-blue mr-2" />
               <h2 className="text-xl font-semibold text-gray-900">
                 Agreement to Terms
               </h2>
@@ -61,7 +61,7 @@ export default function TermsAndConditions() {
           {/* Use License */}
           <section>
             <div className="flex items-center mb-4">
-              <Building className="w-5 h-5 text-purple-600 mr-2" />
+              <Building className="w-5 h-5 text-brand-blue mr-2" />
               <h2 className="text-xl font-semibold text-gray-900">
                 Use License
               </h2>
@@ -74,19 +74,19 @@ export default function TermsAndConditions() {
               </p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-purple-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-brand-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                   Browse and search property listings
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-purple-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-brand-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                   Contact property managers and agents
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-purple-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-brand-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                   Save properties to your favorites list
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-purple-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-brand-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                   Schedule property viewings and consultations
                 </li>
               </ul>
@@ -96,7 +96,7 @@ export default function TermsAndConditions() {
           {/* User Responsibilities */}
           <section>
             <div className="flex items-center mb-4">
-              <Users className="w-5 h-5 text-purple-600 mr-2" />
+              <Users className="w-5 h-5 text-brand-blue mr-2" />
               <h2 className="text-xl font-semibold text-gray-900">
                 User Responsibilities
               </h2>
@@ -210,7 +210,7 @@ export default function TermsAndConditions() {
           {/* Limitation of Liability */}
           <section>
             <div className="flex items-center mb-4">
-              <Gavel className="w-5 h-5 text-purple-600 mr-2" />
+              <Gavel className="w-5 h-5 text-brand-blue mr-2" />
               <h2 className="text-xl font-semibold text-gray-900">
                 Limitation of Liability
               </h2>
@@ -269,7 +269,7 @@ export default function TermsAndConditions() {
               If you have any questions about these Terms and Conditions, please
               contact us:
             </p>
-            <div className="bg-purple-50 p-4 rounded-lg">
+            <div className="bg-blue-50 p-4 rounded-lg">
               <p className="text-gray-700">
                 <strong>Email:</strong> legal@realestateapp.com
                 <br />

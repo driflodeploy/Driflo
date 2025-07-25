@@ -238,14 +238,14 @@ export default function PortfolioCarousel() {
       "Shopify Hydrogen": "bg-gradient-to-r from-green-500 to-emerald-600",
       "Headless Shopify + Next.js":
         "bg-gradient-to-r from-blue-500 to-cyan-600",
-      "Shopify PWA": "bg-gradient-to-r from-purple-500 to-violet-600",
+      "Shopify PWA": "bg-gradient-to-r from-indigo-500 to-violet-600",
       "Shopify Plus + Hydrogen":
         "bg-gradient-to-r from-orange-500 to-amber-600",
       "Headless Shopify + Remix": "bg-gradient-to-r from-teal-500 to-cyan-600",
       "Shopify Hydrogen + Subscriptions":
         "bg-gradient-to-r from-pink-500 to-rose-600",
       "Shopify Multi-Store + GraphQL":
-        "bg-gradient-to-r from-indigo-500 to-purple-600",
+        "bg-gradient-to-r from-indigo-500 to-indigo-600",
     };
     return (
       colors[type as keyof typeof colors] ||
@@ -392,11 +392,11 @@ export default function PortfolioCarousel() {
                 <CardContent className="p-6 space-y-4">
                   {/* Title and Client */}
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 transition-colors hover:text-purple-600">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 transition-colors hover:text-brand-blue">
                       {item.title}
                     </h3>
                     <div className="flex items-center text-gray-600 mb-3">
-                      <Clock10 className="w-4 h-4 mr-1 text-purple-500" />
+                      <Clock10 className="w-4 h-4 mr-1 text-brand-blue" />
                       <span className="text-sm font-medium">{item.time}</span>
                     </div>
                     <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
@@ -434,11 +434,11 @@ export default function PortfolioCarousel() {
                     </div>
                     <div className="text-center group">
                       <div className="flex items-center justify-center mb-2">
-                        <div className="p-2 rounded-full bg-purple-50 group-hover:bg-purple-100 transition-all duration-300 group-hover:scale-110">
-                          <DollarSign className="w-5 h-5 text-purple-600" />
+                        <div className="p-2 rounded-full bg-blue-50 group-hover:bg-blue-100 transition-all duration-300 group-hover:scale-110">
+                          <DollarSign className="w-5 h-5 text-brand-blue" />
                         </div>
                       </div>
-                      <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-purple-600">
+                      <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-brand-blue">
                         {Object.values(item.stats)[2]}
                       </div>
                       <div className="text-xs text-gray-500 font-medium">
@@ -453,7 +453,7 @@ export default function PortfolioCarousel() {
                       <Badge
                         key={tagIndex}
                         variant="outline"
-                        className="text-xs rounded-full border-gray-200 text-gray-600 hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 transition-all duration-300 px-3 py-1 hover:scale-105"
+                        className="text-xs rounded-full border-gray-200 text-gray-600 hover:border-blue-300 hover:bg-blue-50 hover:text-brand-blue transition-all duration-300 px-3 py-1 hover:scale-105"
                       >
                         {tag}
                       </Badge>

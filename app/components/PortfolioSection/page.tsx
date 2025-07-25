@@ -5,7 +5,7 @@ export default function PortfolioSection() {
     <section className="w-full px-4 lg:px-6 py-16 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-purple-50 px-6 py-3 rounded-full border border-purple-100 mb-8">
+          <div className="inline-flex items-center bg-blue-50 px-6 py-3 rounded-full border border-blue-100 mb-8">
             <span className="text-sm font-semibold text-gray-700">
               Case Studies
             </span>

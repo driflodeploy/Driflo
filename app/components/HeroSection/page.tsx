@@ -17,8 +17,8 @@ const UserAvatars = () => (
     {[
       "from-amber-400 to-orange-500",
       "from-green-400 to-blue-500",
-      "from-purple-400 to-pink-500",
-      "from-blue-400 to-purple-500",
+      "from-blue-400 to-pink-500",
+      "from-blue-400 to-blue-500",
     ].map((gradient, index) => (
       <div
         key={index}
@@ -30,7 +30,7 @@ const UserAvatars = () => (
 
 const StatsCard = () => (
   <div className="absolute bottom-8 left-8 bg-white rounded-2xl p-5 flex items-center space-x-4 shadow-xl min-w-[280px]">
-    <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
+    <div className="w-12 h-12 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0">
       <ArrowRight className="w-5 h-5 text-white" />
     </div>
     <div>
@@ -82,7 +82,7 @@ const ImageCard = ({
 const CallToActionButtons = () => (
   <div className="flex items-center justify-center md:justify-start">
     <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-      <Button className="group relative bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-600 hover:from-purple-700 hover:via-purple-600 hover:to-indigo-700 text-white rounded-full px-6 py-4 sm:px-8 sm:py-5 md:px-10 md:py-6 font-semibold text-sm sm:text-base md:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden active:scale-95">
+      <Button className="group relative bg-brand-blue hover:bg-brand-blueHover text-white rounded-full px-6 py-4 sm:px-8 sm:py-5 md:px-10 md:py-6 font-semibold text-sm sm:text-base md:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden active:scale-95">
         <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
         <span className="relative flex items-center space-x-2">
           <span>Book a Call</span>
@@ -145,7 +145,7 @@ export default function HeroSection() {
                 bgOverlay="bg-black/30"
               >
                 {/* Development Projects Badge */}
-                <div className="absolute top-4 right-4 bg-purple-400 text-white rounded-full px-3 py-2 sm:px-4 sm:py-2 flex items-center space-x-2 shadow-lg">
+                <div className="absolute top-4 right-4 bg-brand-blue text-white rounded-full px-3 py-2 sm:px-4 sm:py-2 flex items-center space-x-2 shadow-lg">
                   <span className="font-semibold text-xs sm:text-sm">
                     150+ Stores Built
                   </span>
@@ -225,7 +225,7 @@ export default function HeroSection() {
               bgOverlay="bg-black/30"
             >
               {/* Development Projects Badge */}
-              <div className="absolute top-8 right-8 bg-purple-400 text-white rounded-full px-6 py-3 flex items-center space-x-2 shadow-lg">
+              <div className="absolute top-8 right-8 bg-brand-blue text-white rounded-full px-6 py-3 flex items-center space-x-2 shadow-lg">
                 <span className="font-semibold text-sm">150+ Stores Built</span>
                 <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
                   <ArrowRight className="w-3 h-3" />

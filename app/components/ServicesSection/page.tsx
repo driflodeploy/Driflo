@@ -10,7 +10,7 @@ export default function ServicesSection() {
     >
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-20">
-          <div className="inline-flex items-center bg-purple-50 px-6 py-3 rounded-full border border-purple-100 mb-8">
+          <div className="inline-flex items-center bg-blue-50 px-6 py-3 rounded-full border border-blue-100 mb-8">
             <span className="text-sm font-semibold text-gray-700">
               Our Expertise
             </span>
@@ -31,7 +31,7 @@ export default function ServicesSection() {
               <div className="flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
                     <Code className="w-8 h-8 text-white" />
                   </div>
                 </div>
@@ -39,7 +39,7 @@ export default function ServicesSection() {
                 {/* Content */}
                 <div className="flex-1 space-y-6">
                   <div>
-                    <Badge className="bg-purple-100 text-purple-700 border-purple-200 rounded-full text-sm px-4 py-2 font-semibold mb-4">
+                    <Badge className="bg-blue-100 text-indigo-700 border-blue-200 rounded-full text-sm px-4 py-2 font-semibold mb-4">
                       E-Commerce
                     </Badge>
                     <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
@@ -62,7 +62,7 @@ export default function ServicesSection() {
                         key={index}
                         className="flex items-center space-x-3 text-gray-700"
                       >
-                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-brand-lightBlue rounded-full"></div>
                         <span className="font-medium">{feature}</span>
                       </div>
                     ))}

@@ -81,7 +81,7 @@ export default function BlogPage() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="text-purple-400 hover:text-purple-500 p-0"
+                      className="text-brand-blue hover:text-brand-blueHover p-0"
                     >
                       Read more <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>

@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
           </Link>
 
           <div className="flex items-center mb-4">
-            <Shield className="w-8 h-8 text-purple-600 mr-3" />
+            <Shield className="w-8 h-8 text-brand-blue mr-3" />
             <h1 className="text-3xl font-bold text-gray-900">Privacy Policy</h1>
           </div>
 
@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
           {/* Introduction */}
           <section>
             <div className="flex items-center mb-4">
-              <Eye className="w-5 h-5 text-purple-600 mr-2" />
+              <Eye className="w-5 h-5 text-brand-blue mr-2" />
               <h2 className="text-xl font-semibold text-gray-900">
                 Introduction
               </h2>
@@ -46,7 +46,7 @@ export default function PrivacyPolicy() {
           {/* Information We Collect */}
           <section>
             <div className="flex items-center mb-4">
-              <FileText className="w-5 h-5 text-purple-600 mr-2" />
+              <FileText className="w-5 h-5 text-brand-blue mr-2" />
               <h2 className="text-xl font-semibold text-gray-900">
                 Information We Collect
               </h2>
@@ -83,26 +83,26 @@ export default function PrivacyPolicy() {
           {/* How We Use Your Information */}
           <section>
             <div className="flex items-center mb-4">
-              <Lock className="w-5 h-5 text-purple-600 mr-2" />
+              <Lock className="w-5 h-5 text-brand-blue mr-2" />
               <h2 className="text-xl font-semibold text-gray-900">
                 How We Use Your Information
               </h2>
             </div>
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-purple-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-brand-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                 To provide and maintain our real estate services
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-purple-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-brand-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                 To communicate with you about properties and services
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-purple-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-brand-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                 To improve our platform and user experience
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-purple-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-brand-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                 To comply with legal obligations
               </li>
             </ul>
@@ -166,7 +166,7 @@ export default function PrivacyPolicy() {
               If you have any questions about this Privacy Policy, please
               contact us:
             </p>
-            <div className="bg-purple-50 p-4 rounded-lg">
+            <div className="bg-blue-50 p-4 rounded-lg">
               <p className="text-gray-700">
                 <strong>Email:</strong> privacy@realestateapp.com
                 <br />

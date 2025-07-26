@@ -34,7 +34,7 @@ const StatsCard = () => (
       <ArrowRight className="w-5 h-5 text-white" />
     </div>
     <div>
-      <div className="text-2xl font-bold text-black">99%</div>
+      <div className="text-2xl font-bold text-black">98%</div>
       <div className="text-sm text-gray-600 leading-tight">
         Client satisfaction with
         <br />
@@ -147,7 +147,7 @@ export default function HeroSection() {
                 {/* Development Projects Badge */}
                 <div className="absolute top-4 right-4 bg-brand-blue text-white rounded-full px-3 py-2 sm:px-4 sm:py-2 flex items-center space-x-2 shadow-lg">
                   <span className="font-semibold text-xs sm:text-sm">
-                    150+ Stores Built
+                    10+ Stores Built
                   </span>
                   <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white/20 rounded-full flex items-center justify-center">
                     <ArrowRight className="w-2 h-2 sm:w-3 sm:h-3" />
@@ -226,7 +226,7 @@ export default function HeroSection() {
             >
               {/* Development Projects Badge */}
               <div className="absolute top-8 right-8 bg-brand-blue text-white rounded-full px-6 py-3 flex items-center space-x-2 shadow-lg">
-                <span className="font-semibold text-sm">150+ Stores Built</span>
+                <span className="font-semibold text-sm">10+ Stores Built</span>
                 <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
                   <ArrowRight className="w-3 h-3" />
                 </div>

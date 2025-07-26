@@ -323,7 +323,7 @@ export default function PortfolioCarousel() {
                   bg-white rounded-2xl border-0 shadow-xl overflow-hidden 
                   transition-all duration-500 ease-out cursor-pointer
                   hover:shadow-2xl hover:-translate-y-3 hover:rotate-1
-                  w-[360px] h-[520px]
+                  w-[360px] h-full
                   ${
                     hoveredCard === originalItem?.id
                       ? "shadow-2xl -translate-y-2 rotate-1"
@@ -441,19 +441,6 @@ export default function PortfolioCarousel() {
                         Conversion
                       </div>
                     </div>
-                  </div>
-
-                  {/* Floating Tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {item.tags.map((tag, tagIndex) => (
-                      <Badge
-                        key={tagIndex}
-                        variant="outline"
-                        className="text-xs rounded-full border-gray-200 text-gray-600 hover:border-blue-300 hover:bg-blue-50 hover:text-brand-blue transition-all duration-300 px-3 py-1 hover:scale-105"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
                   </div>
                 </CardContent>
               </Card>

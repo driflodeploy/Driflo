@@ -3,11 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Footer from "../components/Footer/page";
-import {
-  CardNewsletter,
-  MinimalNewsletter,
-} from "../components/Newsletter/page";
+import { MinimalNewsletter } from "../components/Newsletter/page";
 import ProcessSection from "../components/ProcessSection/page";
+import { Rocket, ArrowRight, Eye } from "lucide-react";
 
 export default function AboutPage() {
   const teamMembers = [
@@ -38,9 +36,9 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-12">
-          <h1 className="text-6xl font-light text-white mb-6 tracking-wide">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight">
             About Driflo
-          </h1>
+          </h2>
           <p className="text-white/90 text-xl max-w-3xl leading-relaxed">
             We're a team of passionate developers specializing in headless
             commerce solutions that drive real business results
@@ -53,7 +51,9 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-light text-black mb-8">Our Story</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-6 leading-tight">
+                Our Story
+              </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
                 Founded in 2020, Driftlo emerged from a simple belief:
                 e-commerce should be fast, flexible, and future-proof. We saw
@@ -66,12 +66,38 @@ export default function AboutPage() {
                 experiences using Shopify's powerful backend and cutting-edge
                 frontend technologies like Hydrogen.
               </p>
-              <Button
-                className="bg-black text-white hover:bg-gray-800 px-8 py-3"
-                asChild
+
+              <Link
+                href="/work"
+                className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-blue rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 "
               >
-                <Link href="/work">View Our Work</Link>
-              </Button>
+                {/* Animated background overlay */}
+                <div className="absolute inset-0 bg-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                {/* Shine effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 skew-x-12"></div>
+
+                {/* Button text */}
+                <span className="relative z-10 flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                  View Our Work
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </span>
+
+                {/* Border glow */}
+                <div className="absolute inset-0 rounded-xl bg-brand-blue opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
+              </Link>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden">
               <Image
@@ -89,7 +115,9 @@ export default function AboutPage() {
       <section className="mx-6 mb-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-light text-black mb-6">Our Values</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
+              Our Values
+            </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               The principles that guide our approach to every project and client
               relationship
@@ -178,7 +206,7 @@ export default function AboutPage() {
       <section className="mx-6 mb-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-light text-black mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
               Our Tech Stack
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -213,20 +241,48 @@ export default function AboutPage() {
         </div>
       </section>
       <ProcessSection />
-      <section className="mx-6 my-16">
-        <div className="max-w-7xl mx-auto bg-black text-white rounded-2xl p-12 text-center">
-          <h2 className="text-4xl font-light mb-6">Ready to Work Together?</h2>
-          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Let's discuss your project and see how our expertise can help bring
-            your vision to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-lg">
-              Book Free Consultation
-            </Button>
+      {/* Call to Action Section */}
+      <div className="text-center max-w-2xl lg:max-w-4xl mx-8 md:mx-auto my-24">
+        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-14 lg:p-16 shadow-2xl relative overflow-hidden group">
+          {/* Background Effects */}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-brand-blue opacity-50" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+
+          <div className="relative">
+            <div className="flex justify-center mb-8">
+              <div className="bg-white rounded-full p-6 shadow-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
+                <Rocket className="w-12 h-12 text-brand-blue" />
+              </div>
+            </div>
+
+            <h3 className="text-4xl lg:text-5xl font-black text-white mb-6">
+              Ready to Transform Your Business?
+            </h3>
+            <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto font-medium">
+              Let's create something extraordinary together. Schedule a
+              consultation to discuss your next project.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link
+                href="/contact"
+                className="bg-white text-brand-blue hover:bg-black hover:text-white px-12 w-full flex justify-center items-center py-6 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 group/btn"
+              >
+                <span className="mr-3">Start Your Project</span>
+                <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform duration-300" />
+              </Link>
+
+              <Link
+                href="/work"
+                className="bg-white/10 backdrop-blur-xl border-2 border-white/30 text-white hover:text-white hover:bg-white/20 px-12 w-full flex justify-center items-center py-6 rounded-2xl text-lg font-bold transition-all duration-500 hover:scale-105"
+              >
+                <span className="mr-3">View More Work</span>
+                <Eye className="w-6 h-6" />
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Footer */}
       <Footer />

@@ -15,7 +15,7 @@ export default function ServicesSection() {
               Our Expertise
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
             What We Craft
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -163,36 +163,6 @@ export default function ServicesSection() {
               </div>
             </CardContent>
           </Card>
-        </div>
-
-        {/* Technologies Section */}
-        <div className="mt-24 text-center">
-          <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-12">
-            Technologies We Master
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              "React",
-              "Next.js",
-              "TypeScript",
-              "Node.js",
-              "Shopify",
-              "Strapi",
-              "MongoDB",
-              "PostgreSQL",
-              "AWS",
-              "Vercel",
-              "React Native",
-              "Flutter",
-            ].map((tech, index) => (
-              <div
-                key={index}
-                className="bg-white border border-gray-200 px-6 py-3 rounded-full text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:shadow-md transition-all duration-200 cursor-pointer"
-              >
-                {tech}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

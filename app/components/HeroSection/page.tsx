@@ -81,14 +81,38 @@ const ImageCard = ({
 
 const CallToActionButtons = () => (
   <div className="flex items-center justify-center md:justify-start">
-    <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-      <Button className="group relative bg-brand-blue hover:bg-brand-blueHover text-white rounded-full px-6 py-4 sm:px-8 sm:py-5 md:px-10 md:py-6 font-semibold text-sm sm:text-base md:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden active:scale-95">
-        <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-        <span className="relative flex items-center space-x-2">
-          <span>Book a Call</span>
-          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
-        </span>
-      </Button>
+    <Link
+      href="https://calendly.com"
+      rel="noopener noreferrer"
+      target="_blank"
+      className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-blue rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 "
+    >
+      {/* Animated background overlay */}
+      <div className="absolute inset-0 bg-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+      {/* Shine effect */}
+      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 skew-x-12"></div>
+
+      {/* Button text */}
+      <span className="relative z-10 flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+        View Our Work
+        <svg
+          className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </span>
+
+      {/* Border glow */}
+      <div className="absolute inset-0 rounded-xl bg-brand-blue opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
     </Link>
   </div>
 );

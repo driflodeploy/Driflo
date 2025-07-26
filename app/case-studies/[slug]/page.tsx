@@ -530,18 +530,21 @@ export default function CaseStudyPage() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                  <Button className="bg-white text-brand-blue hover:bg-black hover:text-white px-12 py-6 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 group/btn">
+                  <Link
+                    href="/contact"
+                    className="bg-white text-brand-blue hover:bg-black hover:text-white px-12 w-full flex justify-center items-center py-6 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 group/btn"
+                  >
                     <span className="mr-3">Start Your Project</span>
                     <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </Button>
+                  </Link>
 
-                  <Button
-                    variant="outline"
-                    className="bg-white/10 backdrop-blur-xl border-2 border-white/30 text-white hover:text-white hover:bg-white/20 px-12 py-6 rounded-2xl text-lg font-bold transition-all duration-500 hover:scale-105"
+                  <Link
+                    href="/work"
+                    className="bg-white/10 backdrop-blur-xl border-2 border-white/30 text-white hover:text-white hover:bg-white/20 px-12 w-full flex justify-center items-center py-6 rounded-2xl text-lg font-bold transition-all duration-500 hover:scale-105"
                   >
                     <span className="mr-3">View More Work</span>
                     <Eye className="w-6 h-6" />
-                  </Button>
+                  </Link>
                 </div>
               </div>
             </div>

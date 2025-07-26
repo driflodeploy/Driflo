@@ -7,10 +7,85 @@ import { Textarea } from "@/components/ui/textarea";
 import Footer from "../components/Footer/page";
 
 export default function ContactPage() {
+  const CallToActionButtons = () => (
+    <div className="flex items-center justify-center md:justify-start">
+      <Link
+        href="https://calendly.com"
+        rel="noopener noreferrer"
+        target="_blank"
+        className="group relative inline-flex items-center justify-center px-6 py-4 text-sm font-semibold text-brand-blue bg-white rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 hover:text-white "
+      >
+        {/* Animated background overlay */}
+        <div className="absolute inset-0 bg-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        {/* Shine effect */}
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 skew-x-12"></div>
+
+        {/* Button text */}
+        <span className="relative z-10 flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+          Book Free Consultation
+          <svg
+            className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </span>
+
+        {/* Border glow */}
+        <div className="absolute inset-0 rounded-xl bg-brand-blue opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
+      </Link>
+    </div>
+  );
+
+  const Letsconnect = () => (
+    <div className="flex items-center justify-center md:justify-start">
+      <Link
+        href="https://calendly.com"
+        rel="noopener noreferrer"
+        target="_blank"
+        className="group relative inline-flex items-center justify-center px-6 py-4 text-sm font-semibold text-white bg-brand-blue rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 "
+      >
+        {/* Animated background overlay */}
+        <div className="absolute inset-0 bg-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        {/* Shine effect */}
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 skew-x-12"></div>
+
+        {/* Button text */}
+        <span className="relative z-10 flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+          Let's Conenct
+          <svg
+            className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </span>
+
+        {/* Border glow */}
+        <div className="absolute inset-0 rounded-xl bg-brand-blue opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
+      </Link>
+    </div>
+  );
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[400px] mx-6 mt-8 mb-16 rounded-2xl overflow-hidden">
+      <section className="relative h-[500px] mx-6 mt-8 mb-16 rounded-2xl overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80"
           alt="Contact our development team"
@@ -19,17 +94,15 @@ export default function ContactPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-12">
-          <h1 className="text-6xl font-light text-white mb-6 tracking-wide">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight">
             Let's Build Together
-          </h1>
+          </h2>
           <p className="text-white/90 text-xl max-w-2xl leading-relaxed">
             Ready to transform your business with a custom headless solution?
             Let's discuss your project or book a free consultation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Button className="bg-white text-black hover:bg-black hover:text-white hover:scale-105 transition-all duration-300 px-8 py-3 text-lg">
-              Book Free Consultation
-            </Button>
+            <CallToActionButtons />
           </div>
         </div>
       </section>
@@ -101,9 +174,7 @@ export default function ContactPage() {
                     className="w-full"
                   />
                 </div>
-                <Button className="bg-black text-white hover:bg-gray-200 hover:text-black transition-all duration-300 px-8 py-3 text-lg w-full md:w-auto">
-                  Let's Connect
-                </Button>
+                <Letsconnect />
               </form>
             </div>
 

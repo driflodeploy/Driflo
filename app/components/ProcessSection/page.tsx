@@ -142,8 +142,8 @@ export default function ProcessSection() {
                 Our Process
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
-              From Idea to Launch
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
+              From Idea To Launch
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our proven 6-step process ensures your project success

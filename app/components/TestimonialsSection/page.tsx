@@ -20,8 +20,8 @@ export default function TestimonialsSection() {
           <div className="inline-flex items-center bg-blue-50 px-6 py-3 rounded-full border border-blue-100 mb-8">
             <span className="text-sm font-semibold text-gray-700">Facts</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
-            What Our Clients Say
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
+            What our Clients Say
           </h2>
           <p className="text-xl text-gray-600">
             Trusted by thousands of property owners and managers

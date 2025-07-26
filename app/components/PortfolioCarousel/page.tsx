@@ -235,17 +235,13 @@ export default function PortfolioCarousel() {
 
   const getTypeColor = (type: string) => {
     const colors = {
-      "Shopify Hydrogen": "bg-gradient-to-r from-green-500 to-emerald-600",
-      "Headless Shopify + Next.js":
-        "bg-gradient-to-r from-blue-500 to-cyan-600",
-      "Shopify PWA": "bg-gradient-to-r from-indigo-500 to-violet-600",
-      "Shopify Plus + Hydrogen":
-        "bg-gradient-to-r from-orange-500 to-amber-600",
-      "Headless Shopify + Remix": "bg-gradient-to-r from-teal-500 to-cyan-600",
-      "Shopify Hydrogen + Subscriptions":
-        "bg-gradient-to-r from-pink-500 to-rose-600",
-      "Shopify Multi-Store + GraphQL":
-        "bg-gradient-to-r from-indigo-500 to-indigo-600",
+      "Shopify Hydrogen": "bg-brand-blue",
+      "Headless Shopify + Next.js": "bg-brand-blue",
+      "Shopify PWA": "bg-brand-blue",
+      "Shopify Plus + Hydrogen": "bg-brand-blue",
+      "Headless Shopify + Remix": "bg-brand-blue",
+      "Shopify Hydrogen + Subscriptions": "bg-brand-blue",
+      "Shopify Multi-Store + GraphQL": "bg-brand-blue",
     };
     return (
       colors[type as keyof typeof colors] ||

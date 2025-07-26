@@ -167,7 +167,7 @@ export default function ProcessSection() {
 
           {/* Cards Container - Takes remaining space */}
           <div className="flex-1 min-h-0 px-8">
-            <div className="horizontal-container overflow-x-hidden h-full">
+            <div className="horizontal-container overflow-x-hidden h-full px-20">
               <div
                 className="flex space-x-8 h-full items-center"
                 style={{ width: `${processSteps.length * 50}px` }}
@@ -200,7 +200,7 @@ export default function ProcessSection() {
                             <div
                               className={`
                               w-12 h-12 rounded-xl flex items-center justify-center shadow-md
-                              bg-gradient-to-br ${step.color}
+                              bg-brand-blue
                               ${isActive ? "scale-110" : "scale-100"}
                               transition-transform duration-500
                             `}
@@ -242,7 +242,7 @@ export default function ProcessSection() {
                                   className="flex items-center space-x-2"
                                 >
                                   <div
-                                    className={`w-1 h-1 rounded-full bg-gradient-to-r ${step.color}`}
+                                    className={`w-1 h-1 rounded-full bg-brand-blue`}
                                   ></div>
                                   <span className="text-xs font-medium text-gray-700">
                                     {deliverable}
@@ -267,7 +267,7 @@ export default function ProcessSection() {
                                     w-1 h-1 rounded-full transition-colors duration-300
                                     ${
                                       stepIndex <= index
-                                        ? `bg-gradient-to-r ${step.color}`
+                                        ? `bg-brand-blue`
                                         : "bg-gray-200"
                                     }
                                   `}

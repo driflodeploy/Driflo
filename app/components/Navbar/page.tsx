@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
             : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="bg-white/80 backdrop-blur-md w-[300px] sm:w-[600px] md:w-[760px] border border-white/10 rounded-xl px-6 py-3 shadow-md">
+        <div className="bg-white/80 backdrop-blur-md w-[300px] sm:w-[600px] md:w-[850px] border border-white/10 rounded-xl px-6 py-3 shadow-md">
           <div className="flex items-center justify-between space-x-8 ">
             {/* Logo */}
             <Link href="/">

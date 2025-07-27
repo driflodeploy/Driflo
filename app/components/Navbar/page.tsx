@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
             : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="bg-black/80 backdrop-blur-md w-[300px] sm:w-[600px] md:w-[760px] border  border-white/10 rounded-full px-6 py-3 shadow-2xl">
+        <div className="bg-black/80 backdrop-blur-md w-[300px] sm:w-[600px] md:w-[760px] border border-white/10 rounded-xl px-6 py-3 shadow-2xl">
           <div className="flex items-center justify-between space-x-8 ">
             {/* Logo */}
             <Link href="/">
@@ -126,7 +126,7 @@ const Navbar: React.FC = () => {
             {/* CTA Button */}
             <div className="hidden w-32 lg:block">
               <Link href="/contact">
-                <button className="bg-brand-blue  text-white px-6 py-2 rounded-full hover:bg-brand-blueHover  transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button className="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-brand-blueHover transition-all duration-300 transform hover:scale-105 shadow-lg">
                   Lets's Talk
                 </button>
               </Link>
@@ -154,59 +154,62 @@ const Navbar: React.FC = () => {
             className="fixed inset-0 bg-black/50 backdrop-blur-sm"
             onClick={toggleMenu}
           ></div>
-          <div className="fixed top-20 left-4 right-4 bg-black/90 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="px-6 py-4 space-y-4">
-              {navItems.map((item) => (
-                <div key={item.name}>
-                  <div className="flex items-center justify-between">
-                    <Link
-                      href={item.href}
-                      className="text-white/80 hover:text-white transition-colors duration-200 py-2"
-                      onClick={() => !item.dropdown && toggleMenu()}
-                    >
-                      {item.name}
-                    </Link>
-                    {item.dropdown && (
-                      <button
-                        onClick={() => handleDropdownToggle(item.name)}
-                        className="text-white/80 hover:text-white transition-colors duration-200 p-1"
+          <div className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[300px] sm:w-[600px] md:w-[760px]">
+            {/* Mobile dropdown that matches navbar width and position */}
+            <div className="bg-black/90 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl overflow-hidden mt-[72px]">
+              <div className="px-6 py-4 space-y-4">
+                {navItems.map((item) => (
+                  <div key={item.name}>
+                    <div className="flex items-center justify-between">
+                      <Link
+                        href={item.href}
+                        className="text-white/80 hover:text-white transition-colors duration-200 py-2"
+                        onClick={() => !item.dropdown && toggleMenu()}
                       >
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            activeDropdown === item.name ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
+                        {item.name}
+                      </Link>
+                      {item.dropdown && (
+                        <button
+                          onClick={() => handleDropdownToggle(item.name)}
+                          className="text-white/80 hover:text-white transition-colors duration-200 p-1"
+                        >
+                          <ChevronDown
+                            className={`w-4 h-4 transition-transform duration-200 ${
+                              activeDropdown === item.name ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Mobile Dropdown */}
+                    {item.dropdown && activeDropdown === item.name && (
+                      <div className="ml-4 mt-2 space-y-2 border-l border-white/10 pl-4">
+                        {item.dropdown.map((dropItem) => (
+                          <Link
+                            key={dropItem.name}
+                            href={dropItem.href}
+                            className="block text-white/60 hover:text-white transition-colors duration-200 py-1"
+                            onClick={toggleMenu}
+                          >
+                            {dropItem.name}
+                          </Link>
+                        ))}
+                      </div>
                     )}
                   </div>
+                ))}
 
-                  {/* Mobile Dropdown */}
-                  {item.dropdown && activeDropdown === item.name && (
-                    <div className="ml-4 mt-2 space-y-2 border-l border-white/10 pl-4">
-                      {item.dropdown.map((dropItem) => (
-                        <Link
-                          key={dropItem.name}
-                          href={dropItem.href}
-                          className="block text-white/60 hover:text-white transition-colors duration-200 py-1"
-                          onClick={toggleMenu}
-                        >
-                          {dropItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                {/* Mobile CTA */}
+                <div className="pt-4 border-t border-white/10">
+                  <Link
+                    href="/contact"
+                    className="block w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    onClick={toggleMenu}
+                  >
+                    Let's Talk
+                  </Link>
                 </div>
-              ))}
-
-              {/* Mobile CTA */}
-              <div className="pt-4 border-t border-white/10">
-                <Link
-                  href="/contact"
-                  className="block w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                  onClick={toggleMenu}
-                >
-                  Let's Talk
-                </Link>
               </div>
             </div>
           </div>

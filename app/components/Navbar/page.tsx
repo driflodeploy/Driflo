@@ -71,11 +71,11 @@ const Navbar: React.FC = () => {
             : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="bg-black/80 backdrop-blur-md w-[300px] sm:w-[600px] md:w-[760px] border border-white/10 rounded-xl px-6 py-3 shadow-2xl">
+        <div className="bg-white/80 backdrop-blur-md w-[300px] sm:w-[600px] md:w-[760px] border border-white/10 rounded-xl px-6 py-3 shadow-md">
           <div className="flex items-center justify-between space-x-8 ">
             {/* Logo */}
             <Link href="/">
-              <span className="text-white font-bold text-3xl">Driflo</span>
+              <span className="text-black font-bold text-3xl">Driflo</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
                 <div key={item.name} className="relative group">
                   <Link
                     href={item.href}
-                    className="text-white/80 hover:text-white transition-colors duration-200 flex items-center space-x-1 py-2"
+                    className="text-black/80 hover:text-black transition-colors duration-200 flex items-center space-x-1 py-2"
                     onMouseEnter={() =>
                       item.dropdown && setActiveDropdown(item.name)
                     }
@@ -104,7 +104,7 @@ const Navbar: React.FC = () => {
                   {/* Dropdown Menu */}
                   {item.dropdown && activeDropdown === item.name && (
                     <div
-                      className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-md border border-white/10 rounded-lg shadow-xl overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-md border border-black/10 rounded-lg shadow-xl overflow-hidden"
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onMouseLeave={() => setActiveDropdown(null)}
                     >
@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
                         <Link
                           key={dropItem.name}
                           href={dropItem.href}
-                          className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 transition-colors duration-200"
+                          className="block px-4 py-3 text-black/80 hover:text-black hover:bg-white/10 transition-colors duration-200"
                         >
                           {dropItem.name}
                         </Link>
@@ -126,7 +126,7 @@ const Navbar: React.FC = () => {
             {/* CTA Button */}
             <div className="hidden w-32 lg:block">
               <Link href="/contact">
-                <button className="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-brand-blueHover transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-brand-blueHover transition-all duration-300 transform hover:scale-105 shadow-lg">
                   Lets's Talk
                 </button>
               </Link>
@@ -135,7 +135,7 @@ const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors duration-200"
+              className="lg:hidden text-black p-2 rounded-full hover:bg-white/10 transition-colors duration-200"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -150,20 +150,17 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
-          <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={toggleMenu}
-          ></div>
+          <div className="fixed inset-0 bg-white/50" onClick={toggleMenu}></div>
           <div className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[300px] sm:w-[600px] md:w-[760px]">
             {/* Mobile dropdown that matches navbar width and position */}
-            <div className="bg-black/90 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl overflow-hidden mt-[72px]">
+            <div className="bg-white/90 backdrop-blur-md border border-white/60 rounded-xl shadow-2xl overflow-hidden mt-[72px]">
               <div className="px-6 py-4 space-y-4">
                 {navItems.map((item) => (
                   <div key={item.name}>
                     <div className="flex items-center justify-between">
                       <Link
                         href={item.href}
-                        className="text-white/80 hover:text-white transition-colors duration-200 py-2"
+                        className="text-black/80 hover:text-black transition-colors duration-200 py-2"
                         onClick={() => !item.dropdown && toggleMenu()}
                       >
                         {item.name}

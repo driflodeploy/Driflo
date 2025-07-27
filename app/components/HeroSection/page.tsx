@@ -85,13 +85,13 @@ const CallToActionButtons = () => (
       href="https://calendly.com"
       rel="noopener noreferrer"
       target="_blank"
-      className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-blue rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 "
+      className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-black rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-black/25 "
     >
       {/* Animated background overlay */}
-      <div className="absolute inset-0 bg-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       {/* Shine effect */}
-      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 skew-x-12"></div>
+      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-transform duration-700 skew-x-12"></div>
 
       {/* Button text */}
       <span className="relative z-10 flex items-center gap-2 group-hover:gap-3 transition-all duration-300">

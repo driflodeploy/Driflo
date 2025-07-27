@@ -65,13 +65,13 @@ const Navbar: React.FC = () => {
     <>
       {/* Floating Navbar */}
       <nav
-        className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-in-out ${
+        className={`fixed top-4 left-5 right-5 z-50 transition-all duration-500 ease-in-out ${
           isVisible
             ? "translate-y-0 opacity-100"
             : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="bg-white/80 backdrop-blur-md w-[300px] sm:w-[600px] md:w-[850px] border border-white/10 rounded-xl px-6 py-3 shadow-md">
+        <div className="bg-white/80 backdrop-blur-md w-full border border-black/10 rounded-xl px-6 py-3 shadow-md">
           <div className="flex items-center justify-between space-x-8 ">
             {/* Logo */}
             <Link href="/">
@@ -102,17 +102,31 @@ const Navbar: React.FC = () => {
                   </Link>
 
                   {/* Dropdown Menu */}
-                  {item.dropdown && activeDropdown === item.name && (
+                  {item.dropdown && (
                     <div
-                      className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-md border border-black/10 rounded-lg shadow-xl overflow-hidden"
+                      className={`absolute top-full left-0 mt-2 w-48 bg-white/90 backdrop-blur-md border border-black/10 rounded-lg shadow-xl overflow-hidden transition-all duration-300 ease-out ${
+                        activeDropdown === item.name
+                          ? "opacity-100 translate-y-0 visible"
+                          : "opacity-0 -translate-y-2 invisible"
+                      }`}
                       onMouseEnter={() => setActiveDropdown(item.name)}
                       onMouseLeave={() => setActiveDropdown(null)}
                     >
-                      {item.dropdown.map((dropItem) => (
+                      {item.dropdown.map((dropItem, index) => (
                         <Link
                           key={dropItem.name}
                           href={dropItem.href}
-                          className="block px-4 py-3 text-black/80 hover:text-black hover:bg-white/10 transition-colors duration-200"
+                          className={`block px-4 py-3 text-black/80 hover:text-black hover:bg-black/10 transition-all duration-200 ${
+                            activeDropdown === item.name
+                              ? "translate-x-0 opacity-100"
+                              : "translate-x-4 opacity-0"
+                          }`}
+                          style={{
+                            transitionDelay:
+                              activeDropdown === item.name
+                                ? `${index * 50}ms`
+                                : "0ms",
+                          }}
                         >
                           {dropItem.name}
                         </Link>
@@ -126,7 +140,7 @@ const Navbar: React.FC = () => {
             {/* CTA Button */}
             <div className="hidden w-32 lg:block">
               <Link href="/contact">
-                <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-brand-blueHover transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button className="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-brand-blueHover transition-all duration-300 transform hover:scale-105 shadow-lg">
                   Lets's Talk
                 </button>
               </Link>
@@ -135,7 +149,7 @@ const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="lg:hidden text-black p-2 rounded-full hover:bg-white/10 transition-colors duration-200"
+              className="lg:hidden text-black p-2 rounded-full hover:bg-black/10 transition-colors duration-200"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -150,13 +164,26 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="fixed inset-0 bg-white/50" onClick={toggleMenu}></div>
-          <div className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[300px] sm:w-[600px] md:w-[760px]">
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={toggleMenu}
+          ></div>
+          <div className="fixed top-4 left-5 right-5">
             {/* Mobile dropdown that matches navbar width and position */}
-            <div className="bg-white/90 backdrop-blur-md border border-white/60 rounded-xl shadow-2xl overflow-hidden mt-[72px]">
+            <div className="bg-white/90 backdrop-blur-md border border-black/10 rounded-xl shadow-xl overflow-hidden mt-[72px]">
               <div className="px-6 py-4 space-y-4">
-                {navItems.map((item) => (
-                  <div key={item.name}>
+                {navItems.map((item, index) => (
+                  <div
+                    key={item.name}
+                    className={`transform transition-all duration-500 ease-out ${
+                      isMenuOpen
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-8 opacity-0"
+                    }`}
+                    style={{
+                      transitionDelay: isMenuOpen ? `${index * 100}ms` : "0ms",
+                    }}
+                  >
                     <div className="flex items-center justify-between">
                       <Link
                         href={item.href}
@@ -168,7 +195,7 @@ const Navbar: React.FC = () => {
                       {item.dropdown && (
                         <button
                           onClick={() => handleDropdownToggle(item.name)}
-                          className="text-white/80 hover:text-white transition-colors duration-200 p-1"
+                          className="text-black/80 hover:text-black transition-colors duration-200 p-1"
                         >
                           <ChevronDown
                             className={`w-4 h-4 transition-transform duration-200 ${
@@ -180,25 +207,54 @@ const Navbar: React.FC = () => {
                     </div>
 
                     {/* Mobile Dropdown */}
-                    {item.dropdown && activeDropdown === item.name && (
-                      <div className="ml-4 mt-2 space-y-2 border-l border-white/10 pl-4">
-                        {item.dropdown.map((dropItem) => (
-                          <Link
-                            key={dropItem.name}
-                            href={dropItem.href}
-                            className="block text-white/60 hover:text-white transition-colors duration-200 py-1"
-                            onClick={toggleMenu}
-                          >
-                            {dropItem.name}
-                          </Link>
-                        ))}
+                    {item.dropdown && (
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ease-out ${
+                          activeDropdown === item.name
+                            ? "max-h-96 opacity-100"
+                            : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <div className="ml-4 mt-2 space-y-2 border-l border-black/10 pl-4">
+                          {item.dropdown.map((dropItem, dropIndex) => (
+                            <Link
+                              key={dropItem.name}
+                              href={dropItem.href}
+                              className={`block text-black/60 hover:text-black transition-all duration-200 py-1 ${
+                                activeDropdown === item.name
+                                  ? "translate-x-0 opacity-100"
+                                  : "translate-x-4 opacity-0"
+                              }`}
+                              style={{
+                                transitionDelay:
+                                  activeDropdown === item.name
+                                    ? `${dropIndex * 50}ms`
+                                    : "0ms",
+                              }}
+                              onClick={toggleMenu}
+                            >
+                              {dropItem.name}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
                 ))}
 
                 {/* Mobile CTA */}
-                <div className="pt-4 border-t border-white/10">
+                <div
+                  className={`pt-4 border-t border-black/10 transform transition-all duration-500 ease-out ${
+                    isMenuOpen
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-8 opacity-0"
+                  }`}
+                  style={{
+                    transitionDelay: isMenuOpen
+                      ? `${navItems.length * 100}ms`
+                      : "0ms",
+                  }}
+                >
                   <Link
                     href="/contact"
                     className="block w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg"

@@ -82,7 +82,7 @@ const ImageCard = ({
 const CallToActionButtons = () => (
   <div className="flex items-center justify-center md:justify-start">
     <Link
-      href="https://calendly.com"
+      href="/work"
       rel="noopener noreferrer"
       target="_blank"
       className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-black rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-black/25 "

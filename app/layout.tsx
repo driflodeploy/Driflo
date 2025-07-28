@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
-import { Inter } from "next/font/google";
+
 import Navbar from "./components/Navbar/page";
 
-const inter = Inter({
+import { Montserrat } from "next/font/google";
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
   preload: true,
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={montserrat.className}>
       <body className="antialiased">
         <Navbar />
         <main>{children}</main>

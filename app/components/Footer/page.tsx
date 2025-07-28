@@ -1,6 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import {
+  ArrowRight,
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Instagram,
+} from "lucide-react";
 import Link from "next/link";
 import { memo, useCallback } from "react";
 
@@ -100,14 +107,14 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { href: "https://github.com/youragency", icon: Github, label: "GitHub" },
+    { href: "https://github.com/driflodeploy", icon: Github, label: "GitHub" },
     {
-      href: "https://linkedin.com/company/youragency",
-      icon: Linkedin,
-      label: "LinkedIn",
+      href: "https://instagram.com/driflo.team",
+      icon: Instagram,
+      label: "Instagram",
     },
-    { href: "https://twitter.com/youragency", icon: Twitter, label: "Twitter" },
-    { href: "mailto:hello@youragency.com", icon: Mail, label: "Email" },
+    // { href: "https://twitter.com/youragency", icon: Twitter, label: "Twitter" },
+    { href: "todriflo@gmail.com", icon: Mail, label: "Email" },
   ];
 
   return (

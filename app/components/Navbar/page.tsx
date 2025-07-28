@@ -15,7 +15,6 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { name: "Home", href: "/" },
-
   {
     name: "Services",
     href: "/#services",
@@ -61,18 +60,52 @@ const Navbar: React.FC = () => {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
   };
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isMenuOpen && !target.closest(".mobile-menu-container")) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
       {/* Floating Navbar */}
       <nav
-        className={`fixed top-4 left-5 right-5 z-50 transition-all duration-500 ease-in-out ${
+        className={`fixed top-4 z-50 transition-all duration-500 ease-in-out ${
           isVisible
             ? "translate-y-0 opacity-100"
             : "-translate-y-full opacity-0"
         }`}
+        style={{
+          left: "50%",
+          transform: `translateX(-50%) ${
+            isVisible ? "translateY(0)" : "translateY(-100%)"
+          }`,
+        }}
       >
-        <div className="bg-white/80 backdrop-blur-md w-full border border-black/10 rounded-xl px-6 py-3 shadow-md">
-          <div className="flex items-center justify-between space-x-8 ">
+        {/* Main Navbar Container */}
+        <div
+          className="bg-white/80 backdrop-blur-md border border-black/10 rounded-xl px-6 py-3 shadow-md hover:shadow-xl transition-all duration-300"
+          style={{
+            width:
+              typeof window !== "undefined" && window.innerWidth >= 1024
+                ? "70vw"
+                : "calc(100vw - 40px)",
+            maxWidth: "1200px",
+          }}
+        >
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/">
               <span className="text-black font-bold text-3xl">Driflo</span>
@@ -101,7 +134,7 @@ const Navbar: React.FC = () => {
                     )}
                   </Link>
 
-                  {/* Dropdown Menu */}
+                  {/* Desktop Dropdown Menu */}
                   {item.dropdown && (
                     <div
                       className={`absolute top-full left-0 mt-2 w-48 bg-white/90 backdrop-blur-md border border-black/10 rounded-lg shadow-xl overflow-hidden transition-all duration-300 ease-out ${
@@ -138,10 +171,10 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="hidden w-32 lg:block">
+            <div className="hidden lg:block">
               <Link href="/contact">
-                <button className="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-brand-blueHover transition-all duration-300 transform hover:scale-105 shadow-lg">
-                  Lets's Talk
+                <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-black/80 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  Let's Talk
                 </button>
               </Link>
             </div>
@@ -149,125 +182,139 @@ const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="lg:hidden text-black p-2 rounded-full hover:bg-black/10 transition-colors duration-200"
+              className="lg:hidden text-black p-2 rounded-full hover:bg-black/10 transition-all duration-200"
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              <div className="relative w-6 h-6 flex items-center justify-center">
+                <span
+                  className={`absolute w-5 h-0.5 bg-black transition-all duration-300 ${
+                    isMenuOpen ? "rotate-45" : "-translate-y-1.5"
+                  }`}
+                ></span>
+                <span
+                  className={`absolute w-5 h-0.5 bg-black transition-all duration-300 ${
+                    isMenuOpen ? "opacity-0" : ""
+                  }`}
+                ></span>
+                <span
+                  className={`absolute w-5 h-0.5 bg-black transition-all duration-300 ${
+                    isMenuOpen ? "-rotate-45" : "translate-y-1.5"
+                  }`}
+                ></span>
+              </div>
             </button>
           </div>
         </div>
-      </nav>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={toggleMenu}
-          ></div>
-          <div className="fixed top-4 left-5 right-5">
-            {/* Mobile dropdown that matches navbar width and position */}
-            <div className="bg-white/90 backdrop-blur-md border border-black/10 rounded-xl shadow-xl overflow-hidden mt-[72px]">
-              <div className="px-6 py-4 space-y-4">
-                {navItems.map((item, index) => (
-                  <div
-                    key={item.name}
-                    className={`transform transition-all duration-500 ease-out ${
-                      isMenuOpen
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-8 opacity-0"
-                    }`}
-                    style={{
-                      transitionDelay: isMenuOpen ? `${index * 100}ms` : "0ms",
-                    }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <Link
-                        href={item.href}
-                        className="text-black/80 hover:text-black transition-colors duration-200 py-2"
-                        onClick={() => !item.dropdown && toggleMenu()}
-                      >
-                        {item.name}
-                      </Link>
-                      {item.dropdown && (
-                        <button
-                          onClick={() => handleDropdownToggle(item.name)}
-                          className="text-black/80 hover:text-black transition-colors duration-200 p-1"
-                        >
-                          <ChevronDown
-                            className={`w-4 h-4 transition-transform duration-200 ${
-                              activeDropdown === item.name ? "rotate-180" : ""
-                            }`}
-                          />
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Mobile Dropdown */}
-                    {item.dropdown && (
-                      <div
-                        className={`overflow-hidden transition-all duration-300 ease-out ${
-                          activeDropdown === item.name
-                            ? "max-h-96 opacity-100"
-                            : "max-h-0 opacity-0"
-                        }`}
-                      >
-                        <div className="ml-4 mt-2 space-y-2 border-l border-black/10 pl-4">
-                          {item.dropdown.map((dropItem, dropIndex) => (
-                            <Link
-                              key={dropItem.name}
-                              href={dropItem.href}
-                              className={`block text-black/60 hover:text-black transition-all duration-200 py-1 ${
-                                activeDropdown === item.name
-                                  ? "translate-x-0 opacity-100"
-                                  : "translate-x-4 opacity-0"
-                              }`}
-                              style={{
-                                transitionDelay:
-                                  activeDropdown === item.name
-                                    ? `${dropIndex * 50}ms`
-                                    : "0ms",
-                              }}
-                              onClick={toggleMenu}
-                            >
-                              {dropItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-
-                {/* Mobile CTA */}
+        {/* Mobile Menu - Extends from navbar */}
+        <div
+          className={`lg:hidden mobile-menu-container transition-all duration-400 ease-in-out overflow-hidden ${
+            isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+          }`}
+          style={{
+            width:
+              typeof window !== "undefined" && window.innerWidth >= 1024
+                ? "70vw"
+                : "calc(100vw - 40px)",
+            maxWidth: "1200px",
+          }}
+        >
+          <div className="bg-white/90 backdrop-blur-md border border-black/10 border-t-0 rounded-b-xl shadow-lg mt-0">
+            <div className="px-6 py-4 space-y-4">
+              {navItems.map((item, index) => (
                 <div
-                  className={`pt-4 border-t border-black/10 transform transition-all duration-500 ease-out ${
+                  key={item.name}
+                  className={`transform transition-all duration-500 ease-out ${
                     isMenuOpen
                       ? "translate-y-0 opacity-100"
                       : "translate-y-8 opacity-0"
                   }`}
                   style={{
-                    transitionDelay: isMenuOpen
-                      ? `${navItems.length * 100}ms`
-                      : "0ms",
+                    transitionDelay: isMenuOpen ? `${index * 100}ms` : "0ms",
                   }}
                 >
-                  <Link
-                    href="/contact"
-                    className="block w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                    onClick={toggleMenu}
-                  >
-                    Let's Talk
-                  </Link>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={item.href}
+                      className="text-black/80 hover:text-black transition-colors duration-200 py-2 font-medium"
+                      onClick={() => !item.dropdown && setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                    {item.dropdown && (
+                      <button
+                        onClick={() => handleDropdownToggle(item.name)}
+                        className="text-black/80 hover:text-black transition-colors duration-200 p-1"
+                      >
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            activeDropdown === item.name ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Mobile Dropdown */}
+                  {item.dropdown && (
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-out ${
+                        activeDropdown === item.name
+                          ? "max-h-96 opacity-100 mt-2"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="ml-4 space-y-2 border-l-2 border-black/20 pl-4">
+                        {item.dropdown.map((dropItem, dropIndex) => (
+                          <Link
+                            key={dropItem.name}
+                            href={dropItem.href}
+                            className={`block text-black/60 hover:text-black transition-all duration-200 py-1 ${
+                              activeDropdown === item.name
+                                ? "translate-x-0 opacity-100"
+                                : "translate-x-4 opacity-0"
+                            }`}
+                            style={{
+                              transitionDelay:
+                                activeDropdown === item.name
+                                  ? `${dropIndex * 50}ms`
+                                  : "0ms",
+                            }}
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {dropItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
+              ))}
+
+              {/* Mobile CTA */}
+              <div
+                className={`pt-4 border-t border-black/10 transform transition-all duration-500 ease-out ${
+                  isMenuOpen
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-8 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: isMenuOpen
+                    ? `${navItems.length * 100}ms`
+                    : "0ms",
+                }}
+              >
+                <Link
+                  href="/contact"
+                  className="block w-full bg-black text-white text-center px-6 py-3 rounded-full hover:bg-black/80 transition-all duration-300 transform hover:scale-105 shadow-lg font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Let's Talk
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      )}
+      </nav>
     </>
   );
 };

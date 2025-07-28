@@ -13,10 +13,10 @@ export default function ContactPage() {
         href="https://calendly.com"
         rel="noopener noreferrer"
         target="_blank"
-        className="group relative inline-flex items-center justify-center px-6 py-4 text-sm font-semibold text-brand-blue bg-white rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 hover:text-white "
+        className="group relative inline-flex items-center justify-center px-6 py-4 text-sm font-semibold text-black bg-white rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-black hover:text-white "
       >
         {/* Animated background overlay */}
-        <div className="absolute inset-0 bg-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
         {/* Shine effect */}
         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 skew-x-12"></div>
@@ -51,10 +51,10 @@ export default function ContactPage() {
         href="https://calendly.com"
         rel="noopener noreferrer"
         target="_blank"
-        className="group relative inline-flex items-center justify-center px-6 py-4 text-sm font-semibold text-white bg-brand-blue rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 "
+        className="group relative inline-flex items-center justify-center px-6 py-4 text-sm font-semibold text-white bg-black rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-black "
       >
         {/* Animated background overlay */}
-        <div className="absolute inset-0 bg-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
         {/* Shine effect */}
         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 skew-x-12"></div>
@@ -205,9 +205,7 @@ export default function ContactPage() {
                     Contact Information
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Email: info@Driftlo.dev
-                    <br />
-                    Phone: +1 (555) 123-4567
+                    Email: todriflo@gmail.com
                     <br />
                     Response time: Within 24 hours
                   </p>
@@ -218,15 +216,16 @@ export default function ContactPage() {
                     Follow Our Work
                   </h3>
                   <div className="flex space-x-4">
-                    <Button variant="outline" size="sm">
-                      GitHub
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      LinkedIn
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      Twitter
-                    </Button>
+                    <a href="https://github.com/driflodeploy" target="_blank">
+                      <Button variant="outline" size="sm">
+                        GitHub
+                      </Button>
+                    </a>
+                    <a href="https://instagram.com/driflo.team" target="_blank">
+                      <Button variant="outline" size="sm">
+                        Instagram
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </div>

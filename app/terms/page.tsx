@@ -19,7 +19,7 @@ export default function TermsAndConditions() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-4xl mt-10 mx-auto">
+      <div className="max-w-4xl mt-20 mx-auto">
         {/* Header with Back Button */}
         <div className="mb-8">
           <Link

@@ -33,6 +33,12 @@ const Navbar: React.FC = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  // Fix hydration error by ensuring client-side rendering
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -78,11 +84,16 @@ const Navbar: React.FC = () => {
     };
   }, [isMenuOpen]);
 
+  // Don't render until client-side hydration is complete
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <>
-      {/* Floating Navbar */}
-      <nav
-        className={`fixed top-4 z-50 transition-all duration-500 ease-in-out ${
+      {/* Floating Navbar Container */}
+      <div
+        className={`fixed top-4 z-50 transition-all duration-500 ease-in-out lg:w-[70vw] w-[calc(100vw-40px)] max-w-[1200px] ${
           isVisible
             ? "translate-y-0 opacity-100"
             : "-translate-y-full opacity-0"
@@ -94,18 +105,9 @@ const Navbar: React.FC = () => {
           }`,
         }}
       >
-        {/* Main Navbar Container */}
-        <div
-          className="bg-white/80 backdrop-blur-md border border-black/10 rounded-xl px-6 py-3 shadow-md hover:shadow-xl transition-all duration-300"
-          style={{
-            width:
-              typeof window !== "undefined" && window.innerWidth >= 1024
-                ? "70vw"
-                : "calc(100vw - 40px)",
-            maxWidth: "1200px",
-          }}
-        >
-          <div className="flex items-center justify-between">
+        {/* Main Navbar */}
+        <nav className="bg-white/90 backdrop-blur-md border border-black/10 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl">
+          <div className="flex items-center justify-between px-6 py-3">
             {/* Logo */}
             <Link href="/">
               <span className="text-black font-bold text-3xl">Driflo</span>
@@ -172,7 +174,7 @@ const Navbar: React.FC = () => {
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <Link href="/contact">
+              <Link href="https://calendly.com/todriflo/30min" target="_blank">
                 <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-black/80 transition-all duration-300 transform hover:scale-105 shadow-lg">
                   Let's Talk
                 </button>
@@ -203,22 +205,15 @@ const Navbar: React.FC = () => {
               </div>
             </button>
           </div>
-        </div>
+        </nav>
 
-        {/* Mobile Menu - Extends from navbar */}
+        {/* Mobile Menu Dropdown - Direct Extension */}
         <div
           className={`lg:hidden mobile-menu-container transition-all duration-400 ease-in-out overflow-hidden ${
             isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
           }`}
-          style={{
-            width:
-              typeof window !== "undefined" && window.innerWidth >= 1024
-                ? "70vw"
-                : "calc(100vw - 40px)",
-            maxWidth: "1200px",
-          }}
         >
-          <div className="bg-white/90 backdrop-blur-md border border-black/10 border-t-0 rounded-b-xl shadow-lg mt-0">
+          <div className="bg-white/90 backdrop-blur-md border-l border-r border-b border-black/10 rounded-xl ">
             <div className="px-6 py-4 space-y-4">
               {navItems.map((item, index) => (
                 <div
@@ -263,7 +258,7 @@ const Navbar: React.FC = () => {
                           : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="ml-4 space-y-2 border-l-2 border-black/20 pl-4">
+                      <div className="ml-4 space-y-2 border-l-2 border-black pl-4">
                         {item.dropdown.map((dropItem, dropIndex) => (
                           <Link
                             key={dropItem.name}
@@ -304,8 +299,8 @@ const Navbar: React.FC = () => {
                 }}
               >
                 <Link
-                  href="/contact"
-                  className="block w-full bg-black text-white text-center px-6 py-3 rounded-full hover:bg-black/80 transition-all duration-300 transform hover:scale-105 shadow-lg font-medium"
+                  href="https://calendly.com/todriflo/30min"
+                  className="block w-full bg-black text-white text-center px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Let's Talk
@@ -314,7 +309,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </div>
     </>
   );
 };

@@ -78,7 +78,11 @@ const CallToActionButton = memo(() => {
   }, []);
 
   return (
-    <Link href="https://calendly.com" target="_blank" rel="noopener noreferrer">
+    <Link
+      href="https://calendly.com/todriflo/30min"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Button
         onClick={handleClick}
         className="group relative  bg-brand-blue hover:bg-brand-blueHover text-white rounded-full px-4 py-2 sm:px-6 sm:py-2.5 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden active:scale-95"

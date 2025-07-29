@@ -18,74 +18,70 @@ import Link from "next/link";
 const portfolioItems = [
   {
     id: 1,
-    slug: "sustainable-fashion-hydrogen",
-    title: "Sustainable Fashion Hydrogen Storefront",
-    time: "4 months",
+    slug: "bohme",
+    title: "Boheme",
+    time: "3 weeks",
     type: "Shopify Hydrogen",
-    image:
-      "https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=400&fit=crop&crop=center",
+    image: "/work/a-1.png",
     stats: {
       revenue: "+180%",
       performance: "100/100",
       conversion: "6.8%",
     },
     description:
-      "High-performance Shopify Hydrogen storefront for sustainable fashion brand with custom React components and optimized checkout flow.",
+      "High-performance Shopify Hydrogen storefront for sustainable fashion brand with custom components and optimized checkout flow.",
     tags: ["Shopify Hydrogen", "React", "Sustainable Fashion"],
     rating: 4.9,
   },
   {
     id: 2,
-    slug: "tech-accessories-headless",
-    title: "Tech Accessories Headless Store",
-    time: "4 months",
-    type: "Headless Shopify + Next.js",
-    image:
-      "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=600&h=400&fit=crop&crop=center",
+    slug: "deadstock",
+    title: "Deadstock",
+    time: "2 weeks",
+    type: "Headless Shopify",
+    image: "/work/b-1.png",
     stats: {
-      pageSpeed: "0.8s",
-      mobile_score: "95/100",
-      seo_boost: "+75%",
+      revenue: "+155%",
+      performance: "100/100",
+      conversion: "7.2%",
     },
     description:
-      "Headless Shopify store built with Next.js for tech accessories brand, featuring advanced product filtering and AR try-on capabilities.",
-    tags: ["Headless Shopify", "Next.js", "AR Integration"],
+      "Headless Shopify store built with React for deadstock clothing brand, featuring advanced product filtering.",
+    tags: ["Headless Shopify", "React"],
     rating: 4.8,
   },
   {
     id: 3,
-    slug: "artisan-jewelry-hydrogen",
-    title: "Artisan Jewelry Hydrogen Experience",
-    time: "4 months",
+    slug: "thenimetyou",
+    title: "Then I Met You",
+    time: "4 weeks",
     type: "Shopify Hydrogen",
-    image:
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop&crop=center",
+    image: "/work/c-1.png",
     stats: {
       engagement: "+120%",
       bounce_rate: "-45%",
-      cart_value: "+$85",
+      cart_value: "+$185",
     },
     description:
-      "Immersive Shopify Hydrogen storefront for artisan jewelry with 360° product views, custom configurator, and storytelling features.",
-    tags: ["Shopify Hydrogen", "3D Visualization", "Custom Design"],
+      "Immersive Shopify Hydrogen storefront for thenimetyou with custom configurator, and storytelling features.",
+    tags: ["Shopify Hydrogen", "lab Reports", "Custom Design"],
     rating: 4.9,
   },
   {
     id: 4,
-    slug: "fitness-supplement-pwa",
-    title: "Fitness Supplement PWA Store",
-    time: "4 months",
-    type: "Shopify PWA",
-    image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
+    slug: "velasca",
+    title: "Velasca",
+    time: "4 weeks",
+    type: "Shopify Hydrogen",
+    image: "/work/d-1.png",
     stats: {
-      mobile_sales: "+250%",
-      app_installs: "25K+",
-      offline_orders: "15%",
+      engagement: "+220%",
+      conversion: "8.4%",
+      cart_value: "+$310",
     },
     description:
-      "Progressive Web App built on Shopify with offline capabilities, push notifications, and personalized nutrition recommendations.",
-    tags: ["Shopify PWA", "Offline Support", "Personalization"],
+      "Progressive Web App built on Shopify with men/women different websites, and personalized outfit recommendations.",
+    tags: ["Shopify", "Custom Design", "Personalization"],
     rating: 4.7,
   },
 ];
@@ -135,7 +131,7 @@ export default function PortfolioCarousel() {
     }
 
     const deltaTime = currentTime - lastTimeRef.current;
-    const speed = isHovered ? 0.02 : 0.04; // Slower when hovered, like water flow
+    const speed = isHovered ? 0.02 : 0.06; // Slower when hovered, like water flow
 
     setTranslateX((prevX) => {
       let newX = prevX + deltaTime * speed;

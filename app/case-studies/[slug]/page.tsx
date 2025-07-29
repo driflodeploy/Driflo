@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,132 +32,279 @@ import {
   Smartphone,
   Database,
   Cloud,
+  ShoppingCart,
+  Palette,
+  Settings,
 } from "lucide-react";
 import Link from "next/link";
 import Footer from "@/app/components/Footer/page";
 import { MinimalNewsletter } from "@/app/components/Newsletter/page";
+import { useParams } from "next/navigation";
 
-// Your existing case studies data
+// Case studies data with expanded details
 const caseStudies = [
   {
     id: 1,
-    slug: "sustainable-fashion-hydrogen",
-    title: "Sustainable Fashion Hydrogen Storefront",
-    client: "EcoThreads",
+    slug: "bohme",
+    title: "Boheme Sustainable Fashion Store",
+    client: "Boheme",
     industry: "Sustainable Fashion",
-    location: "Portland, OR",
-    duration: "4 months",
-    team: "4 developers",
-    image:
-      "https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&h=500&fit=crop&crop=center",
+    location: "Los Angeles, CA",
+    duration: "3 weeks",
+    team: "3 developers",
+    featured: false,
+    images: [
+      "/work/a-1.png",
+      "/work/a-2.png",
+      "/work/a-3.png",
+      "/work/a-4.png",
+    ],
+    shortDescription:
+      "High-performance Shopify Hydrogen storefront for sustainable fashion brand with custom components and optimized checkout flow.",
     challenge:
-      "EcoThreads needed a high-performance e-commerce platform that could handle their growing customer base while maintaining their brand values of sustainability and transparency. Their existing WordPress site was slow, had poor mobile experience, and couldn't support their complex product storytelling needs.",
+      "Boheme needed a lightning-fast e-commerce platform that could showcase their sustainable fashion collections while maintaining exceptional performance. Their existing platform was slow, had poor mobile experience, and couldn't effectively communicate their sustainability mission to customers.",
     solution:
-      "We built a custom Shopify Hydrogen storefront with React components optimized for performance and sustainability storytelling. The solution included carbon footprint tracking for each product, detailed supply chain transparency, and a custom size guide with sustainability impact calculations.",
+      "We built a cutting-edge Shopify Hydrogen storefront with React components optimized for performance and sustainability storytelling. The solution included custom product configurators, detailed sustainability metrics for each item, and an intuitive checkout flow that increased conversions significantly.",
+    keyMetrics: {
+      primary: "+180%",
+      primaryLabel: "Revenue Increase",
+      secondary: "100/100",
+      secondaryLabel: "Performance Score",
+    },
     technologies: [
       "Shopify Hydrogen",
-      "React 18",
+      "React",
       "TypeScript",
       "Tailwind CSS",
-      "Shopify Admin API",
-      "Carbon Tracking API",
+      "Sustainable Fashion APIs",
     ],
+    rating: 4.9,
+    testimonialSnippet: "The performance improvements have been incredible.",
+    testimonial: {
+      quote:
+        "The new Hydrogen storefront not only increased our sales by 180% but perfectly represents our sustainability mission. The performance improvements have been incredible, and our customers love the new experience.",
+      author: "Emma Rodriguez",
+      position: "Founder & CEO, Boheme",
+    },
     results: {
       revenue: "+180% increase in online revenue",
       performance: "100/100 Lighthouse performance score",
-      conversion: "6.8% conversion rate (up from 2.1%)",
-      pageSpeed: "Page load time reduced from 4.2s to 1.1s",
-      mobileTraffic: "+220% increase in mobile conversions",
-      carbonReduction: "15% reduction in returns due to better sizing",
-    },
-    testimonial: {
-      quote:
-        "The new Hydrogen storefront not only increased our sales but perfectly represents our sustainability mission. The performance improvements have been incredible.",
-      author: "Sarah Mitchell",
-      position: "Founder & CEO, EcoThreads",
+      conversion: "7.2% conversion rate (up from 2.8%)",
+      pageSpeed: "89% page load time reduced from 3.8s to 0.9s",
+      mobileTraffic: "+240% increase in mobile conversions",
+      sustainabilityScore:
+        "95% customer satisfaction with sustainability features",
     },
     keyFeatures: [
-      "Carbon footprint calculator for each product",
-      "Interactive supply chain map",
-      "Sustainable packaging options",
-      "Size recommendation engine",
-      "Progressive Web App capabilities",
+      "Sustainability impact calculator for each product",
+      "Custom size guide with fit recommendations",
+      "Real-time inventory management",
       "Advanced product filtering by sustainability metrics",
+      "Progressive Web App capabilities",
+      "Optimized checkout flow with one-click purchasing",
     ],
-    metrics: {
-      beforeAfter: {
-        pageSpeed: { before: "4.2s", after: "1.1s" },
-        conversionRate: { before: "2.1%", after: "6.8%" },
-        mobileScore: { before: "65/100", after: "98/100" },
-        bounceRate: { before: "68%", after: "31%" },
-      },
-    },
+    category: "E-commerce",
+    size: "large",
   },
   {
     id: 2,
-    slug: "tech-accessories-headless",
-    title: "Tech Accessories Headless Store",
-    client: "TechFlow",
-    industry: "Consumer Electronics",
-    location: "San Jose, CA",
-    duration: "6 months",
-    team: "5 developers",
-    image:
-      "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=800&h=500&fit=crop&crop=center",
-    challenge:
-      "TechFlow's legacy Magento store was struggling with poor performance, especially on mobile devices. They needed advanced product visualization features and better SEO to compete with larger electronics retailers. The complex product catalog with thousands of SKUs required sophisticated filtering and search capabilities.",
-    solution:
-      "We implemented a headless architecture using Shopify as the backend with a custom Next.js frontend. The solution featured AR try-on capabilities for phone cases and earbuds, advanced product comparison tools, and intelligent search with AI-powered recommendations.",
-    technologies: [
-      "Shopify Storefront API",
-      "Next.js 14",
-      "React Query",
-      "Framer Motion",
-      "WebAR",
-      "Algolia Search",
-      "Stripe",
+    slug: "deadstock",
+    title: "Deadstock Clothing Store",
+    client: "Deadstock",
+    industry: "Fashion",
+    location: "New York, NY",
+    duration: "2 weeks",
+    team: "2 developers",
+    featured: false,
+    images: [
+      "/work/b-1.png",
+      "/work/b-2.png",
+      "/work/b-3.png",
+      "/work/b-4.png",
     ],
-    results: {
-      pageSpeed: "Page speed improved from 2.1s to 0.8s",
-      mobileScore: "95/100 mobile Lighthouse score",
-      seoBoost: "+75% increase in organic traffic",
-      arEngagement: "AR features used by 45% of visitors",
-      conversionLift: "+85% increase in mobile conversions",
-      searchAccuracy: "92% search result accuracy",
+    shortDescription:
+      "Headless Shopify store built with React for deadstock clothing brand, featuring advanced product filtering.",
+    challenge:
+      "Deadstock needed a modern e-commerce platform that could handle their unique inventory model of limited deadstock items. They required advanced filtering capabilities to help customers find specific pieces and a system that could effectively communicate scarcity and exclusivity.",
+    solution:
+      "We developed a headless Shopify store using React with sophisticated product filtering and search capabilities. The solution featured real-time inventory updates, scarcity indicators, and an intuitive interface that made browsing deadstock items effortless for customers.",
+    keyMetrics: {
+      primary: "+155%",
+      primaryLabel: "Revenue Increase",
+      secondary: "100/100",
+      secondaryLabel: "Performance Score",
     },
+    technologies: [
+      "Headless Shopify",
+      "React",
+      "Next.js",
+      "GraphQL",
+      "Algolia Search",
+    ],
+    rating: 4.8,
+    testimonialSnippet: "The filtering system transformed our user experience.",
     testimonial: {
       quote:
-        "The AR try-on feature has been a game-changer. Customers can see how our products look before buying, which has significantly reduced returns.",
-      author: "Marcus Chen",
-      position: "Head of E-commerce, TechFlow",
+        "The filtering system transformed our user experience completely. Customers can now easily find exactly what they're looking for in our deadstock inventory, and our sales have increased by 155% as a result.",
+      author: "Marcus Thompson",
+      position: "Creative Director, Deadstock",
+    },
+    results: {
+      revenue: "+155% increase in online revenue",
+      performance: "100/100 Lighthouse performance score",
+      conversion: "6.1% conversion rate (up from 2.4%)",
+      pageSpeed: "72% fast page load time reduced from 4.1s to 1.2s",
+      searchAccuracy: "92% search result accuracy",
+      customerSatisfaction: "4.8/5 average customer rating",
     },
     keyFeatures: [
-      "WebAR product visualization",
-      "Advanced product comparison matrix",
-      "AI-powered search and recommendations",
-      "Real-time inventory across 3 warehouses",
-      "One-click product compatibility checker",
-      "Dynamic pricing based on bulk orders",
+      "Advanced multi-filter product search",
+      "Real-time inventory scarcity indicators",
+      "Wishlist and favorites functionality",
+      "Size and fit recommendation engine",
+      "Social sharing for unique finds",
+      "Mobile-optimized browsing experience",
     ],
-    metrics: {
-      beforeAfter: {
-        pageSpeed: { before: "2.1s", after: "0.8s" },
-        mobileScore: { before: "72/100", after: "95/100" },
-        organicTraffic: { before: "15K/month", after: "26K/month" },
-        returnRate: { before: "12%", after: "7%" },
-      },
+    category: "E-commerce",
+    size: "medium",
+  },
+  {
+    id: 3,
+    slug: "thenimetyou",
+    title: "Then I Met You Beauty Store",
+    client: "Then I Met You",
+    industry: "Beauty & Cosmetics",
+    location: "Seoul, South Korea",
+    duration: "4 weeks",
+    team: "4 developers",
+    featured: false,
+    images: [
+      "/work/c-1.png",
+      "/work/c-2.png",
+      "/work/c-3.png",
+      "/work/c-4.png",
+    ],
+    shortDescription:
+      "Immersive Shopify Hydrogen storefront for thenimetyou with custom configurator, and storytelling features.",
+    challenge:
+      "Then I Met You needed an immersive digital experience that could effectively communicate their K-beauty philosophy and product benefits. They required custom product configurators and storytelling features that would educate customers about Korean skincare routines while driving conversions.",
+    solution:
+      "We created an immersive Shopify Hydrogen storefront with custom product configurators and rich storytelling features. The solution included interactive skincare routine builders, ingredient education modules, and beautiful visual storytelling that perfectly captured the brand's Korean beauty essence.",
+    keyMetrics: {
+      primary: "+120%",
+      primaryLabel: "Engagement Increase",
+      secondary: "-45%",
+      secondaryLabel: "Bounce Rate",
     },
+    technologies: [
+      "Shopify Hydrogen",
+      "Lab Reports Integration",
+      "Custom Design",
+      "Interactive Components",
+    ],
+    rating: 4.9,
+    testimonialSnippet:
+      "The storytelling features beautifully showcase our brand values.",
+    testimonial: {
+      quote:
+        "The storytelling features beautifully showcase our brand values and Korean beauty philosophy. Customer engagement has increased by 120%, and the bounce rate has dropped significantly. It's exactly what we envisioned.",
+      author: "Charlotte Cho",
+      position: "Founder, Then I Met You",
+    },
+    results: {
+      engagement: "+120% increase in user engagement",
+      bounceRate: "45% reduction in bounce rate",
+      sessionDuration: "Average session time increased to 4.2 minutes",
+      conversionRate: "5.8% conversion rate (up from 3.1%)",
+      productEducation: "78% of users engage with ingredient education",
+      routineBuilder: "65% of customers use the skincare routine builder",
+    },
+    keyFeatures: [
+      "Interactive skincare routine builder",
+      "Ingredient education and lab reports",
+      "Korean beauty philosophy storytelling",
+      "Personalized product recommendations",
+      "Video tutorials and how-to guides",
+      "Multi-step checkout optimization",
+    ],
+    category: "E-commerce",
+    size: "small",
+  },
+  {
+    id: 4,
+    slug: "velasca",
+    title: "Velasca Fashion PWA",
+    client: "Velasca",
+    industry: "Fashion",
+    location: "Milan, Italy",
+    duration: "4 weeks",
+    team: "3 developers",
+    featured: false,
+    images: [
+      "/work/d-1.png",
+      "/work/d-2.png",
+      "/work/d-3.png",
+      "/work/d-4.png",
+    ],
+    shortDescription:
+      "Progressive Web App built on Shopify with men/women different websites, and personalized outfit recommendations.",
+    challenge:
+      "Velasca needed separate optimized experiences for men's and women's fashion while maintaining brand consistency. They required personalized outfit recommendations and a seamless shopping experience that would work perfectly across all devices, especially mobile.",
+    solution:
+      "We developed a Progressive Web App on Shopify with separate optimized experiences for men's and women's collections. The solution featured AI-powered outfit recommendations, cross-collection styling suggestions, and native app-like performance that significantly improved user engagement.",
+    keyMetrics: {
+      primary: "+220%",
+      primaryLabel: "Engagement Increase",
+      secondary: "8.4%",
+      secondaryLabel: "Conversion Rate",
+    },
+    technologies: [
+      "Shopify",
+      "PWA Technology",
+      "Custom Design",
+      "AI Personalization",
+    ],
+    rating: 4.7,
+    testimonialSnippet:
+      "The personalized recommendations have significantly boosted our sales.",
+    testimonial: {
+      quote:
+        "The personalized recommendations have significantly boosted our sales and customer satisfaction. The separate men's and women's experiences work beautifully, and the PWA performance is outstanding. Engagement is up 220%!",
+      author: "Lorenzo Banfi",
+      position: "Head of Digital, Velasca",
+    },
+    results: {
+      engagement: "+220% increase in user engagement",
+      conversion: "8.4% conversion rate (industry-leading)",
+      mobilePerformance: "95/100 mobile Lighthouse score",
+      personalizations: "89% of customers interact with recommendations",
+      crossSelling: "+67% increase in cross-category purchases",
+      appLikeExperience: "Native app-like performance on all devices",
+    },
+    keyFeatures: [
+      "Separate optimized men's and women's experiences",
+      "AI-powered outfit and styling recommendations",
+      "Progressive Web App with offline capabilities",
+      "Cross-collection styling suggestions",
+      "Advanced size and fit guidance",
+      "Seamless mobile-first shopping experience",
+    ],
+    category: "E-commerce",
+    size: "small",
   },
 ];
 
 export default function CaseStudyPage() {
+  const params = useParams();
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // For demo, we'll use the first case study
-  const caseStudy = caseStudies[0];
+  // Find the case study based on the slug
+  const caseStudy =
+    caseStudies.find((study) => study.slug === params.slug) || caseStudies[0];
 
   useEffect(() => {
     setIsLoaded(true);
@@ -169,13 +316,20 @@ export default function CaseStudyPage() {
       const progress = (currentScrollY / (documentHeight - windowHeight)) * 100;
 
       setScrollProgress(progress);
-
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  // Auto-rotate images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % caseStudy.images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [caseStudy.images.length]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-x-hidden">
@@ -197,14 +351,14 @@ export default function CaseStudyPage() {
           {/* Back Navigation */}
           <div className="mb-16">
             <Link
-              href="/"
+              href="/work"
               className="group inline-flex items-center text-gray-600 hover:text-gray-900 transition-all duration-500 hover:-translate-x-2"
             >
               <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-4 mr-4 border border-gray-200/50 shadow-lg hover:shadow-xl group-hover:bg-gray-900 group-hover:border-gray-700 transition-all duration-500 hover:scale-110">
                 <ArrowLeft className="w-5 h-5 group-hover:text-white transition-all duration-500" />
               </div>
               <span className="font-bold text-lg tracking-tight">
-                Back to Portfolio
+                Back to Work
               </span>
             </Link>
           </div>
@@ -219,11 +373,13 @@ export default function CaseStudyPage() {
               </Badge>
               <Badge className="bg-white/90 backdrop-blur-xl border-2 border-gray-200/50 text-gray-700 rounded-full px-6 py-4 shadow-xl hover:shadow-2xl hover:scale-105 hover:bg-gray-50 transition-all duration-500">
                 <Globe className="w-5 h-5 mr-3" />
-                E-commerce Excellence
+                {caseStudy.category}
               </Badge>
               <Badge className="bg-white/90 backdrop-blur-xl border-2 border-gray-200/50 text-gray-700 rounded-full px-6 py-4 shadow-xl hover:shadow-2xl hover:scale-105 hover:bg-gray-50 transition-all duration-500">
                 <Layers className="w-5 h-5 mr-3" />
-                Premium Solution
+                {caseStudy.size.charAt(0).toUpperCase() +
+                  caseStudy.size.slice(1)}{" "}
+                Project
               </Badge>
             </div>
 
@@ -281,38 +437,42 @@ export default function CaseStudyPage() {
                 </div>
               ))}
             </div>
-
-            {/* Challenge Highlight */}
-            <div className="bg-gradient-to-br from-white via-gray-50 to-white rounded-3xl p-12 border border-gray-200/50 shadow-2xl backdrop-blur-xl relative overflow-hidden hover:shadow-3xl transition-all duration-700 group">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-full blur-2xl" />
-              <div className="relative">
-                <div className="flex items-start space-x-8 mb-8">
-                  <div className="bg-brand-blue rounded-2xl p-4 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                    <Target className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-4">
-                      The Challenge
-                    </h3>
-                    <div className="w-24 h-1 bg-gradient-to-r from-indigo-800 to-brand-blue rounded-full" />
-                  </div>
-                </div>
-                <p className="text-lg text-gray-700 leading-relaxed pl-20 font-medium">
-                  {caseStudy.challenge}
-                </p>
-              </div>
-            </div>
           </div>
 
-          {/* Hero Image with Stats Overlay */}
+          {/* Hero Image Gallery with Stats Overlay */}
           <div className="relative mb-16 group">
             <div className="relative h-96 lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-gray-200/50 transition-all duration-700 group-hover:shadow-3xl">
-              <img
-                src={caseStudy.image}
-                alt={caseStudy.title}
-                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-              />
+              {/* Image Gallery */}
+              <div className="relative w-full h-full">
+                {caseStudy.images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`${caseStudy.title} - Image ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${
+                      index === currentImageIndex
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-105"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Image Indicators */}
+              <div className="absolute top-6 right-6 flex space-x-2">
+                {caseStudy.images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex
+                        ? "bg-white"
+                        : "bg-white/50 hover:bg-white/75"
+                    }`}
+                  />
+                ))}
+              </div>
+
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent" />
 
               {/* Floating Stats */}
@@ -323,7 +483,7 @@ export default function CaseStudyPage() {
                     .map(([key, value], index) => (
                       <div
                         key={index}
-                        className="bg-white/70 backdrop-blur-xl rounded-2xl p-2 text-center shadow-xl border border-white/20 hover:scale-105 transition-all duration-500 group/stat"
+                        className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 text-center shadow-xl border border-white/20 hover:scale-105 transition-all duration-500 group/stat"
                       >
                         <div className="text-xl font-black text-gray-900 mb-2 group-hover/stat:text-brand-blue transition-colors duration-300">
                           {value.split(" ")[0]}
@@ -343,30 +503,26 @@ export default function CaseStudyPage() {
             {[
               {
                 icon: TrendingUp,
-                value: Object.values(caseStudy.results)[0],
-                label: "Revenue Growth",
-
+                value: caseStudy.keyMetrics.primary,
+                label: caseStudy.keyMetrics.primaryLabel,
                 pattern: "emerald",
               },
               {
                 icon: Zap,
-                value: Object.values(caseStudy.results)[1],
-                label: "Performance Score",
-
+                value: caseStudy.keyMetrics.secondary,
+                label: caseStudy.keyMetrics.secondaryLabel,
                 pattern: "yellow",
               },
               {
-                icon: Users,
-                value: Object.values(caseStudy.results)[2],
-                label: "Conversion Rate",
-
+                icon: Star,
+                value: `${caseStudy.rating}/5`,
+                label: "Client Rating",
                 pattern: "blue",
               },
               {
-                icon: Rocket,
+                icon: Code,
                 value: `${caseStudy.technologies.length}+`,
                 label: "Technologies",
-
                 pattern: "purple",
               },
             ].map((item, index) => (
@@ -435,7 +591,7 @@ export default function CaseStudyPage() {
                     </p>
                   ) : (
                     <ul className="space-y-6">
-                      {caseStudy.keyFeatures.slice(0, 4).map((feature, idx) => (
+                      {caseStudy.keyFeatures.slice(0, 6).map((feature, idx) => (
                         <li key={idx} className="flex items-start group/item">
                           <div
                             className={`bg-brand-blue rounded-full p-2 mr-4 mt-1 shadow-lg group-hover/item:scale-110 transition-all duration-300`}
@@ -454,13 +610,33 @@ export default function CaseStudyPage() {
             ))}
           </div>
 
+          {/* Technologies Used */}
+          <div className="mb-24">
+            <div className="text-center mb-16">
+              <h3 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">
+                Technologies Used
+              </h3>
+              <div className="w-24 h-1 bg-brand-blue mx-auto rounded-full" />
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              {caseStudy.technologies.map((tech, index) => (
+                <Badge
+                  key={index}
+                  className="bg-white/90 backdrop-blur-xl border-2 border-gray-200/50 text-gray-700 rounded-full px-6 py-3 shadow-xl hover:shadow-2xl hover:scale-105 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all duration-500"
+                >
+                  <Code className="w-4 h-4 mr-2" />
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
           {/* Premium Testimonial Section */}
           <div className="mb-24">
             <Card className="bg-gradient-to-br from-white via-gray-50 to-white rounded-3xl p-16 lg:p-20 border border-gray-200/50 shadow-2xl relative overflow-hidden hover:shadow-3xl transition-all duration-700">
               {/* Background Elements */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full opacity-50 -translate-y-24 translate-x-24 blur-3xl" />
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-full opacity-50 translate-y-20 -translate-x-20 blur-3xl" />
-              <div className="absolute center w-32 h-32 bg-gradient-to-br from-yellow-500/5 to-orange-500/5 rounded-full blur-2xl" />
 
               <div className="text-center relative">
                 {/* Premium 5-Star Rating */}
@@ -468,7 +644,7 @@ export default function CaseStudyPage() {
                   {[...Array(5)].map((_, i) => (
                     <div key={i} className="relative mx-1">
                       <Star
-                        className="w-5 h-5 text-yellow-400 fill-current hover:scale-125 transition-transform duration-300 cursor-pointer"
+                        className="w-6 h-6 text-yellow-400 fill-current hover:scale-125 transition-transform duration-300 cursor-pointer"
                         style={{ animationDelay: `${i * 0.1}s` }}
                       />
                       <div className="absolute inset-0 w-10 h-10 bg-yellow-400/20 rounded-full blur-lg" />
@@ -479,7 +655,7 @@ export default function CaseStudyPage() {
                 {/* Testimonial Quote */}
                 <blockquote className="text-xl lg:text-2xl text-gray-700 mb-12 italic leading-relaxed max-w-6xl mx-auto font-light relative">
                   <span className="relative z-10">
-                    {caseStudy.testimonial.quote}
+                    "{caseStudy.testimonial.quote}"
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-50/30 to-transparent blur-3xl" />
                 </blockquote>
@@ -490,11 +666,10 @@ export default function CaseStudyPage() {
                     <div className="w-20 h-20 bg-brand-blue rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-all duration-500">
                       <Users className="w-12 h-12 text-white" />
                     </div>
-
                     <div className="absolute inset-0 bg-indigo-400/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500" />
                   </div>
                   <div className="text-left">
-                    <div className="text-md lg:text-xl font-black text-gray-900 mb-2">
+                    <div className="text-lg lg:text-xl font-black text-gray-900 mb-2">
                       {caseStudy.testimonial.author}
                     </div>
                     <div className="text-gray-600 font-bold text-sm mb-2">
@@ -532,7 +707,7 @@ export default function CaseStudyPage() {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                   <Link
                     href="/contact"
-                    className="bg-white text-brand-blue hover:bg-black hover:text-white px-12 w-full flex justify-center items-center py-6 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 group/btn"
+                    className="bg-white text-brand-blue hover:bg-black hover:text-white px-12 w-full sm:w-auto flex justify-center items-center py-6 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 group/btn"
                   >
                     <span className="mr-3">Start Your Project</span>
                     <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform duration-300" />
@@ -540,7 +715,7 @@ export default function CaseStudyPage() {
 
                   <Link
                     href="/work"
-                    className="bg-white/10 backdrop-blur-xl border-2 border-white/30 text-white hover:text-white hover:bg-white/20 px-12 w-full flex justify-center items-center py-6 rounded-2xl text-lg font-bold transition-all duration-500 hover:scale-105"
+                    className="bg-white/10 backdrop-blur-xl border-2 border-white/30 text-white hover:text-white hover:bg-white/20 px-12 w-full sm:w-auto flex justify-center items-center py-6 rounded-2xl text-lg font-bold transition-all duration-500 hover:scale-105"
                   >
                     <span className="mr-3">View More Work</span>
                     <Eye className="w-6 h-6" />

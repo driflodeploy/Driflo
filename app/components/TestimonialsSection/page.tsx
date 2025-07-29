@@ -18,13 +18,15 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center bg-blue-50 px-6 py-3 rounded-full border border-blue-100 mb-8">
-            <span className="text-sm font-semibold text-gray-700">Facts</span>
+            <span className="text-sm font-semibold text-gray-700">
+              Success Stories
+            </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
             What our Clients Say
           </h2>
           <p className="text-xl text-gray-600">
-            Trusted by thousands of property owners and managers
+            Trusted by businesses worldwide for digital transformation
           </p>
         </div>
 
@@ -38,9 +40,9 @@ export default function TestimonialsSection() {
                 ))}
               </div>
               <p className="text-lg mb-6">
-                "Bayt has completely transformed how we manage our property
-                portfolio. The platform is intuitive and the support team is
-                exceptional."
+                "Their custom headless storefront solution increased our online
+                sales by 180%. The performance and user experience are
+                outstanding."
               </p>
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
@@ -48,7 +50,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <div className="font-semibold">Sarah Mitchell</div>
-                  <div className="text-blue-100">Property Manager</div>
+                  <div className="text-blue-100">E-commerce Director</div>
                 </div>
               </div>
             </CardContent>
@@ -58,9 +60,10 @@ export default function TestimonialsSection() {
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
               <Clock className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">24/7 Support</h3>
+              <h3 className="font-bold text-black mb-2">Rapid Delivery</h3>
               <p className="text-gray-600 text-sm">
-                "Their support team is always available when we need help."
+                "They delivered our mobile app in record time without
+                compromising quality."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
                 - Mike Johnson
@@ -72,10 +75,10 @@ export default function TestimonialsSection() {
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
               <TrendingUp className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Increased Revenue</h3>
+              <h3 className="font-bold text-black mb-2">Revenue Growth</h3>
               <p className="text-gray-600 text-sm">
-                "We've seen a 30% increase in our rental income since using
-                Bayt."
+                "Our new website generated 250% more leads within the first
+                month."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
                 - Lisa Chen
@@ -87,10 +90,10 @@ export default function TestimonialsSection() {
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
               <Shield className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Secure Platform</h3>
+              <h3 className="font-bold text-black mb-2">Secure Solutions</h3>
               <p className="text-gray-600 text-sm">
-                "Security and data protection are top-notch. We feel confident
-                using Bayt."
+                "Their development practices ensure our customer data is always
+                protected."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
                 - David Park
@@ -102,10 +105,12 @@ export default function TestimonialsSection() {
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
               <CheckCircle className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Easy Setup</h3>
+              <h3 className="font-bold text-black mb-2">
+                Seamless Integration
+              </h3>
               <p className="text-gray-600 text-sm">
-                "Got up and running in minutes. The onboarding process is
-                seamless."
+                "The headless storefront integrated perfectly with our existing
+                systems."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
                 - Emma Wilson
@@ -118,8 +123,8 @@ export default function TestimonialsSection() {
             <CardContent className="p-0">
               <Award className="w-10 h-10 text-brand-lightBlue mb-6" />
               <p className="text-xl mb-6">
-                "The best real estate management platform we've ever used.
-                Highly recommend to any property professional."
+                "Best web development agency we've worked with. Their custom app
+                helped us scale from 1,000 to 50,000 users in 6 months."
               </p>
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
@@ -127,7 +132,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <div className="font-semibold">Robert Taylor</div>
-                  <div className="text-gray-300">Real Estate Investor</div>
+                  <div className="text-gray-300">Startup Founder</div>
                 </div>
               </div>
             </CardContent>
@@ -137,9 +142,12 @@ export default function TestimonialsSection() {
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
               <MessageSquare className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Great Communication</h3>
+              <h3 className="font-bold text-black mb-2">
+                Excellent Communication
+              </h3>
               <p className="text-gray-600 text-sm">
-                "Communication with tenants has never been easier."
+                "They kept us informed throughout the entire development
+                process."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
                 - Anna Rodriguez
@@ -151,9 +159,10 @@ export default function TestimonialsSection() {
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
               <Heart className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Love the UI</h3>
+              <h3 className="font-bold text-black mb-2">Love the Design</h3>
               <p className="text-gray-600 text-sm">
-                "Beautiful, clean interface that makes work enjoyable."
+                "Our customers love the beautiful, intuitive interface they
+                created."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
                 - Tom Anderson
@@ -165,9 +174,11 @@ export default function TestimonialsSection() {
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
               <Zap className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Lightning Fast</h3>
+              <h3 className="font-bold text-black mb-2">
+                Lightning Performance
+              </h3>
               <p className="text-gray-600 text-sm">
-                "The platform is incredibly fast and responsive."
+                "Our website loads 3x faster after their optimization work."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
                 - Jessica Lee
@@ -179,9 +190,10 @@ export default function TestimonialsSection() {
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
               <Target className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Perfect Solution</h3>
+              <h3 className="font-bold text-black mb-2">Perfect Match</h3>
               <p className="text-gray-600 text-sm">
-                "Exactly what we needed for our growing property business."
+                "Their custom solution was exactly what our business needed to
+                grow."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
                 - Mark Thompson

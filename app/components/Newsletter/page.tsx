@@ -55,19 +55,21 @@ export function MinimalNewsletter() {
   };
 
   return (
-    <section className="bg-white py-16 px-4">
-      <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
-        <p className="text-gray-600 mb-8">
+    <section className="bg-white py-8 sm:py-16 w-full max-w-full overflow-hidden">
+      <div className="max-w-2xl mx-auto text-center px-4 sm:px-6 lg:px-8 w-full">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+          Stay Updated
+        </h2>
+        <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
           Get weekly insights delivered to your inbox.
         </p>
 
         {/* Success Message */}
         {status === "success" && (
-          <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-            <div className="flex items-center justify-center gap-2 text-green-800">
-              <CheckCircle className="w-5 h-5" />
-              <span className="font-medium">
+          <div className="mb-6 p-3 sm:p-4 bg-green-50 border border-green-200 rounded-lg mx-auto w-full max-w-md">
+            <div className="flex items-center justify-center gap-2 text-green-800 text-sm sm:text-base">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+              <span className="font-medium text-center">
                 Successfully subscribed! Welcome aboard! 🎉
               </span>
             </div>
@@ -76,10 +78,10 @@ export function MinimalNewsletter() {
 
         {/* Error Message */}
         {status === "error" && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <div className="flex items-center justify-center gap-2 text-red-800">
-              <Mail className="w-5 h-5" />
-              <span className="font-medium">
+          <div className="mb-6 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg mx-auto w-full max-w-md">
+            <div className="flex items-center justify-center gap-2 text-red-800 text-sm sm:text-base">
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+              <span className="font-medium text-center">
                 Something went wrong. Please try again.
               </span>
             </div>
@@ -87,25 +89,28 @@ export function MinimalNewsletter() {
         )}
 
         {/* Newsletter Form */}
-        <form onSubmit={handleSubmit} className="flex gap-3 max-w-md mx-auto">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto w-full px-0"
+        >
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
-            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+            className="flex-1 w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base min-w-0"
             required
             disabled={status === "submitting"}
           />
           <button
             type="submit"
             disabled={status === "submitting" || !email}
-            className="px-6 py-3 bg-black text-white rounded-lg hover:bg-black/80 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-black text-white rounded-lg hover:bg-black/80 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base min-w-fit"
           >
             {status === "submitting" ? (
               <>
                 <svg
-                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                  className="animate-spin -ml-1 mr-2 h-3 w-3 sm:h-4 sm:w-4 text-white flex-shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -129,28 +134,28 @@ export function MinimalNewsletter() {
             ) : (
               <>
                 Subscribe
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
               </>
             )}
           </button>
         </form>
 
-        <p className="text-sm text-gray-500 mt-4">
+        <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 px-2">
           Join 10K+ readers. No spam ever. Unsubscribe anytime.
         </p>
 
         {/* Trust indicators */}
-        <div className="flex items-center justify-center gap-6 mt-6 text-xs text-gray-400">
-          <div className="flex items-center gap-1">
-            <Star className="w-3 h-3 fill-current" />
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-4 sm:mt-6 text-xs text-gray-400 px-2">
+          <div className="flex items-center gap-1 whitespace-nowrap">
+            <Star className="w-3 h-3 fill-current flex-shrink-0" />
             <span>Weekly insights</span>
           </div>
-          <div className="flex items-center gap-1">
-            <TrendingUp className="w-3 h-3" />
+          <div className="flex items-center gap-1 whitespace-nowrap">
+            <TrendingUp className="w-3 h-3 flex-shrink-0" />
             <span>Industry trends</span>
           </div>
-          <div className="flex items-center gap-1">
-            <CheckCircle className="w-3 h-3" />
+          <div className="flex items-center gap-1 whitespace-nowrap">
+            <CheckCircle className="w-3 h-3 flex-shrink-0" />
             <span>No spam</span>
           </div>
         </div>

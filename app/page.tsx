@@ -21,7 +21,6 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <TestimonialsSection />
       <MinimalNewsletter />
-
       <Footer />
     </div>
   );

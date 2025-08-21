@@ -21,7 +21,7 @@ const blogPosts = [
     slug: "headless-commerce-future-ecommerce",
     title: "Why Headless Commerce is the Future of E-commerce",
     excerpt:
-      "Discover how headless architecture is revolutionizing online stores with faster performance, better SEO, and unlimited customization possibilities.",
+      "Discover  headless architecture is revolutionizing online stores with faster performance, better SEO, and unlimited customization possibilities.",
     content:
       "Explore the benefits of decoupled frontend and backend systems for modern e-commerce solutions.",
     author: "Sarah Johnson",

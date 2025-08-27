@@ -26,7 +26,7 @@ export default function ServicesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {/* Headless Storefronts */}
-          <Card className="group relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 shadow-lg hover:shadow-xl will-change-transform transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+          <Card className="group relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 shadow-lg hover:shadow-xl will-change-transform transition-all duration-300 hover:-translate-y-2 cursor-pointer before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_100%_150%,rgba(133,193,255,0.1),transparent_50%)]">
             <CardContent className="p-0">
               <div className="flex flex-col h-full">
                 {/* Header */}
@@ -73,7 +73,7 @@ export default function ServicesSection() {
           </Card>
 
           {/* Custom Websites */}
-          <Card className="group relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 shadow-lg hover:shadow-xl will-change-transform transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+          <Card className="group relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 shadow-lg hover:shadow-xl will-change-transform transition-all duration-300 hover:-translate-y-2 cursor-pointer before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_100%_150%,rgba(133,193,255,0.1),transparent_50%)]">
             <CardContent className="p-0">
               <div className="flex flex-col h-full">
                 {/* Header */}
@@ -119,7 +119,7 @@ export default function ServicesSection() {
           </Card>
 
           {/* Mobile Apps */}
-          <Card className="group relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 shadow-lg hover:shadow-xl will-change-transform transition-all duration-300 hover:-translate-y-2 cursor-pointer md:col-span-2 lg:col-span-1">
+          <Card className="group relative bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 shadow-lg hover:shadow-xl will-change-transform transition-all duration-300 hover:-translate-y-2 cursor-pointer md:col-span-2 lg:col-span-1 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_100%_150%,rgba(133,193,255,0.1),transparent_50%)]">
             <CardContent className="p-0">
               <div className="flex flex-col h-full">
                 {/* Header */}

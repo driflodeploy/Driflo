@@ -79,6 +79,90 @@ const ImageCard = ({
   </div>
 );
 
+const VideoCard = ({
+  width,
+  height,
+  videoSrc,
+  imageSrc,
+  alt,
+  className,
+  children,
+  bgOverlay = "bg-black/20",
+  autoPlay = true,
+  muted = true,
+  loop = true,
+}: {
+  width: string;
+  height: string;
+  videoSrc?: string;
+  imageSrc?: string;
+  alt: string;
+  className: string;
+  children?: React.ReactNode;
+  bgOverlay?: string;
+  autoPlay?: boolean;
+  muted?: boolean;
+  loop?: boolean;
+}) => (
+  <div
+    className={`${width} ${height} rounded-3xl overflow-hidden shadow-2xl ${className}`}
+  >
+    <div className="relative w-full h-full">
+      {videoSrc ? (
+        <video
+          src={videoSrc}
+          autoPlay={autoPlay}
+          muted={muted}
+          loop={loop}
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          aria-label={alt}
+        />
+      ) : imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority
+        />
+      ) : null}
+      <div className={`absolute inset-0 ${bgOverlay}`} />
+      {children}
+    </div>
+  </div>
+);
+
+const ScheduleCallButton = () => (
+  <div className="flex items-center justify-center md:justify-start">
+    <Link
+      href="https://calendly.com/todriflo/30min?month=2025-08"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-gray-900 bg-transparent rounded-xl border-2 border-transparent transition-all duration-300 hover:border-gray-900 hover:shadow-lg w-fit"
+    >
+      {/* Button text */}
+      <span className="flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+        Schedule Call
+        <svg
+          className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </span>
+    </Link>
+  </div>
+);
+
 const CallToActionButtons = () => (
   <div className="flex items-center justify-center md:justify-start">
     <Link
@@ -138,8 +222,10 @@ export default function HeroSection() {
                 with tailored Shopify storefronts and bespoke development.
               </p>
             </div>
-
-            <CallToActionButtons />
+            <div className="flex flex-col gap-4">
+              <CallToActionButtons />
+              <ScheduleCallButton />
+            </div>
           </div>
 
           {/* Mobile Image Grid */}
@@ -221,8 +307,11 @@ export default function HeroSection() {
                 with tailored Shopify storefronts and bespoke development.
               </p>
             </div>
+            <div className="flex gap-2">
+              <CallToActionButtons />
 
-            <CallToActionButtons />
+              <ScheduleCallButton />
+            </div>
           </div>
 
           {/* Right Content - Image Cards */}
@@ -239,13 +328,16 @@ export default function HeroSection() {
             </ImageCard>
 
             {/* Large Card - positioned to the right and slightly overlapping */}
-            <ImageCard
+            <VideoCard
               width="w-[500px]"
               height="h-[450px]"
-              imageSrc="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=450&fit=crop&crop=center"
+              videoSrc="/background.mp4"
               alt="Development team working on digital solutions"
               className="bg-gray-900 z-10 transform translate-y-4 -ml-20"
               bgOverlay="bg-black/30"
+              autoPlay={true}
+              muted={true}
+              loop={true}
             >
               {/* Development Projects Badge */}
               <div className="absolute top-8 right-8 bg-brand-blue text-white rounded-full px-6 py-3 flex items-center space-x-2 shadow-lg">
@@ -254,13 +346,11 @@ export default function HeroSection() {
                   <ArrowRight className="w-3 h-3" />
                 </div>
               </div>
-
               <UserAvatars />
               <StatsCard />
-
               {/* Floating indicator in top right corner */}
               <div className="absolute top-6 right-6 w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg" />
-            </ImageCard>
+            </VideoCard>
           </div>
         </div>
 

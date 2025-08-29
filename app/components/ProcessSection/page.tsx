@@ -1,411 +1,461 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback, useMemo } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import React, { useState, useEffect, useRef } from "react";
 import {
-  MessageCircle,
-  Lightbulb,
-  Palette,
-  Code,
-  TestTube,
-  Rocket,
-} from "lucide-react";
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  Variants,
+} from "framer-motion";
+import { cn } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card";
+import { Calendar } from "lucide-react";
 
-const processSteps = [
+export interface TimelineEvent {
+  id?: string;
+  year: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+  icon?: React.ReactNode;
+  color?: string;
+}
+
+export interface ScrollTimelineProps {
+  events: TimelineEvent[];
+  title?: string;
+  subtitle?: string;
+  animationOrder?: "sequential" | "staggered" | "simultaneous";
+  cardAlignment?: "alternating" | "left" | "right";
+  lineColor?: string;
+  activeColor?: string;
+  progressIndicator?: boolean;
+  cardVariant?: "default" | "elevated" | "outlined" | "filled";
+  cardEffect?: "none" | "glow" | "shadow" | "bounce";
+  parallaxIntensity?: number;
+  progressLineWidth?: number;
+  progressLineCap?: "round" | "square";
+  dateFormat?: "text" | "badge";
+  className?: string;
+  revealAnimation?: "fade" | "slide" | "scale" | "flip" | "none";
+  connectorStyle?: "dots" | "line" | "dashed";
+  perspective?: boolean;
+  darkMode?: boolean;
+  smoothScroll?: boolean;
+}
+
+const DEFAULT_EVENTS: TimelineEvent[] = [
   {
-    id: 1,
-    icon: MessageCircle,
-    title: "Discovery & Consultation",
-    subtitle: "Understanding Your Vision",
+    year: "2023",
+    title: "Major Achievement",
+    subtitle: "Organization Name",
     description:
-      "We start with in-depth discussions to understand your business goals, target audience, and project requirements.",
-    duration: "1-2 weeks",
-    deliverables: ["Project Brief", "User Research", "Competitive Analysis"],
-    color: "from-blue-500 to-indigo-600",
+      "Description of the achievement or milestone reached during this time period.",
   },
   {
-    id: 2,
-    icon: Lightbulb,
-    title: "Strategy & Planning",
-    subtitle: "Crafting the Blueprint",
-    description:
-      "We develop a comprehensive strategy and project roadmap including architecture planning and technology selection.",
-    duration: "1-2 weeks",
-    deliverables: ["Project Roadmap", "Technical Architecture", "Wireframes"],
-    color: "from-indigo-500 to-pink-600",
+    year: "2022",
+    title: "Important Milestone",
+    subtitle: "Organization Name",
+    description: "Details about this significant milestone and its impact.",
   },
   {
-    id: 3,
-    icon: Palette,
-    title: "Design & Prototyping",
-    subtitle: "Bringing Ideas to Life",
-    description:
-      "Our design team creates stunning visual concepts and interactive prototypes focused on user experience.",
-    duration: "2-3 weeks",
-    deliverables: ["UI/UX Design", "Interactive Prototypes", "Design System"],
-    color: "from-pink-500 to-rose-600",
-  },
-  {
-    id: 4,
-    icon: Code,
-    title: "Development & Integration",
-    subtitle: "Building Your Solution",
-    description:
-      "Using cutting-edge technologies, we develop your project with clean, scalable code and high performance.",
-    duration: "4-8 weeks",
-    deliverables: [
-      "Frontend Development",
-      "Backend Systems",
-      "API Integration",
-    ],
-    color: "from-emerald-500 to-teal-600",
-  },
-  {
-    id: 5,
-    icon: TestTube,
-    title: "Testing & Optimization",
-    subtitle: "Ensuring Excellence",
-    description:
-      "Comprehensive testing across all devices and browsers with performance optimization and bug fixes.",
-    duration: "1-2 weeks",
-    deliverables: [
-      "Quality Assurance",
-      "Performance Testing",
-      "Security Audit",
-    ],
-    color: "from-orange-500 to-amber-600",
-  },
-  {
-    id: 6,
-    icon: Rocket,
-    title: "Launch & Deployment",
-    subtitle: "Going Live",
-    description:
-      "We handle the complete deployment process and ensure a smooth launch with post-launch support.",
-    duration: "1 week",
-    deliverables: ["Production Deployment", "SSL Setup", "Analytics"],
-    color: "from-green-500 to-emerald-600",
+    year: "2021",
+    title: "Key Event",
+    subtitle: "Organization Name",
+    description: "Information about this key event in the timeline.",
   },
 ];
 
-// Throttle function for performance optimization
-const throttle = (func: Function, limit: number) => {
-  let inThrottle: boolean;
-  return function (this: any, ...args: any[]) {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
-  };
-};
+export const ScrollTimeline = ({
+  events = DEFAULT_EVENTS,
+  title = "Timeline",
+  subtitle = "Scroll to explore the journey",
+  animationOrder = "sequential",
+  cardAlignment = "alternating",
+  lineColor = "bg-primary/30",
+  activeColor = "bg-primary",
+  progressIndicator = true,
+  cardVariant = "default",
+  cardEffect = "none",
+  parallaxIntensity = 0.2,
+  progressLineWidth = 2,
+  progressLineCap = "round",
+  dateFormat = "badge",
+  revealAnimation = "fade",
+  className = "",
+  connectorStyle = "line",
+  perspective = false,
+  darkMode = false,
+  smoothScroll = true,
+}: ScrollTimelineProps) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-// Easing function for smooth animations
-const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3);
+  // Fixed offset for better scroll tracking
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start end", "end start"],
+  });
 
-export default function ProcessSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const horizontalContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
-  // Memoized calculations for responsive design
-  const responsiveConfig = useMemo(() => {
-    if (typeof window === "undefined")
-      return { cardWidth: 320, spacing: 32, padding: 64 };
-
-    const width = windowWidth || window.innerWidth;
-
-    if (width < 640) {
-      // Mobile
-      return { cardWidth: 280, spacing: 16, padding: 16 };
-    } else if (width < 1024) {
-      // Tablet
-      return { cardWidth: 300, spacing: 24, padding: 32 };
-    } else {
-      // Desktop
-      return { cardWidth: 320, spacing: 32, padding: 64 };
-    }
-  }, [windowWidth]);
-
-  // Optimized scroll handler with throttling and RAF
-  const handleScroll = useCallback(
-    throttle(() => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      const scrollSpeed = 0.5;
-
-      requestAnimationFrame(() => {
-        const rect = container.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Check if section is visible
-        const visible = rect.top <= windowHeight && rect.bottom >= 0;
-        setIsVisible(visible);
-
-        if (visible) {
-          const sectionHeight = Math.max(rect.height - windowHeight, 1);
-          const scrolled = Math.max(0, -rect.top);
-          const rawProgress = Math.min(scrolled / sectionHeight, 1);
-
-          // Apply easing for smoother animation
-          const easedProgress = easeOutCubic(rawProgress);
-          setScrollProgress(easedProgress);
-
-          // Optimized horizontal scroll calculation
-          const horizontalContainer = horizontalContainerRef.current;
-          if (horizontalContainer) {
-            const maxScroll = Math.max(
-              horizontalContainer.scrollWidth - horizontalContainer.clientWidth,
-              0
-            );
-            horizontalContainer.scrollLeft = Math.min(
-              easedProgress * maxScroll,
-              maxScroll
-            );
-          }
-        }
-      });
-    }, 16),
-    []
-  );
-
-  // Window resize handler for responsive design
-  const handleResize = useCallback(
-    throttle(() => {
-      setWindowWidth(window.innerWidth);
-    }, 250),
-    []
-  );
+  const progressHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
+    const unsubscribe = scrollYProgress.on("change", (v) => {
+      const newIndex = Math.floor(v * events.length);
+      if (
+        newIndex !== activeIndex &&
+        newIndex >= 0 &&
+        newIndex < events.length
+      ) {
+        setActiveIndex(newIndex);
+      }
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress, events.length, activeIndex]);
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleResize, { passive: true });
+  const getCardVariants = (index: number): Variants => {
+    // Reduced delays for smoother animation
+    const baseDelay =
+      animationOrder === "simultaneous"
+        ? 0
+        : animationOrder === "staggered"
+        ? index * 0.1
+        : index * 0.15;
 
-    // Initial call
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+    const initialStates = {
+      fade: { opacity: 0, y: 30 },
+      slide: {
+        x:
+          cardAlignment === "left"
+            ? -50
+            : cardAlignment === "right"
+            ? 50
+            : index % 2 === 0
+            ? -50
+            : 50,
+        opacity: 0,
+        y: 30,
+      },
+      scale: { scale: 0.9, opacity: 0, y: 20 },
+      flip: { rotateY: 45, opacity: 0, y: 20 },
+      none: { opacity: 1 },
     };
-  }, [handleScroll, handleResize]);
 
-  // Memoized container width calculation
-  const containerWidth = useMemo(() => {
-    const { cardWidth, spacing } = responsiveConfig;
-    return processSteps.length * (cardWidth + spacing) - spacing;
-  }, [responsiveConfig]);
+    return {
+      initial: initialStates[revealAnimation],
+      animate: {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        scale: 1,
+        rotateY: 0,
+        transition: {
+          duration: 0.6,
+          delay: baseDelay,
+          ease: [0.25, 0.46, 0.45, 0.94],
+          type: "spring" as const,
+          stiffness: 100,
+          damping: 15,
+        },
+      },
+    };
+  };
+
+  const getConnectorClasses = () => {
+    const baseClasses = cn(
+      "absolute left-1/2 transform -translate-x-1/2",
+      lineColor
+    );
+    const widthStyle = `w-[${progressLineWidth}px]`;
+    switch (connectorStyle) {
+      case "dots":
+        return cn(baseClasses, "w-1 rounded-full");
+      case "dashed":
+        return cn(
+          baseClasses,
+          widthStyle,
+          `[mask-image:linear-gradient(to_bottom,black_33%,transparent_33%,transparent_66%,black_66%)] [mask-size:1px_12px]`
+        );
+      case "line":
+      default:
+        return cn(baseClasses, widthStyle);
+    }
+  };
+
+  const getCardClasses = (index: number) => {
+    const baseClasses =
+      "relative z-30 rounded-lg transition-all duration-500 ease-out";
+    const variantClasses = {
+      default: "bg-card border shadow-sm",
+      elevated: "bg-card border border-border/40 shadow-md",
+      outlined: "bg-card/50 backdrop-blur border-2 border-primary/20",
+      filled: "bg-primary/10 border border-primary/30",
+    };
+    const effectClasses = {
+      none: "",
+      glow: "hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:border-primary/50",
+      shadow: "hover:shadow-xl hover:-translate-y-2",
+      bounce: "hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]",
+    };
+    const alignmentClassesDesktop =
+      cardAlignment === "alternating"
+        ? index % 2 === 0
+          ? "lg:mr-[calc(50%+20px)]"
+          : "lg:ml-[calc(50%+20px)]"
+        : cardAlignment === "left"
+        ? "lg:mr-auto lg:ml-0"
+        : "lg:ml-auto lg:mr-0";
+
+    return cn(
+      baseClasses,
+      variantClasses[cardVariant],
+      effectClasses[cardEffect],
+      alignmentClassesDesktop,
+      "w-full lg:w-[calc(50%-40px)]"
+    );
+  };
 
   return (
-    <section
-      id="process"
-      ref={containerRef}
-      className="relative bg-gradient-to-b from-slate-50 to-white"
-      style={{
-        height: windowWidth < 640 ? "250vh" : "300vh", // Responsive height
-        willChange: isVisible ? "transform" : "auto", // Optimize rendering
-      }}
+    <div
+      ref={scrollRef}
+      className={cn(
+        "relative min-h-[200vh] w-full overflow-visible",
+        darkMode ? "bg-background text-foreground" : "",
+        className
+      )}
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="h-full flex flex-col">
-          {/* Header - Responsive */}
-          <div className="flex-shrink-0 text-center pt-4 sm:pt-6 lg:pt-8 pb-2 sm:pb-4 px-4">
-            <div className="inline-flex items-center bg-gradient-to-r from-blue-50 to-blue-50 px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-blue-100 mb-3 sm:mb-4">
-              <span className="text-xs sm:text-sm font-semibold text-gray-700">
-                Our Process
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-2 sm:mb-4 leading-tight px-2">
-              From Idea To Launch
-            </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto px-4">
-              Our proven 6-step process ensures your project success
-            </p>
-          </div>
+      <div className="text-center py-16 px-4">
+        <motion.h2
+          className="text-3xl md:text-5xl font-bold mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {title}
+        </motion.h2>
+        <motion.p
+          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+        >
+          {subtitle}
+        </motion.p>
+      </div>
 
-          {/* Progress Bar - Responsive */}
-          <div className="flex-shrink-0 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-2 sm:mb-4">
-            <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-blue-500 via-indigo-800 to-emerald-500 rounded-full transition-all duration-500 ease-out"
+      <div className="relative max-w-6xl mx-auto px-4 pb-24">
+        <div className="relative mx-auto">
+          <div
+            className={cn(getConnectorClasses(), "h-full absolute top-0 z-10")}
+          ></div>
+
+          {/* Enhanced Progress Indicator with Traveling Glow */}
+          {progressIndicator && (
+            <>
+              {/* The main filled progress line */}
+              <motion.div
+                className="absolute top-0 z-10"
                 style={{
-                  width: `${scrollProgress * 100}%`,
-                  transform: `translateZ(0)`, // Force GPU acceleration
+                  height: progressHeight,
+                  width: progressLineWidth,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  borderRadius: progressLineCap === "round" ? 9999 : 0,
+                  background: `linear-gradient(to bottom, #1a365d, #1a365d, #1a365d)`,
+
+                  boxShadow: `
+                    0 0 15px rgba(66,153,225,0.5),
+                    0 0 25px rgba(26,54,93,0.3)
+                  `,
                 }}
               />
-            </div>
-            <div className="text-center mt-1 sm:mt-2">
-              <span className="text-xs sm:text-sm font-medium text-gray-600">
-                Progress: {Math.round(scrollProgress * 100)}%
-              </span>
-            </div>
-          </div>
-
-          {/* Cards Container - Responsive */}
-          <div
-            className="flex-1 min-h-0"
-            style={{ padding: `0 ${responsiveConfig.padding}px` }}
-          >
-            <div
-              ref={horizontalContainerRef}
-              className="overflow-x-hidden h-full"
-              style={{
-                transform: `translateZ(0)`, // Force GPU acceleration
-                backfaceVisibility: "hidden", // Prevent flickering
-              }}
-            >
-              <div
-                className="flex h-full items-center"
+              {/* The traveling glow "comet" */}
+              <motion.div
+                className="absolute z-20"
                 style={{
-                  width: `${containerWidth}px`,
-                  gap: `${responsiveConfig.spacing}px`,
-                  willChange: isVisible ? "transform" : "auto",
+                  top: progressHeight,
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
                 }}
               >
-                {processSteps.map((step, index) => {
-                  const Icon = step.icon;
-                  const progress = scrollProgress * (processSteps.length - 1);
-                  const isActive =
-                    progress >= index - 0.3 && progress <= index + 0.3;
-                  const isCompleted = progress > index + 0.3;
-                  const isPending = progress < index - 0.3;
+                <motion.div
+                  className="w-5 h-5 rounded-full"
+                  style={{
+                    background: `radial-gradient(circle, rgba(26,54,93,0.8) 0%, rgba(66,153,225,0.5) 40%, rgba(26,54,93,0) 70%)`,
+                    boxShadow: `
+                              0 0 15px 4px rgba(26, 54, 93, 0.6),
+                              0 0 25px 8px rgba(66, 153, 225, 0.4),
+                              0 0 40px 15px rgba(21, 62, 117, 0.2)
+                            `,
+                  }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </motion.div>
+            </>
+          )}
 
-                  // Calculate individual card animation progress
-                  const cardProgress = Math.max(
-                    0,
-                    Math.min(1, (progress - index + 0.5) * 2)
-                  );
-                  const translateY = isPending
-                    ? 30
-                    : isActive
-                    ? 0
-                    : isCompleted
-                    ? -10
-                    : 15;
-                  const scale = isPending
-                    ? 0.95
-                    : isActive
-                    ? 1.02
-                    : isCompleted
-                    ? 0.98
-                    : 0.95;
-                  const opacity = isPending ? 0.6 : isActive ? 1 : 0.8;
+          <div className="relative z-20">
+            {events.map((event, index) => {
+              const yOffset =
+                parallaxIntensity > 0
+                  ? useTransform(
+                      smoothProgress,
+                      [0, 1],
+                      [parallaxIntensity * 50, -parallaxIntensity * 50]
+                    )
+                  : undefined;
 
-                  return (
-                    <Card
-                      key={step.id}
-                      className="relative bg-white border border-gray-200 rounded-2xl sm:rounded-3xl shadow-lg flex-shrink-0 overflow-hidden"
-                      style={{
-                        width: `${responsiveConfig.cardWidth}px`,
-                        height:
-                          windowWidth < 640
-                            ? "320px"
-                            : windowWidth < 1024
-                            ? "360px"
-                            : "384px",
-                        transform: `translateY(${translateY}px) scale(${scale}) translateZ(0)`,
-                        opacity,
-                        transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-                        willChange: isVisible ? "transform, opacity" : "auto",
-                        backfaceVisibility: "hidden",
+              return (
+                <div
+                  key={event.id || index}
+                  ref={(el) => {
+                    timelineRefs.current[index] = el;
+                  }}
+                  className={cn(
+                    "relative flex items-center mb-16 py-4",
+                    "flex-col lg:flex-row",
+                    cardAlignment === "alternating"
+                      ? index % 2 === 0
+                        ? "lg:justify-start"
+                        : "lg:flex-row-reverse lg:justify-start"
+                      : cardAlignment === "left"
+                      ? "lg:justify-start"
+                      : "lg:flex-row-reverse lg:justify-start"
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "absolute top-1/2 -translate-y-1/2 z-30",
+                      "left-1/2 -translate-x-1/2"
+                    )}
+                  >
+                    <motion.div
+                      className={cn(
+                        "w-6 h-6 rounded-full border-4 bg-background flex items-center justify-center transition-all duration-300",
+                        index <= activeIndex
+                          ? "border-primary shadow-lg"
+                          : "border-border bg-card"
+                      )}
+                      animate={
+                        index <= activeIndex
+                          ? {
+                              scale: [1, 1.1, 1],
+                              boxShadow: [
+                                "0 0 0px rgba(99,102,241,0)",
+                                "0 0 8px rgba(99,102,241,0.4)",
+                                "0 0 0px rgba(99,102,241,0)",
+                              ],
+                            }
+                          : {}
+                      }
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatDelay: 2,
+                        ease: "easeInOut",
                       }}
-                    >
-                      <CardContent className="p-4 sm:p-6 h-full flex flex-col">
-                        {/* Header */}
-                        <div className="flex items-center justify-between mb-3 sm:mb-4">
-                          <div className="flex items-center space-x-2 sm:space-x-3">
-                            <div
-                              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shadow-md bg-brand-blue transition-transform duration-500"
-                              style={{
-                                transform: `scale(${
-                                  isActive ? 1.1 : 1
-                                }) translateZ(0)`,
-                                backfaceVisibility: "hidden",
-                              }}
+                    />
+                  </div>
+
+                  <motion.div
+                    className={cn(getCardClasses(index), "mt-12 lg:mt-0")}
+                    variants={getCardVariants(index)}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{
+                      once: false,
+                      margin: "0px 0px -10% 0px",
+                      amount: 0.3,
+                    }}
+                    style={yOffset ? { y: yOffset } : undefined}
+                    whileHover={{
+                      scale: 1.02,
+                      transition: { duration: 0.2, ease: "easeOut" },
+                    }}
+                  >
+                    <Card className="bg-background border">
+                      <CardContent className="p-6">
+                        {dateFormat === "badge" ? (
+                          <motion.div
+                            className="flex items-center mb-2"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            {event.icon || (
+                              <Calendar className="h-4 w-4 mr-2 text-primary" />
+                            )}
+                            <span
+                              className={cn(
+                                "text-sm font-bold",
+                                event.color
+                                  ? `text-${event.color}`
+                                  : "text-primary"
+                              )}
                             >
-                              <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                            </div>
-                            <div>
-                              <div className="text-xs font-semibold text-gray-500">
-                                Step {step.id}
-                              </div>
-                              <Badge className="bg-gray-100 text-gray-700 text-xs px-2 py-1 mt-1">
-                                {step.duration}
-                              </Badge>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Content */}
-                        <div className="flex-1 flex flex-col">
-                          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 leading-tight">
-                            {step.title}
-                          </h3>
-                          <p className="text-sm font-medium text-gray-600 mb-2 sm:mb-3">
-                            {step.subtitle}
-                          </p>
-                          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-3 sm:mb-4 flex-1">
-                            {step.description}
-                          </p>
-
-                          {/* Deliverables */}
-                          <div className="mt-auto">
-                            <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-2">
-                              Key Deliverables
-                            </h4>
-                            <div className="space-y-1">
-                              {step.deliverables.map((deliverable, idx) => (
-                                <div
-                                  key={idx}
-                                  className="flex items-center space-x-2"
-                                >
-                                  <div className="w-1 h-1 rounded-full bg-brand-blue flex-shrink-0" />
-                                  <span className="text-xs font-medium text-gray-700 leading-tight">
-                                    {deliverable}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Footer */}
-                        <div className="mt-3 sm:mt-4 pt-3 border-t border-gray-100">
-                          <div className="flex justify-between items-center">
-                            <span className="text-xs text-gray-500">
-                              {step.id} of {processSteps.length}
+                              {event.year}
                             </span>
-                            <div className="flex space-x-1">
-                              {processSteps.map((_, stepIndex) => (
-                                <div
-                                  key={stepIndex}
-                                  className="w-1 h-1 rounded-full transition-colors duration-500"
-                                  style={{
-                                    backgroundColor:
-                                      stepIndex <= index
-                                        ? "#2563eb"
-                                        : "#e5e7eb",
-                                  }}
-                                />
-                              ))}
-                            </div>
-                          </div>
-                        </div>
+                          </motion.div>
+                        ) : (
+                          <motion.p
+                            className="text-lg font-bold text-primary mb-2"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            {event.year}
+                          </motion.p>
+                        )}
+                        <motion.h3
+                          className="text-xl font-bold mb-1"
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          {event.title}
+                        </motion.h3>
+                        {event.subtitle && (
+                          <motion.p
+                            className="text-muted-foreground font-medium mb-2"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 }}
+                          >
+                            {event.subtitle}
+                          </motion.p>
+                        )}
+                        <motion.p
+                          className="text-muted-foreground"
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.5 }}
+                        >
+                          {event.description}
+                        </motion.p>
                       </CardContent>
                     </Card>
-                  );
-                })}
-              </div>
-            </div>
+                  </motion.div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};

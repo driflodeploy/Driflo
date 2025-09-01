@@ -209,21 +209,23 @@ export default function HeroSection() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Mobile Layout */}
-        <div className="lg:hidden">
-          <div className="space-y-8 pt-10 text-center sm:text-left">
-            <div className="space-y-4 sm:space-y-6 ">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight px-2 sm:px-0">
+        <div className="lg:hidden flex flex-col items-center">
+          <div className="space-y-8 pt-10 text-center w-full">
+            <div className="space-y-4 sm:space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight px-2">
                 TRANSFORM YOUR BUSINESS
                 <br />
                 WITH CUSTOM DEVELOPMENT.
               </h1>
-              <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto sm:mx-0 px-2 sm:px-0">
+              <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto px-2">
                 Headless Commerce. Custom Websites. Mobile Apps. We build
                 cutting-edge digital solutions that take your business online
                 with tailored Shopify storefronts and bespoke development.
               </p>
             </div>
-            <div className="flex flex-col gap-4">
+
+            {/* Buttons & Trusted Users */}
+            <div className="flex flex-col items-center gap-4 w-full">
               <CallToActionButtons />
               <ScheduleCallButton />
               <TrustedUsers
@@ -248,9 +250,9 @@ export default function HeroSection() {
           </div>
 
           {/* Mobile Image Grid */}
-          <div className="mt-12 space-y-8">
+          <div className="mt-12 space-y-8 w-full flex flex-col items-center">
             {/* First Image */}
-            <div className="relative mx-auto w-full max-w-sm">
+            <div className="relative w-full max-w-sm">
               <ImageCard
                 width="w-full"
                 height="h-48 sm:h-56"
@@ -262,8 +264,8 @@ export default function HeroSection() {
               </ImageCard>
             </div>
 
-            {/* Second Image with overlays */}
-            <div className="relative  mx-auto w-full max-w-md">
+            {/* Second Image */}
+            <div className="relative w-full max-w-md">
               <ImageCard
                 width="w-full"
                 height="h-64 sm:h-80"
@@ -272,7 +274,6 @@ export default function HeroSection() {
                 className="bg-gray-900 z-10"
                 bgOverlay="bg-black/30"
               >
-                {/* Development Projects Badge */}
                 <div className="absolute top-4 right-4 bg-brand-blue text-white rounded-full px-3 py-2 sm:px-4 sm:py-2 flex items-center space-x-2 shadow-lg">
                   <span className="font-semibold text-xs sm:text-sm">
                     10+ Stores Built
@@ -281,14 +282,13 @@ export default function HeroSection() {
                     <ArrowRight className="w-2 h-2 sm:w-3 sm:h-3" />
                   </div>
                 </div>
-
                 <UserAvatars />
                 <StatsCard />
               </ImageCard>
             </div>
 
             {/* Third Image */}
-            <div className="relative mx-auto w-full max-w-sm">
+            <div className="relative w-full max-w-sm">
               <ImageCard
                 width="w-full"
                 height="h-48 sm:h-56"
@@ -313,8 +313,8 @@ export default function HeroSection() {
         {/* Desktop Layout */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-8 xl:gap-12 items-start">
           {/* Left Content */}
-          <div className="space-y-8 pt-8 mt-16 ">
-            <div className="space-y-6 ">
+          <div className="space-y-8 pt-8 mt-16">
+            <div className="space-y-6">
               <h1 className="text-4xl lg:text-6xl font-bold text-black leading-tight">
                 TRANSFORM YOUR BUSINESS
                 <br />
@@ -326,12 +326,16 @@ export default function HeroSection() {
                 with tailored Shopify storefronts and bespoke development.
               </p>
             </div>
-            <div className="flex gap-2">
-              <div className="flex flex-col"></div>
-              <CallToActionButtons />
-              <ScheduleCallButton />
-            </div>
-            <div className="mr-10">
+
+            {/* CTA + Schedule Call + Trusted Users in one block */}
+            <div className="flex flex-col items-start gap-6">
+              {/* Buttons in one line */}
+              <div className="flex gap-4">
+                <CallToActionButtons />
+                <ScheduleCallButton />
+              </div>
+
+              {/* Trusted Users aligned just below buttons */}
               <TrustedUsers
                 avatars={[
                   "/avatars/user1.jpg",
@@ -400,12 +404,12 @@ export default function HeroSection() {
             height="h-48"
             imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=320&h=192&fit=crop&crop=center"
             alt="Modern office workspace with development team"
-            className="z-20 transform absolute left-1/2 bottom-0 -translate-x-36 -translate-y-8"
+            className="z-20 transform absolute left-1/2 bottom-0 -translate-x-36 -translate-y-10"
           >
             <SpeechBubble text="Custom development solutions tailored to your business needs" />
           </ImageCard>
 
-          <div className="flex items-center space-x-2 text-black font-medium pt-8 absolute left-1/2 bottom-6 translate-x-52 -translate-y-12">
+          <div className="flex items-center space-x-2 text-black font-medium pt-2 absolute left-1/2 bottom-6 translate-x-52 -translate-y-28">
             <span>Your Digital Future Starts Here</span>
             <ArrowRight className="w-4 h-4" />
           </div>

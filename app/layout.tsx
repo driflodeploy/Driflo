@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={montserrat.className}>
-      <body className="antialiased">
+      <body className="antialiased ">
         <Navbar />
         <main>{children}</main>
         <Analytics />

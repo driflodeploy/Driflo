@@ -227,7 +227,7 @@ export const ScrollTimeline = ({
     <div
       ref={scrollRef}
       className={cn(
-        "relative min-h-[200vh] w-full overflow-visible",
+        "relative min-h-[200vh] w-full overflow-x-hidden",
         darkMode ? "bg-background text-foreground" : "",
         className
       )}

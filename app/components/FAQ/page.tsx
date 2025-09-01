@@ -30,7 +30,7 @@ const FAQSection = () => {
     },
   ];
 
-  const toggleQuestion = (index: React.SetStateAction<number>) => {
+  const toggleQuestion = (index: number) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
 
@@ -90,7 +90,7 @@ const FAQSection = () => {
                 </button>
 
                 {openIndex === index && (
-                  <div className="pb-6 pr-12 animate-fadeIn">
+                  <div className="pb-6 pr-12 animate-in fade-in slide-in-from-top-2 duration-300">
                     <p className="text-gray-600 text-lg leading-relaxed">
                       {faq.answer}
                     </p>
@@ -101,23 +101,6 @@ const FAQSection = () => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-      `}</style>
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { TrustedUsers } from "@/src/components/trusted-users";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -225,6 +226,24 @@ export default function HeroSection() {
             <div className="flex flex-col gap-4">
               <CallToActionButtons />
               <ScheduleCallButton />
+              <TrustedUsers
+                avatars={[
+                  "/avatars/user1.jpg",
+                  "/avatars/user2.jpg",
+                  "/avatars/user3.jpg",
+                  "/avatars/user4.jpg",
+                ]}
+                rating={5}
+                totalUsersText={500}
+                caption="Loved by"
+                starColorClass="text-yellow-400"
+                ringColors={[
+                  "ring-pink-500",
+                  "ring-green-500",
+                  "ring-blue-500",
+                  "ring-purple-500",
+                ]}
+              />
             </div>
           </div>
 
@@ -308,9 +327,29 @@ export default function HeroSection() {
               </p>
             </div>
             <div className="flex gap-2">
+              <div className="flex flex-col"></div>
               <CallToActionButtons />
-
               <ScheduleCallButton />
+            </div>
+            <div className="mr-10">
+              <TrustedUsers
+                avatars={[
+                  "/avatars/user1.jpg",
+                  "/avatars/user2.jpg",
+                  "/avatars/user3.jpg",
+                  "/avatars/user4.jpg",
+                ]}
+                rating={5}
+                totalUsersText={500}
+                caption="Loved by"
+                starColorClass="text-yellow-400"
+                ringColors={[
+                  "ring-pink-500",
+                  "ring-green-500",
+                  "ring-blue-500",
+                  "ring-purple-500",
+                ]}
+              />
             </div>
           </div>
 

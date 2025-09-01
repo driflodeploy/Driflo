@@ -31,7 +31,7 @@ export default function ServicesSection() {
               <div className="flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-8">
-                  <div className="w-16 h-16 bg-brand-blue rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
                     <Code className="w-8 h-8 text-white" />
                   </div>
                 </div>
@@ -39,7 +39,7 @@ export default function ServicesSection() {
                 {/* Content */}
                 <div className="flex-1 space-y-6">
                   <div>
-                    <Badge className="bg-blue-100 text-brand-blue border-blue-200 rounded-full text-sm px-4 py-2 font-semibold mb-4">
+                    <Badge className="bg-blue-100 text-black border-blue-200 rounded-full text-sm px-4 py-2 font-semibold mb-4">
                       E-Commerce
                     </Badge>
                     <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
@@ -62,7 +62,7 @@ export default function ServicesSection() {
                         key={index}
                         className="flex items-center space-x-3 text-gray-700"
                       >
-                        <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                        <div className="w-2 h-2 bg-black rounded-full"></div>
                         <span className="font-medium">{feature}</span>
                       </div>
                     ))}
@@ -78,7 +78,7 @@ export default function ServicesSection() {
               <div className="flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-8">
-                  <div className="w-16 h-16 bg-brand-blue rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
                     <Globe className="w-8 h-8 text-white" />
                   </div>
                 </div>
@@ -86,7 +86,7 @@ export default function ServicesSection() {
                 {/* Content */}
                 <div className="flex-1 space-y-6">
                   <div>
-                    <Badge className="bg-blue-100 text-brand-blue border-blue-200 rounded-full text-sm px-4 py-2 font-semibold mb-4">
+                    <Badge className="bg-blue-100 text-black border-blue-200 rounded-full text-sm px-4 py-2 font-semibold mb-4">
                       Web Development
                     </Badge>
                     <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
@@ -108,7 +108,7 @@ export default function ServicesSection() {
                         key={index}
                         className="flex items-center space-x-3 text-gray-700"
                       >
-                        <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                        <div className="w-2 h-2 bg-black rounded-full"></div>
                         <span className="font-medium">{feature}</span>
                       </div>
                     ))}
@@ -124,7 +124,7 @@ export default function ServicesSection() {
               <div className="flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-8">
-                  <div className="w-16 h-16 bg-brand-blue rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
                     <Smartphone className="w-8 h-8 text-white" />
                   </div>
                 </div>
@@ -132,7 +132,7 @@ export default function ServicesSection() {
                 {/* Content */}
                 <div className="flex-1 space-y-6">
                   <div>
-                    <Badge className="bg-blue-100 text-brand-blue border-blue-200 rounded-full text-sm px-4 py-2 font-semibold mb-4">
+                    <Badge className="bg-blue-100 text-black border-blue-200 rounded-full text-sm px-4 py-2 font-semibold mb-4">
                       Mobile Development
                     </Badge>
                     <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
@@ -154,7 +154,7 @@ export default function ServicesSection() {
                         key={index}
                         className="flex items-center space-x-3 text-gray-700"
                       >
-                        <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                        <div className="w-2 h-2 bg-black rounded-full"></div>
                         <span className="font-medium">{feature}</span>
                       </div>
                     ))}

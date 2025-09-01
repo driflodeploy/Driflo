@@ -31,7 +31,7 @@ const UserAvatars = () => (
 
 const StatsCard = () => (
   <div className="absolute bottom-8 left-8 bg-white rounded-2xl p-5 flex items-center space-x-4 shadow-xl min-w-[280px]">
-    <div className="w-12 h-12 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0">
+    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center flex-shrink-0">
       <ArrowRight className="w-5 h-5 text-white" />
     </div>
     <div>
@@ -196,7 +196,7 @@ const CallToActionButtons = () => (
       </span>
 
       {/* Border glow */}
-      <div className="absolute inset-0 rounded-xl bg-brand-blue opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
+      <div className="absolute inset-0 rounded-xl bg-brand-black opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
     </Link>
   </div>
 );
@@ -274,7 +274,7 @@ export default function HeroSection() {
                 className="bg-gray-900 z-10"
                 bgOverlay="bg-black/30"
               >
-                <div className="absolute top-4 right-4 bg-brand-blue text-white rounded-full px-3 py-2 sm:px-4 sm:py-2 flex items-center space-x-2 shadow-lg">
+                <div className="absolute top-4 right-4 bg-black text-white rounded-full px-3 py-2 sm:px-4 sm:py-2 flex items-center space-x-2 shadow-lg">
                   <span className="font-semibold text-xs sm:text-sm">
                     10+ Stores Built
                   </span>
@@ -383,7 +383,7 @@ export default function HeroSection() {
               loop={true}
             >
               {/* Development Projects Badge */}
-              <div className="absolute top-8 right-8 bg-brand-blue text-white rounded-full px-6 py-3 flex items-center space-x-2 shadow-lg">
+              <div className="absolute top-8 right-8 bg-black text-white rounded-full px-6 py-3 flex items-center space-x-2 shadow-lg">
                 <span className="font-semibold text-sm">10+ Stores Built</span>
                 <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
                   <ArrowRight className="w-3 h-3" />

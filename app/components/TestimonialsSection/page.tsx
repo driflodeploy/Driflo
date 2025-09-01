@@ -36,10 +36,10 @@ export default function TestimonialsSection() {
             <CardContent className="p-0">
               <div className="flex items-center space-x-2 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current" />
+                  <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
-              <p className="text-lg mb-6">
+              <p className="text-xl mb-6">
                 "Their custom headless storefront solution increased our online
                 sales by 180%. The performance and user experience are
                 outstanding."
@@ -59,9 +59,11 @@ export default function TestimonialsSection() {
           {/* Testimonial 2 */}
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
-              <Clock className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Rapid Delivery</h3>
-              <p className="text-gray-600 text-sm">
+              <Clock className="w-6 h-6 text-brand-blue mb-4" />
+              <h3 className="font-bold text-black text-xl mb-2">
+                Rapid Delivery
+              </h3>
+              <p className="text-gray-600 text-base">
                 "They delivered our mobile app in record time without
                 compromising quality."
               </p>
@@ -74,9 +76,11 @@ export default function TestimonialsSection() {
           {/* Testimonial 3 */}
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
-              <TrendingUp className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Revenue Growth</h3>
-              <p className="text-gray-600 text-sm">
+              <TrendingUp className="w-6 h-6 text-brand-blue mb-4" />
+              <h3 className="font-bold text-black text-xl mb-2">
+                Revenue Growth
+              </h3>
+              <p className="text-gray-600 text-base">
                 "Our new website generated 250% more leads within the first
                 month."
               </p>
@@ -89,12 +93,15 @@ export default function TestimonialsSection() {
           {/* Testimonial 4 */}
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
-              <Shield className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Secure Solutions</h3>
-              <p className="text-gray-600 text-sm">
+              <Shield className="w-6 h-6 text-brand-blue mb-4" />
+              <h3 className="font-bold text-black text-xl mb-2">
+                Secure Solutions
+              </h3>
+              <p className="text-gray-600 text-base">
                 "Their development practices ensure our customer data is always
                 protected."
               </p>
+
               <div className="mt-4 text-sm font-medium text-black">
                 - David Park
               </div>
@@ -104,11 +111,11 @@ export default function TestimonialsSection() {
           {/* Testimonial 5 */}
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
-              <CheckCircle className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">
+              <CheckCircle className="w-6 h-6 text-brand-blue mb-4" />
+              <h3 className="font-bold text-black text-xl mb-2">
                 Seamless Integration
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-base">
                 "The headless storefront integrated perfectly with our existing
                 systems."
               </p>
@@ -121,8 +128,8 @@ export default function TestimonialsSection() {
           {/* Testimonial 6 - Large */}
           <Card className="md:col-span-2 bg-black text-white rounded-3xl p-8 border-0">
             <CardContent className="p-0">
-              <Award className="w-10 h-10 text-brand-lightBlue mb-6" />
-              <p className="text-xl mb-6">
+              <Award className="w-8 h-8 text-brand-lightBlue mb-6" />
+              <p className="text-2xl mb-6">
                 "Best web development agency we've worked with. Their custom app
                 helped us scale from 1,000 to 50,000 users in 6 months."
               </p>
@@ -141,11 +148,11 @@ export default function TestimonialsSection() {
           {/* Testimonial 7 */}
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
-              <MessageSquare className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">
+              <MessageSquare className="w-6 h-6 text-brand-blue mb-4" />
+              <h3 className="font-bold text-black text-xl mb-2">
                 Excellent Communication
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-base">
                 "They kept us informed throughout the entire development
                 process."
               </p>
@@ -158,9 +165,11 @@ export default function TestimonialsSection() {
           {/* Testimonial 8 */}
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
-              <Heart className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Love the Design</h3>
-              <p className="text-gray-600 text-sm">
+              <Heart className="w-6 h-6 text-brand-blue mb-4" />
+              <h3 className="font-bold text-black text-xl mb-2">
+                Love the Design
+              </h3>
+              <p className="text-gray-600 text-base">
                 "Our customers love the beautiful, intuitive interface they
                 created."
               </p>
@@ -173,11 +182,11 @@ export default function TestimonialsSection() {
           {/* Testimonial 9 */}
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
-              <Zap className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">
+              <Zap className="w-6 h-6 text-brand-blue mb-4" />
+              <h3 className="font-bold text-black text-xl mb-2">
                 Lightning Performance
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-base">
                 "Our website loads 3x faster after their optimization work."
               </p>
               <div className="mt-4 text-sm font-medium text-black">
@@ -189,9 +198,11 @@ export default function TestimonialsSection() {
           {/* Testimonial 10 */}
           <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
             <CardContent className="p-0">
-              <Target className="w-8 h-8 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black mb-2">Perfect Match</h3>
-              <p className="text-gray-600 text-sm">
+              <Target className="w-6 h-6 text-brand-blue mb-4" />
+              <h3 className="font-bold text-black text-xl mb-2">
+                Perfect Match
+              </h3>
+              <p className="text-gray-600 text-base">
                 "Their custom solution was exactly what our business needed to
                 grow."
               </p>

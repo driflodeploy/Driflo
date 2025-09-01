@@ -3,18 +3,19 @@ import React from "react";
 const HowWeWork = () => {
   return (
     <section className="bg-gray-50 py-20 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col space-y-12">
+      <div className="max-w-7xl mx-auto flex flex-col space-y-12 items-center">
         {/* Top Row - Heading and Description in Flex */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+        <div className="flex flex-col text  lg:flex-row  lg:justify-between gap-8 w-full items-center lg:items-start">
           {/* Main Heading */}
           <div className="flex-1">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            <h1 className="leading-[1.2] text-6xl font-bold text-gray-900 ">
               Build custom apps with{" "}
-              <span className="text-brand-blue">cutting-edge technology</span>
+              <span className="bg-brand-blue text-white">cutting-edge</span>{" "}
+              technology
             </h1>
           </div>
           {/* Description */}
-          <div className="flex-1 lg:max-w-lg">
+          <div className="flex-1 lg:max-w-lg p-4">
             <p className="text-gray-600 text-lg leading-relaxed">
               We are a specialized development team creating custom websites,
               web applications, and headless Shopify stores. With expertise in
@@ -25,16 +26,16 @@ const HowWeWork = () => {
         </div>
 
         {/* Bottom Row - Two Boxes in Flex Row */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start w-full">
           {/* Stats Card Box */}
           <div className="w-full lg:w-1/3">
-            <div className="bg-gray-900 rounded-3xl p-8 h-80 flex flex-col justify-between">
-              <div className="space-y-6">
+            <div className="bg-black rounded-3xl p-8 h-80 flex flex-col justify-between items-center">
+              <div className="space-y-6 w-full text-center">
                 {/* Main Stat */}
                 <div>
-                  <div className="flex items-baseline">
+                  <div className="flex items-baseline justify-center">
                     <span className="text-6xl font-bold text-white">150</span>
-                    <span className="text-4xl font-bold text-green-400 ml-1">
+                    <span className="text-4xl font-bold text-white ml-1">
                       +
                     </span>
                   </div>
@@ -44,19 +45,19 @@ const HowWeWork = () => {
                 </div>
               </div>
               {/* Tech Stack Icons */}
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 justify-center">
                 <div className="flex space-x-2">
-                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">R</span>
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold text-sm">R</span>
                   </div>
-                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">N</span>
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold text-sm">N</span>
                   </div>
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">S</span>
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold text-sm">S</span>
                   </div>
-                  <div className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">TS</span>
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold text-sm">TS</span>
                   </div>
                 </div>
                 <span className="text-white text-3xl font-light ml-2">+</span>

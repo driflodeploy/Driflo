@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Testimonial 1 - Large */}
-          <Card className="md:col-span-2 bg-brand-blue text-white rounded-3xl p-8 border-0">
+          <Card className="md:col-span-2 bg-brand-blueHover text-white rounded-3xl p-8 border-0">
             <CardContent className="p-0">
               <div className="flex items-center space-x-2 mb-4">
                 {[...Array(5)].map((_, i) => (

@@ -236,7 +236,7 @@ export default function HeroSection() {
                   "/avatars/user4.jpg",
                 ]}
                 rating={5}
-                totalUsersText={500}
+                totalUsersText={100}
                 caption="Loved by"
                 starColorClass="text-yellow-400"
                 ringColors={[

@@ -4,10 +4,111 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Footer from "../components/Footer/page";
 import { MinimalNewsletter } from "../components/Newsletter/page";
-import ProcessSection from "../components/ProcessSection/page";
-import { Rocket, ArrowRight, Eye } from "lucide-react";
+import ProcessSection, {
+  ScrollTimeline,
+} from "../components/ProcessSection/page";
+import {
+  Rocket,
+  ArrowRight,
+  Eye,
+  MessageCircle,
+  Lightbulb,
+  Code,
+  Palette,
+  TestTube,
+} from "lucide-react";
 
 export default function AboutPage() {
+  const processSteps = [
+    {
+      id: 1,
+      icon: MessageCircle,
+      title: "Discovery & Consultation",
+      subtitle: "Understanding Your Vision",
+      description:
+        "We start with in-depth discussions to understand your business goals, target audience, and project requirements.",
+      duration: "1-2 weeks",
+      deliverables: ["Project Brief", "User Research", "Competitive Analysis"],
+      color: "from-blue-500 to-indigo-600",
+    },
+    {
+      id: 2,
+      icon: Lightbulb,
+      title: "Strategy & Planning",
+      subtitle: "Crafting the Blueprint",
+      description:
+        "We develop a comprehensive strategy and project roadmap including architecture planning and technology selection.",
+      duration: "1-2 weeks",
+      deliverables: ["Project Roadmap", "Technical Architecture", "Wireframes"],
+      color: "from-indigo-500 to-pink-600",
+    },
+    {
+      id: 3,
+      icon: Palette,
+      title: "Design & Prototyping",
+      subtitle: "Bringing Ideas to Life",
+      description:
+        "Our design team creates stunning visual concepts and interactive prototypes focused on user experience.",
+      duration: "2-3 weeks",
+      deliverables: ["UI/UX Design", "Interactive Prototypes", "Design System"],
+      color: "from-pink-500 to-rose-600",
+    },
+    {
+      id: 4,
+      icon: Code,
+      title: "Development & Integration",
+      subtitle: "Building Your Solution",
+      description:
+        "Using cutting-edge technologies, we develop your project with clean, scalable code and high performance.",
+      duration: "4-8 weeks",
+      deliverables: [
+        "Frontend Development",
+        "Backend Systems",
+        "API Integration",
+      ],
+      color: "from-emerald-500 to-teal-600",
+    },
+    {
+      id: 5,
+      icon: TestTube,
+      title: "Testing & Optimization",
+      subtitle: "Ensuring Excellence",
+      description:
+        "Comprehensive testing across all devices and browsers with performance optimization and bug fixes.",
+      duration: "1-2 weeks",
+      deliverables: [
+        "Quality Assurance",
+        "Performance Testing",
+        "Security Audit",
+      ],
+      color: "from-orange-500 to-amber-600",
+    },
+    {
+      id: 6,
+      icon: Rocket,
+      title: "Launch & Deployment",
+      subtitle: "Going Live",
+      description:
+        "We handle the complete deployment process and ensure a smooth launch with post-launch support.",
+      duration: "1 week",
+      deliverables: ["Production Deployment", "SSL Setup", "Analytics"],
+      color: "from-green-500 to-emerald-600",
+    },
+  ];
+
+  // Transform process steps to match TimelineEvent interface
+  const timelineEvents = processSteps.map((step, index) => ({
+    id: step.id.toString(),
+    year: `Step ${step.id}`,
+    title: step.title,
+    subtitle: step.subtitle,
+    description: `${step.description} Duration: ${
+      step.duration
+    }. Deliverables: ${step.deliverables.join(", ")}.`,
+    icon: <step.icon className="h-4 w-4" />,
+    color: "primary",
+  }));
+
   const teamMembers = [
     {
       name: "Alex Rodriguez",
@@ -240,12 +341,20 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <ProcessSection />
+      <ScrollTimeline
+        title="Our Development Process"
+        subtitle="Discover how we bring your ideas to life through our proven methodology"
+        events={timelineEvents}
+        cardAlignment="alternating"
+        revealAnimation="slide"
+        cardVariant="elevated"
+        cardEffect="glow"
+      />
       {/* Call to Action Section */}
       <div className="text-center max-w-2xl lg:max-w-4xl mx-8 md:mx-auto my-24">
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-14 lg:p-16 shadow-2xl relative overflow-hidden group">
+        <div className="bg-black rounded-3xl p-14 lg:p-16 shadow-2xl relative overflow-hidden group">
           {/* Background Effects */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-brand-blue opacity-50" />
+          <div className="absolute inset-0 bg-black opacity-50" />
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
 
           <div className="relative">

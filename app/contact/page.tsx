@@ -135,7 +135,7 @@ export default function ContactPage() {
         </span>
 
         {/* Border glow */}
-        <div className="absolute inset-0 rounded-xl bg-brand-blue opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
+        <div className="absolute inset-0 rounded-xl bg-black opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
       </Link>
     </div>
   );

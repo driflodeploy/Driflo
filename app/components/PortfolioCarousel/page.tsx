@@ -159,18 +159,15 @@ export default function PortfolioCarousel() {
 
   const getTypeColor = (type: string) => {
     const colors = {
-      "Shopify Hydrogen": "bg-brand-blue",
-      "Headless Shopify + Next.js": "bg-brand-blue",
-      "Shopify PWA": "bg-brand-blue",
-      "Shopify Plus + Hydrogen": "bg-brand-blue",
-      "Headless Shopify + Remix": "bg-brand-blue",
-      "Shopify Hydrogen + Subscriptions": "bg-brand-blue",
-      "Shopify Multi-Store + GraphQL": "bg-brand-blue",
+      "Shopify Hydrogen": "bg-black",
+      "Headless Shopify + Next.js": "bg-black",
+      "Shopify PWA": "bg-black",
+      "Shopify Plus + Hydrogen": "bg-black",
+      "Headless Shopify + Remix": "bg-black",
+      "Shopify Hydrogen + Subscriptions": "bg-black",
+      "Shopify Multi-Store + GraphQL": "bg-black",
     };
-    return (
-      colors[type as keyof typeof colors] ||
-      "bg-gradient-to-r from-gray-500 to-gray-600"
-    );
+    return colors[type as keyof typeof colors] || "bg-black";
   };
 
   // Calculate dynamic styles only on client side
@@ -312,11 +309,11 @@ export default function PortfolioCarousel() {
                 <CardContent className="p-6 space-y-4">
                   {/* Title and Client */}
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 transition-colors hover:text-brand-blue">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 transition-colors hover:text-black">
                       {item.title}
                     </h3>
                     <div className="flex items-center text-gray-600 mb-3">
-                      <Clock10 className="w-4 h-4 mr-1 text-brand-blue" />
+                      <Clock10 className="w-4 h-4 mr-1 text-black" />
                       <span className="text-sm font-medium">{item.time}</span>
                     </div>
                     <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
@@ -355,10 +352,10 @@ export default function PortfolioCarousel() {
                     <div className="text-center group">
                       <div className="flex items-center justify-center mb-2">
                         <div className="p-2 rounded-full bg-blue-50 group-hover:bg-blue-100 transition-all duration-300 group-hover:scale-110">
-                          <DollarSign className="w-5 h-5 text-brand-blue" />
+                          <DollarSign className="w-5 h-5 text-black" />
                         </div>
                       </div>
-                      <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-brand-blue">
+                      <div className="text-lg font-bold text-gray-900 transition-all group-hover:text-black">
                         {Object.values(item.stats)[2]}
                       </div>
                       <div className="text-xs text-gray-500 font-medium">
@@ -378,10 +375,7 @@ export default function PortfolioCarousel() {
         <div
           className="h-full rounded-full transition-all duration-300"
           style={{
-            background:
-              "linear-gradient(90deg, #8B5CF6, #EC4899, #06B6D4, #8B5CF6)",
-            backgroundSize: "300% 100%",
-            animation: "flow 4s ease-in-out infinite",
+            background: "black",
             width: "40%",
             transform: `translateX(${(translateX / totalWidth) * 250}%)`,
           }}

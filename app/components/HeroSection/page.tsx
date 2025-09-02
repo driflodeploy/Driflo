@@ -205,7 +205,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 pt-20 sm:pt-24 lg:mb-12 overflow-hidden"
+      className="w-full px-4 sm:px-6 lg:px-8 py-20 sm:py-20 md:py-20 lg:py-10 lg:mb-12 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Mobile Layout */}

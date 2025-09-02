@@ -2,21 +2,23 @@ import React from "react";
 
 const HowWeWork = () => {
   return (
-    <section className="bg-gray-50 py-20 px-6">
+    <section className="bg-brand-blueHover py-20 px-6">
       <div className="max-w-7xl mx-auto flex flex-col space-y-12 items-center">
         {/* Top Row - Heading and Description in Flex */}
         <div className="flex flex-col text  lg:flex-row  lg:justify-between gap-8 w-full items-center lg:items-start">
           {/* Main Heading */}
           <div className="flex-1">
-            <h1 className="leading-[1.2] text-6xl font-bold text-gray-900 ">
+            <h1 className="leading-[1.2] text-6xl font-bold text-white ">
               Build custom apps with{" "}
-              <span className="bg-brand-blue text-white">cutting-edge</span>{" "}
+              <span className="bg-white text-brand-blueHover">
+                cutting-edge
+              </span>{" "}
               technology
             </h1>
           </div>
           {/* Description */}
           <div className="flex-1 lg:max-w-lg p-4">
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-gray-100 text-lg leading-relaxed">
               We are a specialized development team creating custom websites,
               web applications, and headless Shopify stores. With expertise in
               modern frameworks and e-commerce solutions, we transform your

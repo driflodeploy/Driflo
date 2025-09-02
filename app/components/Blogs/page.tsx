@@ -6,7 +6,7 @@ const BlogSection = () => {
     {
       id: 1,
       readTime: "8 min read",
-      color: "bg-blue-500",
+      color: "bg-black",
       title: "Why Choose Headless Shopify for Your E-commerce Store",
       excerpt:
         "Discover the benefits of headless architecture and how it can transform your Shopify store's performance and user experience....",
@@ -15,7 +15,7 @@ const BlogSection = () => {
     {
       id: 2,
       readTime: "6 min read",
-      color: "bg-green-500",
+      color: "bg-black",
       title: "Building Scalable Web Apps with React and Node.js",
       excerpt:
         "Learn our proven approach to creating robust, scalable web applications using modern JavaScript frameworks and best practices...",
@@ -25,7 +25,7 @@ const BlogSection = () => {
     {
       id: 3,
       readTime: "10 min read",
-      color: "bg-purple-500",
+      color: "bg-black",
       title: "From Design to Deployment: Our Complete Development Process",
       excerpt:
         "Take a behind-the-scenes look at how we transform ideas into fully functional applications through our systematic development workflow...",

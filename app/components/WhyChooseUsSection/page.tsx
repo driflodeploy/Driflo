@@ -58,7 +58,7 @@ export default function WhyChooseUsSection() {
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center bg-gray-100 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-gray-200 mb-6 sm:mb-8">
+          <div className="inline-flex items-center bg-blue-50 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-blue-100 mb-6 sm:mb-8">
             <span className="text-xs sm:text-sm font-semibold text-gray-800">
               Why Choose Us
             </span>

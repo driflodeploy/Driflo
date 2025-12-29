@@ -45,7 +45,7 @@ export default function AboutPage() {
     {
       id: 3,
       icon: Palette,
-      title: "Design & Prototyping",
+      title: "Design",
       subtitle: "Bringing Ideas to Life",
       description:
         "Our design team creates stunning visual concepts and interactive prototypes focused on user experience.",

@@ -1,113 +1,140 @@
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowRight,
-  Zap,
-  Users,
-  Palette,
-  RefreshCw,
-  Code,
-  Smartphone,
-  ShoppingCart,
-} from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, Clock, MessageSquare, Heart, Shield } from "lucide-react";
 import Link from "next/link";
 
 export default function WhyChooseUsSection() {
-  const stats = [
+  const values = [
     {
-      number: "10+",
-      label: "Projects Delivered",
-    },
-    {
-      number: "98%",
-      label: "Client Satisfaction",
-    },
-    {
-      number: "24/7",
-      label: "Support Available",
-    },
-  ];
-
-  const services = [
-    {
-      icon: Code,
-      title: "Custom Development",
+      icon: MessageSquare,
+      title: "Transparent Communication",
       description:
-        "Tailored solutions built with modern technologies like Next.js, React, and Node.js",
+        "No disappearing acts. You'll get weekly updates, quick responses, and honest timelines—even when the news isn't great.",
     },
     {
-      icon: ShoppingCart,
-      title: "Shopify Expertise",
+      icon: Clock,
+      title: "Respect for Your Time",
       description:
-        "Headless commerce solutions that deliver exceptional user experiences and conversions",
+        "We keep meetings short and async-friendly. Based in India, we often deliver progress while you sleep.",
     },
     {
-      icon: Smartphone,
-      title: "Mobile-First Design",
+      icon: Heart,
+      title: "We Actually Care",
       description:
-        "Responsive designs that look stunning and perform flawlessly across all devices",
+        "Your success is our success. We're not just shipping code—we want your store to thrive after launch.",
+    },
+    {
+      icon: Shield,
+      title: "No Surprises",
+      description:
+        "Fixed project pricing, clear scope, and a 30-day support period included. You'll know what you're paying for.",
     },
   ];
 
   return (
     <section
-      id="why-choose-us"
-      className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative overflow-hidden bg-gray-50"
+      id="why-us"
+      className="w-full px-4 sm:px-6 lg:px-8 py-20 sm:py-28 bg-gray-50"
     >
-      <div className="relative max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center bg-blue-50 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-blue-100 mb-6 sm:mb-8">
-            <span className="text-xs sm:text-sm font-semibold text-gray-800">
-              Why Choose Us
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-4 leading-tight">
-            We Transform
+        <div className="max-w-2xl mb-16">
+          <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+            Why Us
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            Small team.
+            <br />
+            <span className="text-gray-400">Big commitment.</span>
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0">
-            Specializing in cutting-edge websites, mobile apps, and headless
-            Shopify storefronts. Every project is crafted with precision,
-            optimized for performance, and designed to convert.
+          <p className="text-lg text-gray-600 leading-relaxed">
+            We're not a large agency with layers of account managers. When you
+            work with us, you work directly with the people building your
+            project. That means faster decisions, clearer communication, and
+            work we're personally proud of.
           </p>
         </div>
 
-        {/* Responsive Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-16 sm:mb-20">
-          {stats.map((stat, index) => (
+        {/* Values Grid */}
+        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8 mb-16">
+          {values.map((value, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-4 sm:p-6 lg:p-8 border border-gray-200 shadow-md text-center hover:shadow-lg hover:scale-102 transition-all duration-300 group"
+              className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:shadow-lg hover:border-gray-300"
             >
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-600 font-medium text-sm sm:text-base lg:text-lg">
-                {stat.label}
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <value.icon className="w-5 h-5 text-gray-700" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Responsive Service Highlights */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <div key={index} className="text-center group">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-900 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:scale-105 transition-all duration-300">
-                  <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                </div>
-                <h4 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
-                  {service.title}
-                </h4>
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed px-2 sm:px-0">
-                  {service.description}
+        {/* Honest Positioning */}
+        <div className="bg-white border border-gray-200 rounded-2xl p-8 sm:p-10">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left - Honest Take */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                We're not right for everyone
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                If you need a quick template setup or the cheapest option,
+                that's not us. But if you want a custom-built store that
+                performs exceptionally and a team that treats your project like
+                their own—let's talk.
+              </p>
+
+              <div className="space-y-3">
+                <p className="text-sm font-semibold text-gray-900">
+                  Good fit:
                 </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Established brands",
+                    "Quality over speed",
+                    "Long-term thinking",
+                    "Clear communication",
+                  ].map((item, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-medium rounded-lg border border-emerald-100"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            );
-          })}
+            </div>
+
+            {/* Right - CTA */}
+            <div className="bg-gray-50 rounded-xl p-6 sm:p-8 text-center lg:text-left">
+              <p className="text-gray-500 text-sm mb-2">Ready to start?</p>
+              <p className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                Let's see if we're a match.
+              </p>
+              <p className="text-gray-600 mb-6">
+                Book a free 30-minute call. No pitch deck, no pressure—just a
+                conversation about what you're building.
+              </p>
+              <Link
+                href="https://calendly.com/todriflo/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-gray-900 text-white font-semibold rounded-xl transition-all duration-300 hover:bg-gray-800 hover:shadow-xl"
+              >
+                Book a Call
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

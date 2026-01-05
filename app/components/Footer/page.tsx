@@ -1,237 +1,129 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  Instagram,
-} from "lucide-react";
+import { ArrowRight, Github, Instagram, Mail } from "lucide-react";
 import Link from "next/link";
-import { memo, useCallback } from "react";
-
-// Social Icon Component - Memoized for performance
-const SocialIcon = memo(
-  ({
-    href,
-    icon: Icon,
-    label,
-  }: {
-    href: string;
-    icon: React.ComponentType<{ className?: string }>;
-    label: string;
-  }) => {
-    return (
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-8 h-8 sm:w-9 sm:h-9 bg-gray-800/80 hover:bg-brand-blue rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group backdrop-blur-sm active:scale-95"
-        aria-label={label}
-      >
-        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-white transition-colors duration-300" />
-      </Link>
-    );
-  }
-);
-
-// Footer Section Component - Responsive navigation links
-const FooterSection = memo(
-  ({ links }: { links: Array<{ href: string; label: string }> }) => {
-    return (
-      <div className="w-full">
-        {/* Mobile: Grid layout */}
-        <div className="grid grid-cols-2 sm:hidden gap-3 mb-4">
-          {links.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className="text-gray-400 hover:text-brand-lightBlue text-sm transition-colors duration-300 text-center py-1"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* Tablet and up: Flex layout */}
-        <div className="hidden sm:flex sm:flex-wrap sm:justify-center lg:justify-end gap-4 sm:gap-6">
-          {links.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className="text-gray-400 hover:text-brand-lightBlue text-sm transition-colors duration-300 whitespace-nowrap"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </div>
-    );
-  }
-);
-
-// Call to Action Button Component - Memoized with responsive sizing
-const CallToActionButton = memo(() => {
-  const handleClick = useCallback(() => {
-    // Add analytics tracking here if needed
-  }, []);
-
-  return (
-    <Link
-      href="https://calendly.com/todriflo/30min"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Button
-        onClick={handleClick}
-        className="group relative  bg-brand-blue hover:bg-brand-blueHover text-white rounded-full px-4 py-2 sm:px-6 sm:py-2.5 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden active:scale-95"
-      >
-        <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-        <span className="relative flex items-center space-x-1.5 sm:space-x-2">
-          <span>Start Project</span>
-          <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
-        </span>
-      </Button>
-    </Link>
-  );
-});
-
-// Optimized Animated Wave Component with better performance
 
 export default function Footer() {
-  // Links data
-  const companyLinks = [
-    { href: "/about", label: "About Us" },
-    { href: "/work", label: "Our Work" },
+  const currentYear = new Date().getFullYear();
+
+  const navLinks = [
+    { href: "/work", label: "Work" },
     { href: "/#services", label: "Services" },
-    { href: "/#process", label: "Process" },
-    { href: "/blog", label: "Blog" },
+    { href: "/#why-us", label: "Why Us" },
+    { href: "/#faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
   ];
 
   const socialLinks = [
-    { href: "https://github.com/driflodeploy", icon: Github, label: "GitHub" },
+    {
+      href: "https://github.com/driflodeploy",
+      icon: Github,
+      label: "GitHub",
+    },
     {
       href: "https://instagram.com/driflo.team",
       icon: Instagram,
       label: "Instagram",
     },
-    // { href: "https://twitter.com/youragency", icon: Twitter, label: "Twitter" },
-    { href: "todriflo@gmail.com", icon: Mail, label: "Email" },
+    {
+      href: "mailto:todriflo@gmail.com",
+      icon: Mail,
+      label: "Email",
+    },
   ];
 
   return (
-    <footer className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
-      {/* Background decoration - Responsive sizing */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 to-indigo-900/10" />
-      <div className="absolute top-0 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-indigo-600/5 rounded-full blur-2xl sm:blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-indigo-600/5 rounded-full blur-2xl sm:blur-3xl" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
+    <footer className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gray-950">
+      <div className="max-w-6xl mx-auto">
         {/* Main Footer Content */}
-        <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12 mb-6 sm:mb-8">
-          {/* Mobile Layout */}
-          <div className="lg:hidden">
-            {/* Logo and CTA - Centered on mobile */}
-            <div className="text-center mb-6">
-              <div className="flex items-center justify-center space-x-3 mb-3">
-                <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  Driflo
-                </span>
-              </div>
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed max-w-sm mx-auto">
-                Transforming businesses with cutting-edge development solutions.
-                We specialize in headless Shopify stores, custom applications,
-                and scalable web platforms.
-              </p>
-              <div className="mb-4">
-                <CallToActionButton />
-              </div>
-            </div>
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-12">
+          {/* Left - Brand & CTA */}
+          <div className="lg:col-span-5">
+            <Link href="/" className="inline-block mb-4">
+              <span className="text-2xl font-bold text-white">Driflo</span>
+            </Link>
 
-            {/* Social Links - Centered */}
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <span className="text-xs text-gray-500 font-medium">
-                Follow us:
-              </span>
-              <div className="flex space-x-2">
-                {socialLinks.map((social, index) => (
-                  <SocialIcon
-                    key={index}
-                    href={social.href}
-                    icon={social.icon}
-                    label={social.label}
-                  />
-                ))}
-              </div>
-            </div>
+            <p className="text-gray-400 leading-relaxed mb-6 max-w-sm">
+              We build headless Shopify stores that load fast, look custom, and
+              help brands stand out from template-based competitors.
+            </p>
 
-            {/* Navigation Links */}
-            <FooterSection links={companyLinks} />
+            <Link
+              href="https://calendly.com/todriflo/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 px-5 py-3 bg-white text-gray-900 font-semibold rounded-xl transition-all duration-300 hover:bg-gray-100"
+            >
+              Start a Project
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
 
-          {/* Desktop Layout */}
-          <div className="hidden lg:flex lg:justify-between lg:items-start">
-            {/* Logo and Description */}
-            <div className="flex-1 lg:max-w-md">
-              <div className="flex items-center space-x-3 mb-4">
-                <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  Driflo
-                </span>
-              </div>
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                Transforming businesses with cutting-edge development solutions.
-                We specialize in headless Shopify stores, custom applications,
-                and scalable web platforms.
-              </p>
-              <div className="mb-4">
-                <CallToActionButton />
-              </div>
+          {/* Middle - Navigation */}
+          <div className="lg:col-span-4">
+            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+              Navigation
+            </p>
+            <nav className="grid grid-cols-2 gap-3">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-              {/* Social Links */}
-              <div className="flex items-center space-x-3">
-                <span className="text-xs text-gray-500 font-medium">
-                  Follow us:
-                </span>
-                <div className="flex space-x-2">
-                  {socialLinks.map((social, index) => (
-                    <SocialIcon
-                      key={index}
-                      href={social.href}
-                      icon={social.icon}
-                      label={social.label}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
+          {/* Right - Contact & Social */}
+          <div className="lg:col-span-3">
+            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+              Get in Touch
+            </p>
 
-            {/* Company Links - Right aligned */}
-            <div className="flex-shrink-0">
-              <FooterSection links={companyLinks} />
+            <a
+              href="mailto:todriflo@gmail.com"
+              className="text-gray-400 hover:text-white transition-colors duration-200 text-sm block mb-6"
+            >
+              todriflo@gmail.com
+            </a>
+
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <Link
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-gray-700 rounded-lg flex items-center justify-center transition-all duration-200"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-4 h-4 text-gray-400" />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Bottom Footer - Responsive layout */}
-        <div className="border-t border-gray-800/50 pt-4 sm:pt-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-            <p className="text-gray-400 text-xs text-center sm:text-left order-2 sm:order-1">
-              © {new Date().getFullYear()} Driflo. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-gray-800">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-gray-500 text-sm">
+              © {currentYear} Driflo. All rights reserved.
             </p>
-            <div className="flex flex-wrap justify-center sm:justify-end gap-3 sm:gap-4 text-xs order-1 sm:order-2">
+
+            <div className="flex gap-6 text-sm">
               <Link
                 href="/privacy"
-                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 whitespace-nowrap"
+                className="text-gray-500 hover:text-gray-400 transition-colors duration-200"
               >
-                Privacy Policy
+                Privacy
               </Link>
               <Link
                 href="/terms"
-                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 whitespace-nowrap"
+                className="text-gray-500 hover:text-gray-400 transition-colors duration-200"
               >
-                Terms of Service
+                Terms
               </Link>
             </div>
           </div>

@@ -1,216 +1,175 @@
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Star,
-  Clock,
-  Shield,
-  Award,
-  TrendingUp,
-  CheckCircle,
-  MessageSquare,
-  Heart,
-  Zap,
-  Target,
-} from "lucide-react";
+import { ArrowRight, Quote, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export default function TestimonialsSection() {
-  return (
-    <section className="w-full px-4 lg:px-6 py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-blue-50 px-6 py-3 rounded-full border border-blue-100 mb-8">
-            <span className="text-sm font-semibold text-gray-700">
-              Success Stories
-            </span>
+  // Option 1: If you have ANY real feedback (even from small projects, freelance work, or beta clients)
+  // Replace these with actual quotes. Even 1-2 real testimonials beat 10 fake ones.
+  
+  const hasRealTestimonials = false; // Change to true when you have real ones
+  
+  // Example structure for when you DO have real testimonials:
+  const realTestimonials = [
+    {
+      quote: "Your actual client quote here. Keep it real and specific.",
+      name: "Real Name",
+      role: "Their Role",
+      company: "Their Company",
+      // Optional: Add their photo, logo, or link to their site
+    },
+  ];
+
+  // For now, show an honest "early stage" version
+  if (!hasRealTestimonials) {
+    return (
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-20 sm:py-28 bg-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="max-w-2xl mb-12">
+            <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+              Our Promise
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+              We're building our
+              <br />
+              <span className="text-gray-400">reputation, one project at a time.</span>
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
-            What our Clients Say
-          </h2>
-          <p className="text-xl text-gray-600">
-            Trusted by businesses worldwide for digital transformation
+
+          {/* Honest Message Card */}
+          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8 sm:p-12 mb-12">
+            <div className="max-w-3xl">
+              <div className="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mb-6">
+                <Sparkles className="w-6 h-6 text-white" />
+              </div>
+              
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                We're a new studio—and we're okay saying that.
+              </h3>
+              
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                We don't have pages of testimonials yet. What we do have is a team with 
+                years of experience building for companies of all sizes, a genuine passion 
+                for our craft, and the hunger that comes with building something new.
+              </p>
+              
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                Our early clients get our full attention, competitive pricing, and the 
+                knowledge that we'll work harder for you because we're building our 
+                portfolio too. That's a partnership, not just a transaction.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/work"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-gray-900 text-white font-semibold rounded-xl transition-all duration-300 hover:bg-gray-800"
+                >
+                  See Our Work Instead
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="https://calendly.com/todriflo/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-gray-900 font-semibold rounded-xl border border-gray-200 transition-all duration-300 hover:border-gray-900"
+                >
+                  Let's Talk
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* What You Can Expect */}
+          <div className="grid sm:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Weekly Updates",
+                description: "You'll never wonder what's happening. We share progress every week with working demos.",
+              },
+              {
+                title: "Direct Access",
+                description: "Talk to the people doing the work, not account managers. Faster answers, better results.",
+              },
+              {
+                title: "30-Day Support",
+                description: "We stick around after launch. If something breaks, we fix it—included in every project.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300 hover:shadow-md hover:border-gray-300"
+              >
+                <h4 className="font-semibold text-gray-900 mb-2">{item.title}</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // When you DO have real testimonials, use this version:
+  return (
+    <section className="w-full px-4 sm:px-6 lg:px-8 py-20 sm:py-28 bg-white">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="max-w-2xl mb-12">
+          <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+            Client Feedback
           </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            Don't take our word.
+            <br />
+            <span className="text-gray-400">Take theirs.</span>
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Testimonial 1 - Large */}
-          <Card className="md:col-span-2 bg-brand-blueHover text-white rounded-3xl p-8 border-0">
-            <CardContent className="p-0">
-              <div className="flex items-center space-x-2 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
-                ))}
-              </div>
-              <p className="text-xl mb-6">
-                "Their custom headless storefront solution increased our online
-                sales by 180%. The performance and user experience are
-                outstanding."
+        {/* Real Testimonials Grid */}
+        <div className="grid lg:grid-cols-2 gap-6 mb-12">
+          {realTestimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="bg-gray-50 border border-gray-100 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:border-gray-200"
+            >
+              <Quote className="w-8 h-8 text-gray-300 mb-4" />
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                "{testimonial.quote}"
               </p>
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold">SM</span>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                  <span className="text-gray-600 font-semibold text-sm">
+                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+                  </span>
                 </div>
                 <div>
-                  <div className="font-semibold">Sarah Mitchell</div>
-                  <div className="text-blue-100">E-commerce Director</div>
+                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                  <p className="text-gray-500 text-sm">
+                    {testimonial.role}, {testimonial.company}
+                  </p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          ))}
+        </div>
 
-          {/* Testimonial 2 */}
-          <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
-            <CardContent className="p-0">
-              <Clock className="w-6 h-6 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black text-xl mb-2">
-                Rapid Delivery
-              </h3>
-              <p className="text-gray-600 text-base">
-                "They delivered our mobile app in record time without
-                compromising quality."
-              </p>
-              <div className="mt-4 text-sm font-medium text-black">
-                - Mike Johnson
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Testimonial 3 */}
-          <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
-            <CardContent className="p-0">
-              <TrendingUp className="w-6 h-6 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black text-xl mb-2">
-                Revenue Growth
-              </h3>
-              <p className="text-gray-600 text-base">
-                "Our new website generated 250% more leads within the first
-                month."
-              </p>
-              <div className="mt-4 text-sm font-medium text-black">
-                - Lisa Chen
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Testimonial 4 */}
-          <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
-            <CardContent className="p-0">
-              <Shield className="w-6 h-6 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black text-xl mb-2">
-                Secure Solutions
-              </h3>
-              <p className="text-gray-600 text-base">
-                "Their development practices ensure our customer data is always
-                protected."
-              </p>
-
-              <div className="mt-4 text-sm font-medium text-black">
-                - David Park
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Testimonial 5 */}
-          <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
-            <CardContent className="p-0">
-              <CheckCircle className="w-6 h-6 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black text-xl mb-2">
-                Seamless Integration
-              </h3>
-              <p className="text-gray-600 text-base">
-                "The headless storefront integrated perfectly with our existing
-                systems."
-              </p>
-              <div className="mt-4 text-sm font-medium text-black">
-                - Emma Wilson
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Testimonial 6 - Large */}
-          <Card className="md:col-span-2 bg-black text-white rounded-3xl p-8 border-0">
-            <CardContent className="p-0">
-              <Award className="w-8 h-8 text-brand-lightBlue mb-6" />
-              <p className="text-2xl mb-6">
-                "Best web development agency we've worked with. Their custom app
-                helped us scale from 1,000 to 50,000 users in 6 months."
-              </p>
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold">RT</span>
-                </div>
-                <div>
-                  <div className="font-semibold">Robert Taylor</div>
-                  <div className="text-gray-300">Startup Founder</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Testimonial 7 */}
-          <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
-            <CardContent className="p-0">
-              <MessageSquare className="w-6 h-6 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black text-xl mb-2">
-                Excellent Communication
-              </h3>
-              <p className="text-gray-600 text-base">
-                "They kept us informed throughout the entire development
-                process."
-              </p>
-              <div className="mt-4 text-sm font-medium text-black">
-                - Anna Rodriguez
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Testimonial 8 */}
-          <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
-            <CardContent className="p-0">
-              <Heart className="w-6 h-6 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black text-xl mb-2">
-                Love the Design
-              </h3>
-              <p className="text-gray-600 text-base">
-                "Our customers love the beautiful, intuitive interface they
-                created."
-              </p>
-              <div className="mt-4 text-sm font-medium text-black">
-                - Tom Anderson
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Testimonial 9 */}
-          <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
-            <CardContent className="p-0">
-              <Zap className="w-6 h-6 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black text-xl mb-2">
-                Lightning Performance
-              </h3>
-              <p className="text-gray-600 text-base">
-                "Our website loads 3x faster after their optimization work."
-              </p>
-              <div className="mt-4 text-sm font-medium text-black">
-                - Jessica Lee
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Testimonial 10 */}
-          <Card className="bg-white rounded-3xl p-6 border-0 shadow-sm">
-            <CardContent className="p-0">
-              <Target className="w-6 h-6 text-brand-blue mb-4" />
-              <h3 className="font-bold text-black text-xl mb-2">
-                Perfect Match
-              </h3>
-              <p className="text-gray-600 text-base">
-                "Their custom solution was exactly what our business needed to
-                grow."
-              </p>
-              <div className="mt-4 text-sm font-medium text-black">
-                - Mark Thompson
-              </div>
-            </CardContent>
-          </Card>
+        {/* CTA */}
+        <div className="bg-gray-900 rounded-2xl p-8 sm:p-10 text-center">
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+            Want to be our next success story?
+          </h3>
+          <p className="text-gray-400 mb-6 max-w-lg mx-auto">
+            Let's talk about your project and see how we can help you get similar results.
+          </p>
+          <Link
+            href="https://calendly.com/todriflo/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-gray-900 font-semibold rounded-xl transition-all duration-300 hover:bg-gray-100"
+          >
+            Book a Free Call
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>

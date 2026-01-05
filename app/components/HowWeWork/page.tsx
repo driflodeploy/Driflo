@@ -1,93 +1,156 @@
 import React from "react";
+import { ArrowRight, MessageSquare, Palette, Code, Rocket } from "lucide-react";
 
 const HowWeWork = () => {
+  const processSteps = [
+    {
+      number: "01",
+      icon: MessageSquare,
+      title: "Discovery",
+      description:
+        "We start with a conversation. Understanding your goals, audience, and vision helps us craft the right solution.",
+      duration: "1-2 days",
+    },
+    {
+      number: "02",
+      icon: Palette,
+      title: "Design",
+      description:
+        "We create wireframes and visual designs you'll approve before any code is written. No surprises.",
+      duration: "1-2 weeks",
+    },
+    {
+      number: "03",
+      icon: Code,
+      title: "Development",
+      description:
+        "We build with modern tech—Next.js, React, Shopify APIs. You'll see progress weekly with working demos.",
+      duration: "3-6 weeks",
+    },
+    {
+      number: "04",
+      icon: Rocket,
+      title: "Launch & Support",
+      description:
+        "We handle deployment, testing, and handoff. Then we stick around for 30 days to squash any bugs.",
+      duration: "Ongoing",
+    },
+  ];
+
   return (
-    <section className="bg-brand-blueHover py-20 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col space-y-12 items-center">
-        {/* Top Row - Heading and Description in Flex */}
-        <div className="flex flex-col text  lg:flex-row  lg:justify-between gap-8 w-full items-center lg:items-start">
-          {/* Main Heading */}
-          <div className="flex-1">
-            <h1 className="leading-[1.2] text-6xl font-bold text-white ">
-              Build custom apps with{" "}
-              <span className="bg-white text-brand-blueHover">
-                cutting-edge
-              </span>{" "}
-              technology
-            </h1>
-          </div>
-          {/* Description */}
-          <div className="flex-1 lg:max-w-lg p-4">
-            <p className="text-gray-100 text-lg leading-relaxed">
-              We are a specialized development team creating custom websites,
-              web applications, and headless Shopify stores. With expertise in
-              modern frameworks and e-commerce solutions, we transform your
-              ideas into powerful digital experiences that drive results.
-            </p>
-          </div>
+    <section className="bg-gray-950 py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="max-w-3xl mb-16">
+          <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+            How We Work
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+            A clear process.
+            <br />
+            <span className="text-gray-500">No mystery, no drama.</span>
+          </h2>
+          <p className="text-lg text-gray-400 leading-relaxed">
+            We've refined our process to be straightforward and transparent.
+            You'll always know what's happening, what's next, and when to expect
+            it.
+          </p>
         </div>
 
-        {/* Bottom Row - Two Boxes in Flex Row */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start w-full">
-          {/* Stats Card Box */}
-          <div className="w-full lg:w-1/3">
-            <div className="bg-black rounded-3xl p-8 h-80 flex flex-col justify-between items-center">
-              <div className="space-y-6 w-full text-center">
-                {/* Main Stat */}
-                <div>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-6xl font-bold text-white">150</span>
-                    <span className="text-4xl font-bold text-white ml-1">
-                      +
-                    </span>
-                  </div>
-                  <p className="text-gray-400 text-lg mt-2">
-                    Apps & stores delivered successfully
-                  </p>
-                </div>
-              </div>
-              {/* Tech Stack Icons */}
-              <div className="flex items-center space-x-3 justify-center">
-                <div className="flex space-x-2">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <span className="text-black font-bold text-sm">R</span>
-                  </div>
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <span className="text-black font-bold text-sm">N</span>
-                  </div>
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <span className="text-black font-bold text-sm">S</span>
-                  </div>
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <span className="text-black font-bold text-sm">TS</span>
+        {/* Process Steps Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 mb-16">
+          {processSteps.map((step, index) => (
+            <div key={index} className="group relative">
+              {/* Connector Line - hidden on mobile, shown on lg */}
+              {index < processSteps.length - 1 && (
+                <div className="hidden lg:block absolute top-12 left-full w-full h-px bg-gradient-to-r from-gray-700 to-transparent z-0" />
+              )}
+
+              <div className="relative bg-gray-900 border border-gray-800 rounded-2xl p-6 h-full transition-all duration-300 hover:border-gray-700 hover:bg-gray-900/80">
+                {/* Step Number & Icon */}
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-xs font-bold text-gray-600 tracking-wider">
+                    {step.number}
+                  </span>
+                  <div className="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-gray-900">
+                    <step.icon className="w-5 h-5 text-gray-400 group-hover:text-gray-900" />
                   </div>
                 </div>
-                <span className="text-white text-3xl font-light ml-2">+</span>
+
+                {/* Content */}
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                  {step.description}
+                </p>
+
+                {/* Duration Tag */}
+                <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full">
+                  <span className="text-xs font-medium text-gray-300">
+                    {step.duration}
+                  </span>
+                </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Bottom Section - Tech & CTA */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Tech Stack Card */}
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6">
+              Built With Modern Tech
+            </h3>
+
+            <div className="flex flex-wrap gap-3">
+              {[
+                "Next.js",
+                "React",
+                "TypeScript",
+                "Tailwind CSS",
+                "Shopify",
+                "Node.js",
+                "PostgreSQL",
+                "Vercel",
+              ].map((tech, index) => (
+                <span
+                  key={index}
+                  className="px-4 py-2 bg-gray-800 text-gray-300 text-sm font-medium rounded-lg border border-gray-700 transition-colors hover:border-gray-600 hover:text-white"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <p className="text-gray-500 text-sm mt-6">
+              We choose tools based on your project needs—not trends. The result
+              is always fast, maintainable, and scalable.
+            </p>
           </div>
 
-          {/* Our Process Box */}
-          <div className="w-full lg:w-2/3">
-            <div className="bg-gray-200 rounded-3xl p-12 h-80 flex flex-col justify-center items-center relative">
-              {/* Our Process Text */}
-              <h2 className="text-4xl font-bold text-gray-400 tracking-[0.3em] text-center">
-                OUR PROCESS
-              </h2>
-
-              {/* Play Button */}
-              <div className="absolute bottom-8 right-8">
-                <button className="bg-green-400 hover:bg-green-500 transition-colors duration-200 w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
-                  <svg
-                    className="w-8 h-8 text-gray-900 ml-1"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                  </svg>
-                </button>
-              </div>
+          {/* CTA Card */}
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-2xl p-8 flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-3">
+                Have a project in mind?
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-6">
+                Let's talk about what you're building. We'll give you honest
+                feedback on timeline, budget, and whether we're the right fit.
+              </p>
             </div>
+
+            <a
+              href="https://calendly.com/todriflo/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-gray-900 font-semibold rounded-xl transition-all duration-300 hover:bg-gray-100 hover:shadow-lg hover:shadow-white/10 w-full sm:w-auto"
+            >
+              Book a Free Consultation
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
         </div>
       </div>

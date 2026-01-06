@@ -80,58 +80,6 @@ const caseStudies = [
     category: "E-commerce",
     size: "medium",
   },
-  {
-    id: 3,
-    slug: "thenimetyou",
-    title: "Then I Met You Beauty Store",
-    client: "Then I Met You",
-    industry: "Beauty & Cosmetics",
-    location: "Unknown",
-    duration: "4 weeks",
-    team: "Unknown",
-    featured: false,
-    image: "/work/c-1.png",
-    shortDescription:
-      "Immersive Shopify Hydrogen storefront for thenimetyou with custom configurator, and storytelling features.",
-    keyMetrics: {
-      primary: "+120%",
-      primaryLabel: "Engagement Increase",
-      secondary: "-45%",
-      secondaryLabel: "Bounce Rate",
-    },
-    technologies: ["Shopify Hydrogen", "Lab Reports", "Custom Design"],
-    rating: 4.9,
-    testimonialSnippet:
-      "The storytelling features beautifully showcase our brand values.",
-    category: "E-commerce",
-    size: "small",
-  },
-  {
-    id: 4,
-    slug: "velasca",
-    title: "Velasca Fashion PWA",
-    client: "Velasca",
-    industry: "Fashion",
-    location: "Unknown",
-    duration: "4 weeks",
-    team: "Unknown",
-    featured: false,
-    image: "/work/d-1.png",
-    shortDescription:
-      "Progressive Web App built on Shopify with men/women different websites, and personalized outfit recommendations.",
-    keyMetrics: {
-      primary: "+220%",
-      primaryLabel: "Engagement Increase",
-      secondary: "8.4%",
-      secondaryLabel: "Conversion Rate",
-    },
-    technologies: ["Shopify", "Custom Design", "Personalization"],
-    rating: 4.7,
-    testimonialSnippet:
-      "The personalized recommendations have significantly boosted our sales.",
-    category: "E-commerce",
-    size: "small",
-  },
 ];
 
 const categories = [
@@ -213,7 +161,7 @@ export default function WorkPage() {
               </div>
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-lg">
                 <div className="text-3xl font-black text-slate-800 mb-2">
-                  $50M+
+                  $40k+
                 </div>
                 <div className="text-sm text-slate-600 font-semibold">
                   Revenue Generated

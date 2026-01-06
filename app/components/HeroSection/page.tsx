@@ -57,7 +57,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0 mb-10 leading-relaxed">
-              Headless storefronts built with Next.js. Faster than themes,
+              Headless storefronts built with Hydrogen. Faster than themes,
               completely custom, designed to make your brand stand out.
             </p>
 

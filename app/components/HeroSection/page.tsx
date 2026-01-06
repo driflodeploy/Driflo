@@ -138,7 +138,7 @@ export default function HeroSection() {
                     {[
                       {
                         title: "Headless Shopify",
-                        desc: "Next.js + Shopify API",
+                        desc: "Hydrogen + Shopify API",
                         highlight: true,
                       },
                       {

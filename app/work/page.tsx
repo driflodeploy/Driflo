@@ -1,335 +1,186 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowRight,
-  TrendingUp,
-  Users,
-  Building,
-  Calendar,
-  MapPin,
-  Star,
-  Award,
-  Sparkles,
-  Globe,
-  Code,
-  Zap,
-  BarChart3,
-  Eye,
-  Clock,
-  Target,
-  CheckCircle,
-  ArrowUpRight,
-} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "../components/Footer/page";
+import { ArrowUpRight } from "lucide-react";
 
-// Case studies data
-const caseStudies = [
+const projects = [
   {
     id: 1,
     slug: "bohme",
-    title: "Boheme Sustainable Fashion Store",
-    client: "Boheme",
-    industry: "Sustainable Fashion",
-    location: "Unknown",
-    duration: "3 weeks",
-    team: "Unknown",
-    featured: false,
-    image: "/work/a-1.png",
-    shortDescription:
-      "High-performance Shopify Hydrogen storefront for sustainable fashion brand with custom components and optimized checkout flow.",
-    keyMetrics: {
-      primary: "+180%",
-      primaryLabel: "Revenue Increase",
-      secondary: "100/100",
-      secondaryLabel: "Performance Score",
-    },
-    technologies: ["Shopify Hydrogen", "React", "Sustainable Fashion"],
-    rating: 4.9,
-    testimonialSnippet: "The performance improvements have been incredible.",
+    title: "Boheme",
     category: "E-commerce",
-    size: "large",
+    description: "Headless Shopify storefront for sustainable fashion brand",
+    image: "/work/a-1.png",
+    services: ["Hydrogen", "UI/UX", "Development"],
   },
   {
     id: 2,
     slug: "deadstock",
-    title: "Deadstock Clothing Store",
-    client: "Deadstock",
-    industry: "Fashion",
-    location: "Unknown",
-    duration: "2 weeks",
-    team: "Unknown",
-    featured: false,
-    image: "/work/b-1.png",
-    shortDescription:
-      "Headless Shopify store built with React for deadstock clothing brand, featuring advanced product filtering.",
-    keyMetrics: {
-      primary: "+155%",
-      primaryLabel: "Revenue Increase",
-      secondary: "100/100",
-      secondaryLabel: "Performance Score",
-    },
-    technologies: ["Headless Shopify", "React"],
-    rating: 4.8,
-    testimonialSnippet: "The filtering system transformed our user experience.",
+    title: "Deadstock",
     category: "E-commerce",
-    size: "medium",
+    description: "High-performance store for streetwear brand",
+    image: "/work/b-1.png",
+    services: ["Shopify", "React", "GraphQL"],
   },
 ];
 
-const categories = [
-  "All",
-  "E-commerce",
-  "Marketplace",
-  "B2B",
-  "Subscription",
-  "Omnichannel",
-];
-
 export default function WorkPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
-  const filteredCaseStudies =
-    selectedCategory === "All"
-      ? caseStudies
-      : caseStudies.filter((study) => study.category === selectedCategory);
-
-  const featuredStudies = filteredCaseStudies.filter((study) => study.featured);
-  const regularStudies = filteredCaseStudies.filter((study) => !study.featured);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
-      {/* Premium Background Elements */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-slate-200/30 to-slate-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-br from-slate-300/20 to-slate-200/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-0 w-64 h-64 bg-gradient-to-br from-slate-200/25 to-slate-300/15 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <section className="px-6 pt-24 pb-20 max-w-4xl mx-auto text-center">
+        <p className="text-gray-400 text-sm font-medium tracking-widest uppercase mb-4">
+          Portfolio
+        </p>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 tracking-tight">
+          Our work
+        </h1>
+        <p className="text-gray-600 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed">
+          Clean, fast, conversion-focused e-commerce experiences.
+        </p>
+      </section>
 
-      <main
-        className={`w-full px-4 lg:px-6 py-16 pt-32 relative transition-opacity duration-1000 ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-blue-50 px-6 py-3 rounded-full border border-blue-100 mb-8">
-              <Award className="w-5 h-5 text-slate-700 mr-2" />
-              <span className="text-sm font-semibold text-gray-700">
-                Our Success Stories
-              </span>
-            </div>
-
-            <h1 className="text-5xl lg:text-7xl font-black bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent mb-6 leading-tight">
-              Case Studies
-            </h1>
-
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12">
-              Discover how we've transformed businesses across industries with
-              innovative e-commerce solutions, delivering measurable results
-              that drive growth and success.
-            </p>
-
-            {/* Stats Bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-lg">
-                <div className="text-3xl font-black text-slate-800 mb-2">
-                  {filteredCaseStudies.length}
-                </div>
-                <div className="text-sm text-slate-600 font-semibold">
-                  Projects Showcased
-                </div>
-              </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-lg">
-                <div className="text-3xl font-black text-slate-800 mb-2">
-                  100%
-                </div>
-                <div className="text-sm text-slate-600 font-semibold">
-                  Client Satisfaction
-                </div>
-              </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-lg">
-                <div className="text-3xl font-black text-slate-800 mb-2">
-                  $40k+
-                </div>
-                <div className="text-sm text-slate-600 font-semibold">
-                  Revenue Generated
-                </div>
-              </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 shadow-lg">
-                <div className="text-3xl font-black text-slate-800 mb-2">
-                  4.9★
-                </div>
-                <div className="text-sm text-slate-600 font-semibold">
-                  Average Rating
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto">
-            {filteredCaseStudies.map((study, index) => (
-              <Card
-                key={study.id}
-                className={`group bg-white/90 backdrop-blur-sm rounded-3xl border-2 border-slate-200/50 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden ${
-                  // First card spans 2 columns on large screens
-                  index === 0
-                    ? "lg:col-span-2"
-                    : // Second card spans 2 columns on large screens
-                    index === 1
-                    ? "lg:col-span-2"
-                    : // Third and fourth cards span 2 columns each on large screens
-                      "lg:col-span-2"
-                }`}
-              >
-                {/* Image Section */}
-                <div
-                  className={`relative overflow-hidden ${
-                    index === 0
-                      ? "h-64 md:h-80"
-                      : index === 1
-                      ? "h-64 md:h-80"
-                      : "h-48 md:h-56"
-                  }`}
-                >
+      {/* Projects Grid */}
+      <section className="px-6 pb-24 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <Link
+              key={project.id}
+              href={`/case-studies/${project.slug}`}
+              className="group"
+            >
+              <article className="h-full">
+                {/* Image Container */}
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 mb-6">
                   <Image
-                    src={study.image}
-                    alt={study.title}
+                    src={project.image}
+                    alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-                  {/* Quick Stats */}
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-xl p-2 text-center">
-                      <div className="text-lg font-black text-slate-800">
-                        {study.keyMetrics.primary}
-                      </div>
-                      <div className="text-xs text-slate-600 font-semibold">
-                        {study.keyMetrics.primaryLabel}
-                      </div>
+                  
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300">
+                      <ArrowUpRight className="w-5 h-5 text-black" />
                     </div>
-                  </div>
-
-                  {/* Category Badge */}
-                  <div className="absolute bottom-4 left-4">
-                    <Badge className="bg-white/95 backdrop-blur-sm text-slate-700 border border-slate-200">
-                      {study.category}
-                    </Badge>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className={`p-6 ${index < 2 ? "lg:p-8" : ""}`}>
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge className="bg-gradient-to-r from-slate-100 to-slate-200 text-slate-800 border border-slate-300 rounded-full px-3 py-1">
-                      {study.industry}
-                    </Badge>
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-4 h-4 ${
-                            i < Math.floor(study.rating)
-                              ? "text-slate-800 fill-current"
-                              : "text-slate-300"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  <h3
-                    className={`font-black text-slate-800 mb-3 group-hover:text-slate-700 transition-colors duration-300 line-clamp-2 ${
-                      index < 2 ? "text-2xl lg:text-3xl" : "text-xl"
-                    }`}
-                  >
-                    {study.title}
-                  </h3>
-
-                  <p
-                    className={`text-slate-600 mb-4 leading-relaxed line-clamp-2 ${
-                      index < 2 ? "text-base" : "text-sm"
-                    }`}
-                  >
-                    {study.shortDescription}
-                  </p>
-
-                  {/* Client */}
-                  <div className="flex items-center space-x-2 mb-4">
-                    <div className="bg-gradient-to-r from-slate-700 to-slate-800 rounded-full p-1.5">
-                      <Building className="w-3 h-3 text-white" />
-                    </div>
-                    <span className="font-semibold text-slate-800 text-sm">
-                      {study.client}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-400 font-medium tracking-widest uppercase">
+                      {project.category}
                     </span>
-                  </div>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {study.technologies
-                      .slice(0, index < 2 ? 3 : 2)
-                      .map((tech) => (
+                    <div className="flex gap-2">
+                      {project.services.slice(0, 2).map((service) => (
                         <span
-                          key={tech}
-                          className="bg-slate-100 text-slate-600 rounded-full px-2 py-1 text-xs font-medium"
+                          key={service}
+                          className="text-xs text-gray-400 font-medium"
                         >
-                          {tech}
+                          {service}
                         </span>
                       ))}
-                    {study.technologies.length > (index < 2 ? 3 : 2) && (
-                      <span className="bg-slate-100 text-slate-600 rounded-full px-2 py-1 text-xs font-medium">
-                        +{study.technologies.length - (index < 2 ? 3 : 2)}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Testimonial for larger cards */}
-                  {index < 2 && (
-                    <div className="bg-gradient-to-r from-slate-50 to-slate-100 rounded-2xl p-4 mb-6 border-l-4 border-slate-400">
-                      <p className="text-slate-700 italic text-sm">
-                        "{study.testimonialSnippet}"
-                      </p>
                     </div>
-                  )}
-
-                  {/* Action */}
-                  <Link href={`/case-studies/${study.slug}`}>
-                    <Button
-                      className={`w-full font-semibold transition-all duration-300 ${
-                        index < 2
-                          ? "bg-slate-900 text-white rounded-2xl py-4 shadow-lg hover:shadow-xl hover:bg-slate-800"
-                          : "border-2 border-slate-200 hover:border-slate-400 hover:text-slate-900 rounded-xl py-3 bg-white"
-                      }`}
-                      variant={index < 2 ? "default" : "outline"}
-                    >
-                      {index < 2 ? "View Full Case Study" : "View Details"}
-                      {index < 2 ? (
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                      ) : (
-                        <Eye className="w-4 h-4 ml-2" />
-                      )}
-                    </Button>
-                  </Link>
+                  </div>
+                  
+                  <h2 className="text-2xl font-semibold text-black group-hover:text-gray-600 transition-colors">
+                    {project.title}
+                  </h2>
+                  
+                  <p className="text-gray-500 leading-relaxed">
+                    {project.description}
+                  </p>
                 </div>
-              </Card>
-            ))}
+              </article>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="h-px bg-gray-100"></div>
+      </div>
+
+      {/* Capabilities */}
+      <section className="px-6 py-24 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <p className="text-gray-400 text-sm font-medium tracking-widest uppercase mb-4">
+              Capabilities
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-black tracking-tight">
+              What we do best
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-semibold text-black mb-2">Headless Commerce</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Shopify Hydrogen stores built for speed and scalability.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-black mb-2">Custom Development</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Tailored solutions using React, Next.js, and modern tools.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-black mb-2">UI/UX Design</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Clean interfaces designed for conversion.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-black mb-2">Performance</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Optimized for Core Web Vitals and fast load times.
+              </p>
+            </div>
           </div>
         </div>
-      </main>
+      </section>
+
+      {/* Divider */}
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="h-px bg-gray-100"></div>
+      </div>
+
+      {/* CTA */}
+      <section className="px-6 py-24 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-gray-400 text-sm font-medium tracking-widest uppercase mb-4">
+              Start a project
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-black tracking-tight mb-4">
+              Have something in mind?
+            </h2>
+            <p className="text-gray-500 leading-relaxed">
+              We're currently taking on new projects. Let's discuss how we can help bring your vision to life.
+            </p>
+          </div>
+          
+          <div className="flex lg:justify-end">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-4 text-black"
+            >
+              <span className="text-lg font-medium">Get in touch</span>
+              <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:border-black transition-all duration-300">
+                <ArrowUpRight className="w-5 h-5 group-hover:text-white transition-colors" />
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

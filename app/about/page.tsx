@@ -1,12 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import Footer from "../components/Footer/page";
-import { MinimalNewsletter } from "../components/Newsletter/page";
-import ProcessSection, {
-  ScrollTimeline,
-} from "../components/ProcessSection/page";
 import {
   Rocket,
   ArrowRight,
@@ -16,6 +11,9 @@ import {
   Code,
   Palette,
   TestTube,
+  Zap,
+  Heart,
+  Target,
 } from "lucide-react";
 
 export default function AboutPage() {
@@ -23,377 +21,273 @@ export default function AboutPage() {
     {
       id: 1,
       icon: MessageCircle,
-      title: "Discovery & Consultation",
-      subtitle: "Understanding Your Vision",
-      description:
-        "We start with in-depth discussions to understand your business goals, target audience, and project requirements.",
-      duration: "1-2 weeks",
-      deliverables: ["Project Brief", "User Research", "Competitive Analysis"],
-      color: "from-blue-500 to-indigo-600",
+      title: "Discovery Call",
+      description: "We hop on a call to understand your vision, goals, and challenges.",
+      duration: "1 week",
     },
     {
       id: 2,
       icon: Lightbulb,
       title: "Strategy & Planning",
-      subtitle: "Crafting the Blueprint",
-      description:
-        "We develop a comprehensive strategy and project roadmap including architecture planning and technology selection.",
-      duration: "1-2 weeks",
-      deliverables: ["Project Roadmap", "Technical Architecture", "Wireframes"],
-      color: "from-indigo-500 to-pink-600",
+      description: "We map out the technical approach and create a clear roadmap.",
+      duration: "1 week",
     },
     {
       id: 3,
       icon: Palette,
       title: "Design",
-      subtitle: "Bringing Ideas to Life",
-      description:
-        "Our design team creates stunning visual concepts and interactive prototypes focused on user experience.",
+      description: "Clean, conversion-focused designs that reflect your brand.",
       duration: "2-3 weeks",
-      deliverables: ["UI/UX Design", "Interactive Prototypes", "Design System"],
-      color: "from-pink-500 to-rose-600",
     },
     {
       id: 4,
       icon: Code,
-      title: "Development & Integration",
-      subtitle: "Building Your Solution",
-      description:
-        "Using cutting-edge technologies, we develop your project with clean, scalable code and high performance.",
+      title: "Development",
+      description: "We build your store with clean, performant code.",
       duration: "4-8 weeks",
-      deliverables: [
-        "Frontend Development",
-        "Backend Systems",
-        "API Integration",
-      ],
-      color: "from-emerald-500 to-teal-600",
     },
     {
       id: 5,
       icon: TestTube,
-      title: "Testing & Optimization",
-      subtitle: "Ensuring Excellence",
-      description:
-        "Comprehensive testing across all devices and browsers with performance optimization and bug fixes.",
-      duration: "1-2 weeks",
-      deliverables: [
-        "Quality Assurance",
-        "Performance Testing",
-        "Security Audit",
-      ],
-      color: "from-orange-500 to-amber-600",
+      title: "Testing",
+      description: "Rigorous testing across all devices and browsers.",
+      duration: "1 week",
     },
     {
       id: 6,
       icon: Rocket,
-      title: "Launch & Deployment",
-      subtitle: "Going Live",
-      description:
-        "We handle the complete deployment process and ensure a smooth launch with post-launch support.",
+      title: "Launch",
+      description: "Smooth deployment with ongoing support.",
       duration: "1 week",
-      deliverables: ["Production Deployment", "SSL Setup", "Analytics"],
-      color: "from-green-500 to-emerald-600",
     },
   ];
 
-  // Transform process steps to match TimelineEvent interface
-  const timelineEvents = processSteps.map((step, index) => ({
-    id: step.id.toString(),
-    year: `Step ${step.id}`,
-    title: step.title,
-    subtitle: step.subtitle,
-    description: `${step.description} Duration: ${
-      step.duration
-    }. Deliverables: ${step.deliverables.join(", ")}.`,
-    icon: <step.icon className="h-4 w-4" />,
-    color: "primary",
-  }));
-
-  const teamMembers = [
-    {
-      name: "Alex Rodriguez",
-      role: "Founder & Lead Developer",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    },
-
-    {
-      name: "Marcus Johnson",
-      role: "Senior Full-Stack Developer",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    },
+  const techStack = [
+    "Shopify",
+    "Hydrogen",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative h-[500px] mx-6 mt-8 mb-16 rounded-2xl overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80"
-          alt="About Driftlo team"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight">
-            About Driflo
-          </h2>
-          <p className="text-white/90 text-xl max-w-3xl leading-relaxed">
-            We're a team of passionate developers specializing in headless
-            commerce solutions that drive real business results
-          </p>
+      {/* Hero Section - Simpler, more honest */}
+      <section className="px-6 pt-24 pb-16 max-w-4xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full mb-8">
+          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          <span className="text-sm text-gray-600">Building the future of e-commerce</span>
         </div>
+        
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight tracking-tight">
+          We're Driflo
+        </h1>
+        <p className="text-gray-600 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+          A small team obsessed with building fast, beautiful Shopify stores 
+          using headless commerce technology.
+        </p>
       </section>
 
-      {/* Our Story */}
-      <section className="mx-6 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-6 leading-tight">
-                Our Story
-              </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Founded in 2020, Driftlo emerged from a simple belief:
-                e-commerce should be fast, flexible, and future-proof. We saw
-                businesses struggling with traditional platforms that couldn't
-                keep up with modern user expectations.
-              </p>
-              <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Today, we're proud to be at the forefront of the headless
-                commerce revolution, helping brands deliver exceptional digital
-                experiences using Shopify's powerful backend and cutting-edge
-                frontend technologies like Hydrogen.
-              </p>
-
-              <Link
-                href="/work"
-                className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-black rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-black/30 "
-              >
-                {/* Animated background overlay */}
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Shine effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 skew-x-12"></div>
-
-                {/* Button text */}
-                <span className="relative z-10 flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
-                  View Our Work
-                  <svg
-                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </span>
-
-                {/* Border glow */}
-                <div className="absolute inset-0 rounded-xl bg-brand-blue opacity-75 blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
-              </Link>
-            </div>
-            <div className="relative h-[500px] rounded-2xl overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80"
-                alt="Driflo development process"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="mx-6 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
-              Our Values
+      {/* Our Story - Authentic startup narrative */}
+      <section className="px-6 py-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6 tracking-tight">
+              Why we started
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              The principles that guide our approach to every project and client
-              relationship
-            </p>
+            <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
+              <p>
+                We got tired of seeing e-commerce stores that load slowly, 
+                look generic, and fail to convert visitors into customers.
+              </p>
+              <p>
+                So we decided to focus on one thing and do it really well: 
+                building headless Shopify stores that are blazing fast 
+                and designed to sell.
+              </p>
+              <p className="text-black font-medium">
+                We're not an agency trying to do everything. We're specialists.
+              </p>
+            </div>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 mt-8 text-black font-semibold hover:gap-3 transition-all duration-300"
+            >
+              Let's work together
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
+          
+          <div className="relative">
+            <div className="bg-gray-100 rounded-2xl p-8 lg:p-12">
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-black mb-1">Speed obsessed</h3>
+                    <p className="text-gray-600 text-sm">Sub-second load times aren't optional for us.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Target className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-black mb-1">Conversion focused</h3>
+                    <p className="text-gray-600 text-sm">Every design decision is made to drive sales.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Heart className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-black mb-1">We actually care</h3>
+                    <p className="text-gray-600 text-sm">Your project isn't just another ticket to us.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What We Believe - Simple values */}
+      <section className="px-6 py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-12 tracking-tight">
+            What we believe
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-gray-50 rounded-2xl">
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-                <div className="w-8 h-8 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-2xl font-light text-black mb-4">
-                Performance First
+            <div className="text-left">
+              <div className="text-4xl font-bold text-black mb-3">01</div>
+              <h3 className="text-xl font-semibold text-black mb-2">
+                Speed matters
               </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Every line of code we write is optimized for speed and
-                performance. We believe fast websites drive better business
-                results.
+              <p className="text-gray-600">
+                Every 100ms delay costs you conversions. We build stores that load instantly.
               </p>
             </div>
-            <div className="text-center p-8 bg-gray-50 rounded-2xl">
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-                <div className="w-8 h-8 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-2xl font-light text-black mb-4">
-                Innovation
+            <div className="text-left">
+              <div className="text-4xl font-bold text-black mb-3">02</div>
+              <h3 className="text-xl font-semibold text-black mb-2">
+                Less is more
               </h3>
-              <p className="text-gray-600 leading-relaxed">
-                We stay ahead of the curve, constantly exploring new
-                technologies and methodologies to deliver cutting-edge
-                solutions.
+              <p className="text-gray-600">
+                Clean design, clear messaging, focused user journeys. No clutter.
               </p>
             </div>
-            <div className="text-center p-8 bg-gray-50 rounded-2xl">
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-                <div className="w-8 h-8 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-2xl font-light text-black mb-4">
-                Partnership
+            <div className="text-left">
+              <div className="text-4xl font-bold text-black mb-3">03</div>
+              <h3 className="text-xl font-semibold text-black mb-2">
+                Honesty wins
               </h3>
-              <p className="text-gray-600 leading-relaxed">
-                We don't just build websites; we build lasting relationships.
-                Your success is our success, and we're committed to your
-                long-term growth.
+              <p className="text-gray-600">
+                We'll tell you what you need, not what makes us the most money.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Team */}
-      {/* <section className="mx-6 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-light text-black mb-6">
-              Meet Our Team
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              The talented individuals behind every successful headless commerce
-              project
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-                  <Image
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-light text-black mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-gray-600">{member.role}</p>
-              </div>
-            ))}
-          </div>
+      {/* Tech Stack - Clean and simple */}
+      <section className="px-6 py-16 max-w-4xl mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4 tracking-tight">
+            Our stack
+          </h2>
+          <p className="text-gray-600">
+            Modern tools for modern e-commerce
+          </p>
         </div>
-      </section> */}
 
-      {/* Technologies */}
-      <section className="mx-6 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4 leading-tight">
-              Our Tech Stack
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              We work with the latest technologies to deliver exceptional
-              results
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[
-              "Shopify",
-              "Hydrogen",
-              "React",
-              "Next.js",
-              "TypeScript",
-              "GraphQL",
-              "Tailwind CSS",
-              "Node.js",
-              "Vercel",
-              "AWS",
-              "MongoDB",
-              "PostgreSQL",
-            ].map((tech, index) => (
-              <div
-                key={index}
-                className="text-center p-4 bg-gray-50 rounded-xl"
-              >
-                <span className="text-gray-800 font-medium">{tech}</span>
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-center gap-3">
+          {techStack.map((tech, index) => (
+            <div
+              key={index}
+              className="px-5 py-3 bg-gray-100 rounded-full text-gray-800 font-medium hover:bg-black hover:text-white transition-colors duration-300 cursor-default"
+            >
+              {tech}
+            </div>
+          ))}
         </div>
       </section>
-      <ScrollTimeline
-        title="Our Development Process"
-        subtitle="Discover how we bring your ideas to life through our proven methodology"
-        events={timelineEvents}
-        cardAlignment="alternating"
-        revealAnimation="slide"
-        cardVariant="elevated"
-        cardEffect="glow"
-      />
-      {/* Call to Action Section */}
-      <div className="text-center max-w-2xl lg:max-w-4xl mx-8 md:mx-auto my-24">
-        <div className="bg-black rounded-3xl p-14 lg:p-16 shadow-2xl relative overflow-hidden group">
-          {/* Background Effects */}
-          <div className="absolute inset-0 bg-black opacity-50" />
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+
+      {/* Process - Streamlined timeline */}
+      <section className="px-6 py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4 tracking-tight">
+              How we work
+            </h2>
+            <p className="text-gray-600">
+              Simple, transparent process from start to finish
+            </p>
+          </div>
 
           <div className="relative">
-            <div className="flex justify-center mb-8">
-              <div className="bg-white rounded-full p-6 shadow-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
-                <Rocket className="w-12 h-12 text-brand-blue" />
-              </div>
-            </div>
-
-            <h3 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Ready to Transform Your Business?
-            </h3>
-            <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto font-medium">
-              Let's create something extraordinary together. Schedule a
-              consultation to discuss your next project.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link
-                href="/contact"
-                className="bg-white text-brand-blue hover:bg-black hover:text-white px-12 w-full flex justify-center items-center py-6 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 group/btn"
-              >
-                <span className="mr-3">Start Your Project</span>
-                <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform duration-300" />
-              </Link>
-
-              <Link
-                href="/work"
-                className="bg-white/10 backdrop-blur-xl border-2 border-white/30 text-white hover:text-white hover:bg-white/20 px-12 w-full flex justify-center items-center py-6 rounded-2xl text-lg font-bold transition-all duration-500 hover:scale-105"
-              >
-                <span className="mr-3">View More Work</span>
-                <Eye className="w-6 h-6" />
-              </Link>
+            {/* Timeline line */}
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-gray-200 hidden md:block"></div>
+            
+            <div className="space-y-8">
+              {processSteps.map((step, index) => (
+                <div key={step.id} className="flex gap-6 items-start">
+                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
+                    <step.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1 pb-8">
+                    <div className="flex items-center gap-3 mb-1">
+                      <h3 className="text-lg font-semibold text-black">
+                        {step.title}
+                      </h3>
+                      <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded-full">
+                        {step.duration}
+                      </span>
+                    </div>
+                    <p className="text-gray-600">{step.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Footer */}
+      {/* CTA Section - Clean and direct */}
+      <section className="px-6 py-24">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4 tracking-tight">
+            Got a project in mind?
+          </h2>
+          <p className="text-gray-600 text-lg mb-8">
+            We'd love to hear about it. No pressure, no hard sell — 
+            just a conversation about what you're building.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-800 transition-colors duration-300"
+            >
+              Start a conversation
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/work"
+              className="inline-flex items-center justify-center gap-2 bg-gray-100 text-black px-8 py-4 rounded-xl font-semibold hover:bg-gray-200 transition-colors duration-300"
+            >
+              See our work
+              <Eye className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
